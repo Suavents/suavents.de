@@ -18,6 +18,10 @@
             font: inherit;
             padding: 0;
             margin-bottom: 0.5em;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
         }
         .impressum-content {
             display: none;
@@ -65,7 +69,7 @@
         <p class="footer-note">&copy; 2025 Suave Events. All rights reserved.</p>
         <hr style="margin:2em 0; opacity:0.2;">
         <section id="impressum" style="font-size:0.95em; color:#ccc; text-align:left; max-width:600px; margin:2em auto 0 auto;">
-            <button class="impressum-toggle" onclick="toggleImpressum()">Impressum anzeigen</button>
+            <button class="impressum-toggle" onclick="toggleImpressum()">Impressum</button>
             <div class="impressum-content" id="impressumContent">
                 <h3 style="color:#ff0040; margin-bottom:0.5em;">Impressum</h3>
                 <strong>Angaben gemäß § 5 TMG:</strong><br>
@@ -90,7 +94,7 @@
             if(content.classList.contains('open')) {
                 btn.textContent = 'Impressum ausblenden';
             } else {
-                btn.textContent = 'Impressum anzeigen';
+                btn.textContent = 'Impressum';
             }
         }
     </script>
