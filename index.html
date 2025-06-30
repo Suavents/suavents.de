@@ -30,6 +30,31 @@
         .impressum-content.open {
             display: block;
         }
+        /* Impressum Centering and Link Color */
+        #impressum {
+            font-size: 0.95em;
+            color: #ccc;
+            text-align: center;
+            max-width: 600px;
+            margin: 2em auto 0 auto;
+        }
+        #impressum a {
+            color: #ff0040;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        #impressum a:hover, 
+        #impressum a:focus {
+            color: #d30036;
+        }
+        .impressum-content h3 {
+            color: #ff0040;
+            margin-bottom: 0.5em;
+        }
+        /* Optional: Make strong tags red for visual consistency */
+        #impressum strong {
+            color: #ff0040;
+        }
     </style>
 </head>
 <body>
@@ -68,10 +93,10 @@
         </div>
         <p class="footer-note">&copy; 2025 Suave Events. All rights reserved.</p>
         <hr style="margin:2em 0; opacity:0.2;">
-        <section id="impressum" style="font-size:0.95em; color:#ccc; text-align:left; max-width:600px; margin:2em auto 0 auto;">
+        <section id="impressum">
             <button class="impressum-toggle" onclick="toggleImpressum()">Impressum</button>
             <div class="impressum-content" id="impressumContent">
-                <h3 style="color:#ff0040; margin-bottom:0.5em;">Impressum</h3>
+                <h3>Impressum</h3>
                 <strong>Angaben gemäß § 5 TMG:</strong><br>
                 Noah Erdmann<br>
                 Damaschkeweg 38<br>
