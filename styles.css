@@ -121,6 +121,7 @@ html, body {
     vertical-align: middle;
     margin-right: 10px;
     filter: drop-shadow(0 0 20px var(--accent)) brightness(1.2);
+    box-shadow: 0 0 16px 4px #833ab4, 0 0 32px 8px #fd1d1d, 0 0 48px 16px #fcb045;
 }
 
 .signup {
