@@ -1,8 +1,22 @@
-body {
-    background: #111;
-    color: #fff;
+:root {
+    --accent: #ff0040;
+    --accent-hover: #d30036;
+    --bg-dark: #111;
+    --bg-light: #181818;
+    --bg-signup: #151515;
+    --text-light: #fff;
+    --text-muted: #ccc;
+    --radius: 1rem;
+    --shadow: 0 0 20px #ff004088;
+}
+
+html, body {
     margin: 0;
+    padding: 0;
+    background: var(--bg-dark);
+    color: var(--text-light);
     font-family: 'Montserrat', Arial, sans-serif;
+    min-height: 100vh;
 }
 
 .hero {
@@ -15,19 +29,19 @@ body {
     width: 240px;
     max-width: 80vw;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 20px #ff0040) brightness(1.2);
+    filter: drop-shadow(0 0 20px var(--accent)) brightness(1.2);
 }
 
 .hero h1 {
     font-size: 2.2rem;
-    color: #ff0040;
-    text-shadow: 0 0 10px #ff0040, 0 0 40px #ff0040;
-    margin: 0;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent), 0 0 40px var(--accent);
     letter-spacing: 0.1em;
+    margin: 0;
 }
 
 .subtitle {
-    color: #fff;
+    color: var(--text-light);
     font-size: 1.1rem;
     margin-top: 0.7rem;
     letter-spacing: 0.05em;
@@ -35,33 +49,33 @@ body {
 }
 
 .event-teaser {
-    background: #181818;
+    background: var(--bg-light);
     padding: 2.5rem 1rem;
     text-align: center;
-    border-top: 2px solid #ff0040;
-    border-bottom: 2px solid #ff0040;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
 }
 
 .event-teaser h2 {
-    color: #ff0040;
+    color: var(--accent);
     margin-bottom: 1.3rem;
     font-size: 1.5rem;
     letter-spacing: 0.08em;
 }
 
 .event-card {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1.5px solid #ff0040;
-    border-radius: 1rem;
+    background: rgba(20, 20, 20, 0.95);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
     display: inline-block;
     padding: 2rem 2.5rem;
-    box-shadow: 0 0 20px #ff004088;
+    box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
 }
 
 .event-card h3 {
     margin: 0 0 0.7rem 0;
-    color: #ff0040;
+    color: var(--accent);
     font-size: 1.25rem;
     letter-spacing: 0.07em;
 }
@@ -70,29 +84,53 @@ body {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.7em 1.7em;
-    background: #ff0040;
-    color: #fff;
+    background: var(--accent);
+    color: var(--text-light);
     font-weight: bold;
     border-radius: 30px;
     text-decoration: none;
     font-size: 1.1rem;
     letter-spacing: 0.05em;
-    box-shadow: 0 0 16px #ff004088;
-    transition: background 0.2s;
+    box-shadow: 0 0 16px var(--accent);
+    transition: background 0.2s, color 0.2s;
+    border: none;
+    cursor: pointer;
 }
-.event-card .cta:hover {
-    background: #fff;
-    color: #ff0040;
+.event-card .cta:hover, .event-card .cta:focus {
+    background: var(--text-light);
+    color: var(--accent);
+}
+
+.instagram-widget {
+    text-align: center;
+    margin: 2em 0;
+}
+.instagram-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+.instagram-link:hover, .instagram-link:focus {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+.instagram-icon {
+    vertical-align: middle;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 20px var(--accent)) brightness(1.2);
 }
 
 .signup {
-    background: #151515;
+    background: var(--bg-signup);
     padding: 2.5rem 1rem 3rem 1rem;
     text-align: center;
 }
 
 .signup h2 {
-    color: #ff0040;
+    color: var(--accent);
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
 }
@@ -112,61 +150,77 @@ body {
 
 .email-form input[type="email"] {
     padding: 0.7em 1.1em;
-    border: 1.5px solid #ff0040;
+    border: 1.5px solid var(--accent);
     border-radius: 30px;
     font-size: 1em;
     background: #222;
-    color: #fff;
+    color: var(--text-light);
     outline: none;
     min-width: 220px;
-    box-shadow: 0 0 8px #ff004055;
+    box-shadow: 0 0 8px var(--accent);
+}
+.email-form input[type="email"]:focus {
+    border-color: var(--accent-hover);
 }
 
 .email-form button {
     padding: 0.7em 1.6em;
-    background: #ff0040;
+    background: var(--accent);
     border: none;
     border-radius: 30px;
-    color: #fff;
+    color: var(--text-light);
     font-weight: bold;
     font-size: 1em;
     cursor: pointer;
-    box-shadow: 0 0 12px #ff004088;
-    transition: background 0.2s;
+    box-shadow: 0 0 12px var(--accent);
+    transition: background 0.2s, color 0.2s;
 }
-.email-form button:hover {
-    background: #fff;
-    color: #ff0040;
+.email-form button:hover,
+.email-form button:focus {
+    background: var(--text-light);
+    color: var(--accent);
 }
 
 .form-message {
     margin-top: 0.8em;
     font-size: 1em;
-    color: #ff0040;
+    color: var(--accent);
     min-height: 1.5em;
 }
 
 footer {
-    background: #111;
-    color: #fff;
+    background: var(--bg-dark);
+    color: var(--text-light);
     text-align: center;
     padding: 2rem 1rem 1rem 1rem;
-    border-top: 2px solid #ff0040;
+    border-top: 2px solid var(--accent);
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em;
+    max-width: 800px;
+    margin: 0 auto 2em auto;
+}
+.contact-info, .impressum-block {
+    min-width: 220px;
 }
 
 .contact-info h3 {
     margin-top: 0;
-    color: #ff0040;
+    color: var(--accent);
     letter-spacing: 0.06em;
     font-size: 1.1rem;
 }
-
 .contact-info a {
-    color: #ff0040;
+    color: var(--accent);
     text-decoration: none;
-    transition: text-decoration 0.2s;
+    transition: text-decoration 0.2s, color 0.2s;
 }
-.contact-info a:hover {
+.contact-info a:hover, .contact-info a:focus {
+    color: var(--accent-hover);
     text-decoration: underline;
 }
 
@@ -174,4 +228,61 @@ footer {
     font-size: 0.95em;
     opacity: 0.65;
     margin-top: 1rem;
+}
+
+/* Impressum Toggle Styles */
+.impressum-toggle {
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    font: inherit;
+    padding: 0;
+    margin-bottom: 0.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transition: color 0.2s;
+}
+.impressum-toggle:hover, .impressum-toggle:focus {
+    color: var(--accent-hover);
+}
+.impressum-content {
+    display: block;
+    background: rgba(30,30,30,0.96);
+    border-radius: var(--radius);
+    margin: 1em auto 0 auto;
+    padding: 1em 1.5em;
+    box-shadow: 0 0 20px #0002;
+    text-align: left;
+    font-size: 0.97em;
+    color: var(--text-muted);
+    max-width: 340px;
+    line-height: 1.65;
+}
+.impressum-content[hidden] {
+    display: none;
+}
+.impressum-content h3 {
+    color: var(--accent);
+    margin-bottom: 0.5em;
+}
+.impressum-content strong {
+    color: var(--accent);
+}
+
+@media (max-width: 600px) {
+    .footer-grid {
+        flex-direction: column;
+        gap: 1.5em;
+    }
+    .event-card {
+        padding: 1.2rem 0.5rem;
+    }
+    .impressum-content {
+        padding: 1em 0.6em;
+        max-width: 98vw;
+    }
 }
