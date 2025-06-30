@@ -7,6 +7,26 @@
     <meta name="description" content="Suave Events – Smooth Nights Only. Join us for unforgettable experiences.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        /* Impressum Toggle Styles */
+        .impressum-toggle {
+            color: #ff0040;
+            cursor: pointer;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            font: inherit;
+            padding: 0;
+            margin-bottom: 0.5em;
+        }
+        .impressum-content {
+            display: none;
+            transition: max-height 0.3s;
+        }
+        .impressum-content.open {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header class="hero">
@@ -45,19 +65,34 @@
         <p class="footer-note">&copy; 2025 Suave Events. All rights reserved.</p>
         <hr style="margin:2em 0; opacity:0.2;">
         <section id="impressum" style="font-size:0.95em; color:#ccc; text-align:left; max-width:600px; margin:2em auto 0 auto;">
-            <h3 style="color:#ff0040; margin-bottom:0.5em;">Impressum</h3>
-            <strong>Angaben gemäß § 5 TMG:</strong><br>
-            Noah Erdmann<br>
-            Damaschkeweg 38<br>
-            59423 Unna<br>
-            Deutschland<br><br>
-            <strong>Kontakt:</strong><br>
-            Telefon: <a href="tel:+491727656368">+49 172 7656368</a><br>
-            E-Mail: <a href="mailto:info@suavents.de">info@suavents.de</a><br><br>
-            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
-            Noah Erdmann, Damaschkeweg 38, 59423 Unna
+            <button class="impressum-toggle" onclick="toggleImpressum()">Impressum anzeigen</button>
+            <div class="impressum-content" id="impressumContent">
+                <h3 style="color:#ff0040; margin-bottom:0.5em;">Impressum</h3>
+                <strong>Angaben gemäß § 5 TMG:</strong><br>
+                Noah Erdmann<br>
+                Damaschkeweg 38<br>
+                59423 Unna<br>
+                Deutschland<br><br>
+                <strong>Kontakt:</strong><br>
+                Telefon: <a href="tel:+491727656368">+49 172 7656368</a><br>
+                E-Mail: <a href="mailto:info@suavents.de">info@suavents.de</a><br><br>
+                Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+                Noah Erdmann, Damaschkeweg 38, 59423 Unna
+            </div>
         </section>
     </footer>
     <script src="script.js"></script>
+    <script>
+        function toggleImpressum() {
+            const content = document.getElementById('impressumContent');
+            content.classList.toggle('open');
+            const btn = document.querySelector('.impressum-toggle');
+            if(content.classList.contains('open')) {
+                btn.textContent = 'Impressum ausblenden';
+            } else {
+                btn.textContent = 'Impressum anzeigen';
+            }
+        }
+    </script>
 </body>
 </html>
