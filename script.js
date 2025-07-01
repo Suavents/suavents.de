@@ -14,68 +14,79 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     });
 });
 
-// Guestlist Modal (immer schließbar)
-document.querySelectorAll('.guestlist-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        document.querySelector('.guestlist-modal').hidden = false;
+// Robust Guestlist Modal (immer schließbar)
+(function() {
+    const modal = document.querySelector('.guestlist-modal');
+    const openBtns = document.querySelectorAll('.guestlist-btn');
+    const closeBtn = modal.querySelector('.close-modal');
+    const overlay = modal.querySelector('.guestlist-modal-bg');
+
+    function openModal() {
+        modal.hidden = false;
         document.body.classList.add('modal-open');
         setTimeout(() => {
-            document.querySelector('.guestlist-modal-content').focus();
+            modal.querySelector('.guestlist-modal-content').focus();
         }, 50);
-    });
-});
-const modal = document.querySelector('.guestlist-modal');
-if (modal) {
-    modal.addEventListener('mousedown', function(e) {
-        if (e.target === modal || e.target.classList.contains('guestlist-modal-bg')) {
-            modal.hidden = true;
-            document.body.classList.remove('modal-open');
-        }
-    });
-    modal.querySelector('.close-modal').addEventListener('click', function() {
+    }
+    function closeModal() {
         modal.hidden = true;
         document.body.classList.remove('modal-open');
-    });
-}
-window.addEventListener('keydown', function(e) {
-    if (e.key === "Escape") {
-        if (modal) {
-            modal.hidden = true;
-            document.body.classList.remove('modal-open');
-        }
     }
-});
-// Guest List Form Submission
-document.querySelectorAll('.guestlist-form').forEach(form => {
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const msg = this.parentNode.querySelector('.guestlist-message');
-        msg.textContent = "Sending...";
-        const formData = new FormData(this);
-        try {
-            const response = await fetch(this.action, {
-                method: "POST",
-                headers: { "Accept": "application/json" },
-                body: formData
-            });
-            if (response.ok) {
-                msg.textContent = "Request sent! We'll be in touch.";
-                this.reset();
-            } else {
-                msg.textContent = "There was a problem. Please try again.";
-            }
-        } catch (err) {
-            msg.textContent = "Network error. Please try again.";
-        }
-        setTimeout(() => {
-            modal.hidden = true;
-            msg.textContent = '';
-            document.body.classList.remove('modal-open');
-        }, 1800);
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal();
+        });
     });
-});
+    closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeModal();
+    });
+    overlay.addEventListener('mousedown', function(e) {
+        if (e.target === overlay) {
+            closeModal();
+        }
+    });
+    modal.addEventListener('mousedown', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    window.addEventListener('keydown', function(e) {
+        if (!modal.hidden && e.key === "Escape") {
+            closeModal();
+        }
+    });
+    // Guest List Form Submission
+    document.querySelectorAll('.guestlist-form').forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const msg = this.parentNode.querySelector('.guestlist-message');
+            msg.textContent = "Sending...";
+            const formData = new FormData(this);
+            try {
+                const response = await fetch(this.action, {
+                    method: "POST",
+                    headers: { "Accept": "application/json" },
+                    body: formData
+                });
+                if (response.ok) {
+                    msg.textContent = "Request sent! We'll be in touch.";
+                    this.reset();
+                } else {
+                    msg.textContent = "There was a problem. Please try again.";
+                }
+            } catch (err) {
+                msg.textContent = "Network error. Please try again.";
+            }
+            setTimeout(() => {
+                closeModal();
+                msg.textContent = '';
+            }, 1800);
+        });
+    });
+})();
 
 // Neon Cursor Glow – starker Effekt
 (function() {
