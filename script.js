@@ -53,34 +53,51 @@ function validateEmail(email) {
 
 const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
 
-// Neon Cursor Glow with random color on click
+// Neon Cursor Glow with random color on click & Logo-BG follows mouse as mask
 (function() {
     const cursor = document.querySelector('.neon-cursor');
-    if (!cursor) return;
+    const logoBg = document.querySelector('.logo-bg');
+    if (!cursor || !logoBg) return;
 
     let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
 
+    // Cursor Glow
     const effectColors = [
-        // Array of glow colors: [background, boxShadow]
-        ["transparent", "0 0 60px 26px #ff0040dd, 0 0 110px 54px #ff6a00dd"],      // red-orange
-        ["transparent", "0 0 60px 26px #ffd700cc, 0 0 110px 54px #ff6a00cc"],      // yellow-orange
-        ["transparent", "0 0 80px 38px #fff, 0 0 120px 58px #ff0040bb"],          // white-red
-        ["transparent", "0 0 80px 38px #ff6a00cc, 0 0 120px 58px #fff4"],         // orange-white
+        ["transparent", "0 0 60px 26px #ff0040dd, 0 0 110px 54px #ff6a00dd"],
+        ["transparent", "0 0 60px 26px #ffd700cc, 0 0 110px 54px #ff6a00cc"],
+        ["transparent", "0 0 80px 38px #fff, 0 0 120px 58px #ff0040bb"],
+        ["transparent", "0 0 80px 38px #ff6a00cc, 0 0 120px 58px #fff4"],
     ];
 
     const updateCursor = () => {
         cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     };
 
+    // Masked BG follows mouse
+    function updateLogoBgMask() {
+        // 320px diameter circle mask, follows mouse
+        const r = 160;
+        logoBg.style.webkitMaskImage = `radial-gradient(circle ${r}px at ${mouseX}px ${mouseY}px, #000 94%, transparent 100%)`;
+        logoBg.style.maskImage = `radial-gradient(circle ${r}px at ${mouseX}px ${mouseY}px, #000 94%, transparent 100%)`;
+    }
+
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         cursor.style.opacity = "0.93";
         updateCursor();
+        updateLogoBgMask();
     });
+
+    window.addEventListener('resize', updateLogoBgMask);
 
     document.addEventListener('mouseleave', () => {
         cursor.style.opacity = "0";
+        logoBg.style.opacity = "0";
+    });
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = "0.93";
+        logoBg.style.opacity = "1";
     });
 
     // Neon flash on click in random color (never purple/lila)
@@ -98,6 +115,9 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
         }, 120);
     });
 
-    // Initial position
+    // Hide logo bg if modal is open or an input is focused (handled by .modal-open/.hide-bg in CSS)
+
+    // Initial
     updateCursor();
+    updateLogoBgMask();
 })();
