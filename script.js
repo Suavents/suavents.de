@@ -115,8 +115,6 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
         }, 120);
     });
 
-    // Hide logo bg if modal is open or an input is focused (handled by .modal-open/.hide-bg in CSS)
-
     // Initial
     updateCursor();
     updateLogoBgMask();
