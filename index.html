@@ -4,29 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suave Events – Smooth Nights Only</title>
-    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <link rel="icon" href="logo.png" type="image/png">
     <meta name="description" content="Suave Events – Smooth Nights Only. Join us for unforgettable experiences.">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="neon-cursor"></div>
+    <div class="logo-bg"></div>
     <header class="hero">
-        <img src="logo-nbg.png" alt="Suave Events Logo" class="logo" />
+        <img src="logo.png" alt="Suave Events Logo" class="logo" />
         <h1>SMOOTH NIGHTS ONLY.</h1>
         <p class="subtitle">Full House Experiences • Chic Locations • Unforgettable Nights</p>
+        <span class="berlin-tag">Based in Berlin</span>
     </header>
     <main>
         <section class="event-teaser">
             <h2 class="event-title">Next Events</h2>
-            <div class="event-card">
-                <h3>Coming Soon</h3>
-                <div class="event-meta">
-                    <span>Summer 2025</span>
-                    <span>Dortmund</span>
-                    <span>Stay Tuned!</span>
+            <div class="accordion">
+                <!-- Event 1 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="event-headline">MÄSSIG</span>
+                        <span class="event-date">August 2025</span>
+                    </button>
+                    <div class="accordion-content" hidden>
+                        <div class="event-meta">
+                            <span>Friends and Family</span>
+                            <span>Guest List Only</span>
+                            <span>Dortmund</span>
+                        </div>
+                        <a href="#signup" class="cta">Get Notified</a>
+                    </div>
                 </div>
-                <a href="#signup" class="cta">Get Notified</a>
+                <!-- Event 2 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="event-headline">COMING SOON</span>
+                        <span class="event-date">September 2025</span>
+                    </button>
+                    <div class="accordion-content" hidden>
+                        <div class="event-meta">
+                            <span>Close Circle</span>
+                            <span>Request Guest List</span>
+                            <span>Dortmund</span>
+                        </div>
+                        <button class="cta guestlist-btn">Request Guest List</button>
+                        <!-- Guestlist Modal -->
+                        <div class="guestlist-modal" hidden>
+                            <div class="guestlist-modal-content">
+                                <button class="close-modal" aria-label="Close">&times;</button>
+                                <h3>Request Guest List</h3>
+                                <form class="guestlist-form">
+                                    <input type="text" name="name" placeholder="Name" required>
+                                    <input type="email" name="email" placeholder="Email" required>
+                                    <input type="text" name="instagram" placeholder="Instagram Handle" required>
+                                    <button type="submit" class="cta">Send Request</button>
+                                </form>
+                                <div class="guestlist-message"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="instagram-clean">
@@ -73,6 +112,50 @@
     </footer>
     <script src="script.js"></script>
     <script>
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.accordion-header').forEach(b => b.setAttribute('aria-expanded', 'false'));
+                document.querySelectorAll('.accordion-content').forEach(c => c.hidden = true);
+                if (!expanded) {
+                    this.setAttribute('aria-expanded', 'true');
+                    this.parentNode.querySelector('.accordion-content').hidden = false;
+                }
+            });
+        });
+        // Guest List Modal
+        document.querySelectorAll('.guestlist-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const modal = this.parentNode.querySelector('.guestlist-modal');
+                modal.hidden = false;
+                modal.querySelector('input[name="name"]').focus();
+            });
+        });
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.closest('.guestlist-modal').hidden = true;
+            });
+        });
+        window.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                document.querySelectorAll('.guestlist-modal').forEach(m => m.hidden = true);
+            }
+        });
+        // Guest List Form Submission (No backend – display message)
+        document.querySelectorAll('.guestlist-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const msg = this.parentNode.querySelector('.guestlist-message');
+                msg.textContent = "Request sent! We'll be in touch.";
+                setTimeout(() => {
+                    this.closest('.guestlist-modal').hidden = true;
+                    msg.textContent = '';
+                    this.reset();
+                }, 1800);
+            });
+        });
+        // Impressum Toggle
         document.getElementById('impressumBtn').addEventListener('click', function() {
             const content = document.getElementById('impressumContent');
             const expanded = this.getAttribute('aria-expanded') === 'true';
