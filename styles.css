@@ -8,7 +8,9 @@
     --radius: 1.1rem;
     --shadow: 0 0 14px #ff004022;
     --neon-glow: 0 0 18px 7px #ff3800cc, 0 0 28px 13px #ff6a00cc;
-    --neon-glow-hover: 0 0 34px 12px #ff3800, 0 0 42px 18px #ff6a00;
+    --neon-glow-hover: 0 0 48px 18px #ff3800, 0 0 68px 28px #ff6a00;
+    --event-card-bg: #19191b;
+    --event-card-bg-hover: #232324;
 }
 
 body {
@@ -40,12 +42,12 @@ body {
     position: fixed;
     inset: 0;
     z-index: 0;
-    opacity: 1;
+    opacity: 0.11;
     background-image: url("logo-klein.png");
     background-repeat: repeat;
     background-size: 120px auto;
     background-position: 50% 50%;
-    transition: opacity 0.25s;
+    transition: opacity 0.3s;
     mask-image: none;
     -webkit-mask-image: none;
 }
@@ -96,13 +98,14 @@ h1,
 .event-title {
     margin-bottom: 1.2rem;
 }
-.subtitle, .insta-desc {
-    font-size: 1.08rem;
+.subtitle, .insta-desc,
+.event-card-inner,
+.event-meta span {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.13rem;
     color: var(--text-muted);
-    margin-top: 0;
-    margin-bottom: 0.6rem;
-    letter-spacing: 0.08em;
     font-weight: 400;
+    letter-spacing: 0.08em;
 }
 .event-teaser {
     background: none;
@@ -112,24 +115,18 @@ h1,
     margin-bottom: 0.9em;
 }
 .accordion {
-    max-width: 390px;
+    max-width: 430px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1.3rem;
+    gap: 1.7rem;
 }
 .accordion-item {
-    background: rgba(20,20,20,0.97);
-    border-radius: var(--radius);
-    box-shadow: 
-      0 0 0 1.5px #fff,
-      0 0 7px 2px #fff7,
-      0 0 10px 3px #ff5a00aa,
-      0 0 20px 7px #ff2200a0;
+    background: none;
     border: none;
     transition: box-shadow 0.24s, filter 0.18s;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
 }
 .accordion-header {
     width: 100%;
@@ -148,6 +145,7 @@ h1,
     letter-spacing: 0.11em;
     transition: background 0.18s, color 0.14s;
     text-align: left;
+    border-radius: var(--radius);
 }
 .accordion-header[aria-expanded="true"],
 .accordion-header:focus {
@@ -157,7 +155,7 @@ h1,
 .accordion-content {
     background: none;
     border: none;
-    padding: 0.8em 1.4em 1.2em 1.4em;
+    padding: 0;
     text-align: center;
     animation: acc-fade-in 0.18s;
 }
@@ -165,40 +163,54 @@ h1,
     from { opacity: 0; transform: translateY(10px);}
     to { opacity: 1; transform: none;}
 }
+.event-card-inner {
+    margin: 1.3em auto 1.5em auto;
+    padding: 2.7em 1.4em 2.2em 1.4em;
+    background: var(--event-card-bg);
+    border-radius: var(--radius);
+    box-shadow:
+        0 0 0 1.5px #fff,
+        0 0 7px 2px #fff7,
+        0 0 10px 3px #ff5a00aa,
+        0 0 13px 6px #ff2200a0;
+    min-width: 200px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.24s, filter 0.18s, background 0.22s;
+}
+.accordion-content .event-card-inner:hover {
+    box-shadow:
+        0 0 0 2.5px #fff,
+        0 0 34px 16px #fff,
+        0 0 44px 24px #ff8a00bb,
+        0 0 66px 32px #ff2200ee;
+    filter: brightness(1.13);
+    background: var(--event-card-bg-hover);
+}
 .event-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.15em;
-    margin-bottom: 0.65em;
+    gap: 0.35em;
+    margin-bottom: 2.1em;
     align-items: center;
 }
 .event-meta span {
     color: #fff;
-    font-size: 1em;
-    letter-spacing: 0.04em;
+    font-size: 1.13rem;
+    letter-spacing: 0.05em;
 }
-.event-headline {
-    font-weight: 900;
-    font-size: 1.08em;
-    letter-spacing: 0.08em;
-}
-.event-date {
-    font-size: 0.99em;
-    color: var(--accent-hover);
-    letter-spacing: 0.04em;
-    font-weight: 600;
-}
-.cta, .event-card .cta, .email-form button, .guestlist-btn, .guestlist-form button {
+.cta, .event-card-inner .cta, .email-form button, .guestlist-btn, .guestlist-form button {
     display: inline-block;
-    margin-top: 0.1rem;
-    margin-left: 0.2em;
-    padding: 0.7em 2.1em;
+    margin-top: 1.1rem;
+    padding: 0.7em 2.2em;
     background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
     color: #fff;
     font-weight: bold;
     border-radius: 34px;
     text-decoration: none;
-    font-size: 1.06rem;
+    font-size: 1.12rem;
     letter-spacing: 0.05em;
     border: none;
     cursor: pointer;
@@ -206,7 +218,7 @@ h1,
     transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
 }
 .cta:hover, .cta:focus,
-.event-card .cta:hover, .event-card .cta:focus,
+.event-card-inner .cta:hover, .event-card-inner .cta:focus,
 .email-form button:hover, .email-form button:focus,
 .guestlist-btn:hover, .guestlist-form button:hover {
     background: #fff;
@@ -405,14 +417,13 @@ a:hover, a:focus {
     height: 60px;
     position: relative;
     z-index: 1;
-    /* Abstand zu Sign up und Footer */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .logo-marquee, .logo-marquee-2 {
     display: flex;
-    gap: 32px;
+    gap: 0px;
     position: absolute;
     left: 0;
     top: 0;
@@ -422,16 +433,17 @@ a:hover, a:focus {
 .logo-marquee img, .logo-marquee-2 img {
     height: 44px;
     width: auto;
-    opacity: 0.94;
+    opacity: 0.84;
     filter: drop-shadow(0 0 6px #222);
     user-select: none;
     pointer-events: none;
+    margin-right: 0px;
 }
 .logo-marquee {
-    animation: marquee 12s linear infinite;
+    animation: marquee 9s linear infinite;
 }
 .logo-marquee-2 {
-    animation: marquee2 12s linear infinite;
+    animation: marquee2 9s linear infinite;
 }
 @keyframes marquee {
     0% { transform: translateX(0); }
@@ -526,10 +538,9 @@ footer {
         flex-direction: column;
         gap: 1.5em;
     }
-    .event-card, .accordion, .accordion-item {
-        max-width: 99vw;
-        min-width: 0;
-        padding: 0;
+    .event-card-inner {
+        padding: 1.5em 0.4em 1.2em 0.4em;
+        max-width: 97vw;
     }
     .impressum-content {
         padding: 1em 0.6em;
@@ -546,7 +557,7 @@ footer {
         width: 90vw;
     }
     .accordion-content {
-        padding: 0.8em 0.7em 1.2em 0.7em;
+        padding: 0;
     }
     .logo-marquee-wrap {
         height: 38px;
