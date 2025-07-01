@@ -5,9 +5,9 @@
     --bg-dark: #121212;
     --text-light: #fff;
     --text-muted: #bbb;
-    --radius: 1.4rem;
-    --shadow: 0 0 32px #ff004066;
-    --neon-glow: 0 0 10px 2px #ff3800cc;
+    --radius: 1.1rem;
+    --shadow: 0 0 14px #ff004022;
+    --neon-glow: 0 0 8px 2px #ff3800cc;
     --neon-glow-hover: 0 0 18px 6px #ff3800, 0 0 28px 10px #ff6a00;
 }
 
@@ -29,20 +29,25 @@
     pointer-events: none;
     position: fixed;
     z-index: 2000;
-    width: 15px;
-    height: 15px;
-    margin-left: -7.5px;
-    margin-top: -7.5px;
+    width: 0px;
+    height: 0px;
+    margin-left: 0;
+    margin-top: 0;
     border-radius: 50%;
-    background: #fff6;
-    box-shadow: 0 0 24px 8px #ff004088, 0 0 32px 12px #ff6a0088;
+    background: transparent !important;
+    box-shadow: 0 0 24px 4px #ff004088, 0 0 32px 8px #ff6a0088;
     opacity: 0.86;
     transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
 }
 body:active .neon-cursor {
-    /* Der eigentliche Effekt wird im Script erzeugt */
+    /* Effect is JS controlled */
+}
+
+/* Disable neon cursor on mobile */
+@media (max-width: 900px) {
+    .neon-cursor { display: none !important; }
 }
 
 html, body {
@@ -64,7 +69,9 @@ body {
     padding: 4.2rem 1rem 2rem 1rem;
     background: none;
 }
-h1 {
+h1,
+.event-title {
+    font-family: 'Montserrat', Arial, sans-serif;
     letter-spacing: 0.17em;
     font-size: 2.2rem;
     font-weight: 700;
@@ -72,13 +79,19 @@ h1 {
     margin-bottom: 0.8rem;
     margin-top: 0;
     text-shadow: 0 0 24px #ff004044, 0 0 48px #ff6a0033;
+    line-height: 1.08;
 }
-.subtitle {
+.event-title {
+    margin-bottom: 2.0rem;
+}
+.subtitle, .insta-desc {
     font-size: 1.13rem;
     color: var(--text-muted);
     margin-top: 0;
     margin-bottom: 0.8rem;
     letter-spacing: 0.08em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
 }
 .event-teaser {
     background: none;
@@ -86,26 +99,18 @@ h1 {
     text-align: center;
     border: none;
 }
-.event-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.1rem;
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    color: var(--accent);
-    margin-bottom: 1.6rem;
-}
 .event-card {
     background: rgba(24,24,24,0.93);
-    border-radius: 1.1rem;
-    padding: 1.5rem 1.7rem 1.5rem 1.7rem;
+    border-radius: var(--radius);
+    padding: 1.2rem 1.2rem 1.0rem 1.2rem;
     box-shadow:
-        0 0 0 2px #fff,
-        0 0 7px 2px #fff,
-        0 0 16px 6px #ff5a00,
-        0 0 32px 14px #ff2200cc;
+        0 0 0 1.5px #fff,
+        0 0 7px 2px #fff7,
+        0 0 10px 3px #ff5a00aa,
+        0 0 20px 7px #ff2200a0;
     border: none;
-    min-width: 220px;
-    max-width: 340px;
+    min-width: 200px;
+    max-width: 310px;
     margin: 0 auto;
     transition: box-shadow 0.24s, filter 0.18s;
     display: flex;
@@ -113,28 +118,28 @@ h1 {
     align-items: center;
 }
 .event-card h3 {
-    margin: 0 0 1.1rem 0;
+    margin: 0 0 0.8rem 0;
     color: var(--accent);
-    font-size: 1.08rem;
+    font-size: 1rem;
     letter-spacing: 0.07em;
 }
 .event-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.11em;
-    margin-bottom: 1.1em;
+    gap: 0.13em;
+    margin-bottom: 1.0em;
 }
 .event-meta span {
     display: block;
     color: #fff;
-    font-size: 1.01em;
+    font-size: 1em;
 }
 .event-card:hover, .event-card:focus {
     box-shadow:
-        0 0 0 3px #fff,
-        0 0 25px 8px #fff,
-        0 0 36px 12px #ff8a00,
-        0 0 60px 26px #ff2200ee;
+        0 0 0 2.5px #fff,
+        0 0 22px 8px #fff,
+        0 0 22px 8px #ff8a00bb,
+        0 0 36px 18px #ff2200ee;
     filter: brightness(1.13);
 }
 .cta, .event-card .cta, .email-form button {
@@ -142,7 +147,7 @@ h1 {
     margin-top: 1rem;
     padding: 0.7em 2.2em;
     background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-    color: var(--accent);
+    color: #fff;
     font-weight: bold;
     border-radius: 34px;
     text-decoration: none;
@@ -152,11 +157,6 @@ h1 {
     cursor: pointer;
     box-shadow: var(--neon-glow);
     transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
-}
-.cta,
-.event-card .cta,
-.email-form button {
-    color: #fff;
 }
 .cta:hover, .cta:focus,
 .event-card .cta:hover, .event-card .cta:focus,
@@ -182,21 +182,13 @@ h1 {
     align-items: center;
     gap: 0.3em;
 }
-.insta-desc {
-    font-size: 1.13rem;
-    color: var(--text-muted);
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    margin-bottom: 0;
-}
 .insta-handle-link {
-    font-size: 1.52em;
+    font-size: 1.45em;
     font-weight: 900;
     color: var(--accent);
     letter-spacing: 0.03em;
     text-decoration: none;
-    text-shadow: 0 0 12px #ff004044;
+    text-shadow: 0 0 8px #ff004044;
     transition: color 0.17s, filter 0.17s;
     border-bottom: none;
 }
@@ -228,7 +220,7 @@ a:hover, a:focus {
     text-align: center;
     border-radius: var(--radius);
     margin: 0 auto 3em auto;
-    max-width: 440px;
+    max-width: 400px;
     box-shadow: none;
 }
 .signup h2 {
@@ -278,7 +270,7 @@ footer {
     padding: 2rem 1rem 1.4rem 1rem;
     border-top: 1.5px solid var(--accent);
     margin-top: auto;
-    box-shadow: 0 0 24px #ff004008;
+    box-shadow: 0 0 12px #ff004008;
 }
 .footer-grid {
     display: flex;
@@ -289,7 +281,7 @@ footer {
     margin: 0 auto 2em auto;
 }
 .contact-info, .impressum-block {
-    min-width: 220px;
+    min-width: 180px;
 }
 .contact-info h3 {
     margin-top: 0;
@@ -332,11 +324,11 @@ footer {
     border-radius: var(--radius);
     margin: 0.5em auto 0 auto;
     padding: 1em 1.5em;
-    box-shadow: 0 0 20px #0002;
+    box-shadow: 0 0 10px #0002;
     text-align: left;
     font-size: 0.97em;
     color: var(--text-muted);
-    max-width: 340px;
+    max-width: 320px;
     line-height: 1.65;
 }
 .impressum-content[hidden] {
@@ -355,7 +347,7 @@ footer {
         gap: 1.5em;
     }
     .event-card {
-        padding: 1.2rem 0.5rem;
+        padding: 1.1rem 0.4rem;
         max-width: 98vw;
     }
     .impressum-content {
