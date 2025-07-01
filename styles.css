@@ -1,6 +1,7 @@
 :root {
     --accent: #ff0040;
     --accent-hover: #d30036;
+    --insta-gradient: linear-gradient(135deg, #833ab4 0%, #fd1d1d 60%, #ff0040 100%);
     --bg-dark: #111;
     --bg-light: #181818;
     --bg-signup: #151515;
@@ -8,8 +9,30 @@
     --text-muted: #ccc;
     --radius: 1rem;
     --shadow: 0 0 20px #ff004088;
+    --neon-glow: 0 0 18px 6px #ff0040, 0 0 36px 12px #fd1d1d, 0 0 52px 16px #833ab4;
+    --neon-glow-hover: 0 0 32px 12px #ff0040, 0 0 56px 20px #fd1d1d, 0 0 92px 32px #833ab4;
 }
 
+/* Neon Mouse Cursor Glow */
+.neon-cursor {
+    pointer-events: none;
+    position: fixed;
+    z-index: 2000;
+    width: 90px;
+    height: 90px;
+    margin-left: -45px;
+    margin-top: -45px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff3 0%, #ff004066 55%, #833ab433 100%);
+    box-shadow: 0 0 50px 18px #ff004088, 0 0 120px 60px #833ab422;
+    opacity: 0.92;
+    transition: background 0.15s, box-shadow 0.15s, opacity 0.2s;
+    mix-blend-mode: lighten;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+/* General Styles */
 html, body {
     margin: 0;
     padding: 0;
@@ -30,23 +53,190 @@ html, body {
     max-width: 80vw;
     margin-bottom: 1.5rem;
     filter: drop-shadow(0 0 20px var(--accent)) brightness(1.2);
+    transition: filter 0.3s;
+}
+.logo:hover, .logo:focus {
+    filter: drop-shadow(0 0 60px var(--accent)) brightness(1.4);
 }
 
-.hero h1 {
-    font-size: 2.2rem;
+/* Neon Glow Hover for All Important Elements */
+.event-card,
+.cta,
+.event-card .cta,
+.email-form input[type="email"],
+.email-form button,
+a,
+.instagram-card,
+.insta-icon-wrapper,
+.insta-cta
+{
+    transition: box-shadow 0.23s, filter 0.23s, background 0.23s, color 0.23s;
+}
+
+.event-card,
+.instagram-card {
+    box-shadow: var(--shadow);
+}
+.event-card:hover, .event-card:focus,
+.instagram-card:hover, .instagram-card:focus-within {
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.14);
+}
+
+.cta, .event-card .cta, .insta-cta, .email-form button {
+    box-shadow: 0 0 16px var(--accent);
+}
+.cta:hover, .cta:focus,
+.event-card .cta:hover, .event-card .cta:focus,
+.insta-cta:hover, .insta-cta:focus,
+.email-form button:hover, .email-form button:focus {
+    background: var(--text-light);
     color: var(--accent);
-    text-shadow: 0 0 10px var(--accent), 0 0 40px var(--accent);
-    letter-spacing: 0.1em;
-    margin: 0;
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.18);
 }
 
-.subtitle {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    margin-top: 0.7rem;
-    letter-spacing: 0.05em;
-    opacity: 0.85;
+.email-form input[type="email"] {
+    box-shadow: 0 0 8px var(--accent);
 }
+.email-form input[type="email"]:hover,
+.email-form input[type="email"]:focus {
+    border-color: var(--accent-hover);
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.14);
+}
+
+a, .contact-info a, .insta-handle a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+a:hover, a:focus,
+.contact-info a:hover, .contact-info a:focus,
+.insta-handle a:hover, .insta-handle a:focus {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    filter: brightness(1.18);
+    box-shadow: 0 0 12px #ff004088;
+}
+
+/* Instagram Card New Design */
+.instagram-card {
+    position: relative;
+    margin: 3em auto 2em auto;
+    max-width: 420px;
+    border-radius: calc(var(--radius) * 1.3);
+    background: rgba(24, 24, 33, 0.98);
+    overflow: visible;
+    box-shadow: var(--neon-glow);
+    padding: 2.1em 1.5em 1.7em 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    z-index: 2;
+    border: 2.5px solid var(--accent);
+}
+.instagram-card .insta-glow-bg {
+    position: absolute;
+    top: -30px; left: -30px; right: -30px; bottom: -30px;
+    z-index: 0;
+    border-radius: 2.5em;
+    background: var(--insta-gradient);
+    filter: blur(36px) opacity(0.38);
+    pointer-events: none;
+}
+.instagram-card .insta-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 1.7em;
+    align-items: center;
+}
+.insta-icon-wrapper {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    min-height: 74px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.3);
+    box-shadow: var(--neon-glow);
+    transition: box-shadow 0.2s, filter 0.2s;
+}
+.insta-icon-wrapper:hover,
+.instagram-card:focus-within .insta-icon-wrapper {
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.16);
+}
+.instagram-icon-animated {
+    width: 64px;
+    height: 64px;
+    display: block;
+    filter: drop-shadow(0 0 28px #ff0040aa) drop-shadow(0 0 16px #833ab4aa);
+    animation: instaPulse 2s infinite alternate;
+}
+@keyframes instaPulse {
+    0% { filter: drop-shadow(0 0 12px #ff0040ee) drop-shadow(0 0 8px #833ab4cc);}
+    70% { filter: drop-shadow(0 0 42px #ff0040ee) drop-shadow(0 0 32px #833ab4cc);}
+    100% { filter: drop-shadow(0 0 24px #ff0040cc) drop-shadow(0 0 10px #833ab4aa);}
+}
+
+.insta-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    align-items: flex-start;
+}
+.insta-title {
+    font-size: 1.18em;
+    font-weight: bold;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.12em;
+    text-shadow: 0 0 18px #ff004044, 0 0 36px #fd1d1d33;
+}
+.insta-handle {
+    font-size: 1.04em;
+    color: var(--text-light);
+    margin-bottom: 0.28em;
+}
+.insta-handle a {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 10px #ff004044;
+    transition: color 0.2s, filter 0.2s;
+}
+.insta-handle a:hover, .insta-handle a:focus {
+    color: var(--accent);
+    filter: brightness(1.2);
+}
+.insta-cta {
+    display: inline-block;
+    margin-top: 0.22em;
+    padding: 0.45em 1.35em;
+    background: var(--insta-gradient);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 22px;
+    font-size: 1.07em;
+    letter-spacing: 0.03em;
+    box-shadow: var(--neon-glow);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+.insta-cta:hover, .insta-cta:focus {
+    background: #fff;
+    color: var(--accent);
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.18);
+}
+
+/* Remove old Instagram widget */
+.instagram-widget { display: none !important; }
 
 .event-teaser {
     background: var(--bg-light);
@@ -92,36 +282,14 @@ html, body {
     font-size: 1.1rem;
     letter-spacing: 0.05em;
     box-shadow: 0 0 16px var(--accent);
-    transition: background 0.2s, color 0.2s;
     border: none;
     cursor: pointer;
 }
 .event-card .cta:hover, .event-card .cta:focus {
     background: var(--text-light);
     color: var(--accent);
-}
-
-.instagram-widget {
-    text-align: center;
-    margin: 2em 0;
-}
-.instagram-link {
-    display: inline-block;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.2em;
-    transition: color 0.2s;
-}
-.instagram-link:hover, .instagram-link:focus {
-    color: var(--accent-hover);
-    text-decoration: underline;
-}
-.instagram-icon {
-    vertical-align: middle;
-    margin-right: 10px;
-    filter: drop-shadow(0 0 20px var(--accent)) brightness(1.2);
-    box-shadow: 0 0 16px 4px #833ab4, 0 0 32px 8px #fd1d1d, 0 0 48px 16px #fcb045;
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.18);
 }
 
 .signup {
@@ -159,6 +327,7 @@ html, body {
     outline: none;
     min-width: 220px;
     box-shadow: 0 0 8px var(--accent);
+    transition: border-color 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 .email-form input[type="email"]:focus {
     border-color: var(--accent-hover);
@@ -174,12 +343,14 @@ html, body {
     font-size: 1em;
     cursor: pointer;
     box-shadow: 0 0 12px var(--accent);
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 .email-form button:hover,
 .email-form button:focus {
     background: var(--text-light);
     color: var(--accent);
+    box-shadow: var(--neon-glow-hover);
+    filter: brightness(1.18);
 }
 
 .form-message {
@@ -215,15 +386,6 @@ footer {
     letter-spacing: 0.06em;
     font-size: 1.1rem;
 }
-.contact-info a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: text-decoration 0.2s, color 0.2s;
-}
-.contact-info a:hover, .contact-info a:focus {
-    color: var(--accent-hover);
-    text-decoration: underline;
-}
 
 .footer-note {
     font-size: 0.95em;
@@ -250,10 +412,11 @@ footer {
     margin-bottom: 0.5em;
     display: block;
     text-align: center;
-    transition: color 0.2s;
+    transition: color 0.2s, filter 0.2s;
 }
 .impressum-toggle:hover, .impressum-toggle:focus {
     color: var(--accent-hover);
+    filter: brightness(1.15);
 }
 .impressum-content {
     display: block;
@@ -291,13 +454,15 @@ footer {
         padding: 1em 0.6em;
         max-width: 98vw;
     }
-}
-a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-a:hover, a:focus {
-    color: var(--accent-hover);
-    text-decoration: underline;
+    .instagram-card {
+        flex-direction: column;
+        min-height: 0;
+        padding: 1.2em 0.4em 1.1em 0.4em;
+        gap: 0.9em;
+    }
+    .instagram-card .insta-content {
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+    }
 }
