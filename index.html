@@ -25,12 +25,12 @@
                 <!-- Event 1 -->
                 <div class="accordion-item">
                     <button class="accordion-header" aria-expanded="false">
-                        <span class="event-headline">MÄSSIG</span>
+                        <span class="event-headline">Family &amp; Friends</span>
                         <span class="event-date">August 2025</span>
                     </button>
                     <div class="accordion-content" hidden>
                         <div class="event-meta">
-                            <span>Friends and Family</span>
+                            <span>Family &amp; Friends</span>
                             <span>Guest List Only</span>
                             <span>Dortmund</span>
                         </div>
@@ -55,7 +55,7 @@
                             <div class="guestlist-modal-content">
                                 <button class="close-modal" aria-label="Close">&times;</button>
                                 <h3>Request Guest List</h3>
-                                <form class="guestlist-form">
+                                <form class="guestlist-form" autocomplete="off" action="https://formspree.io/f/xovwrojg" method="POST">
                                     <input type="text" name="name" placeholder="Name" required>
                                     <input type="email" name="email" placeholder="Email" required>
                                     <input type="text" name="instagram" placeholder="Instagram Handle" required>
@@ -126,32 +126,52 @@
         });
         // Guest List Modal
         document.querySelectorAll('.guestlist-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const modal = this.parentNode.querySelector('.guestlist-modal');
                 modal.hidden = false;
                 modal.querySelector('input[name="name"]').focus();
+                document.body.classList.add('modal-open');
             });
         });
         document.querySelectorAll('.close-modal').forEach(btn => {
             btn.addEventListener('click', function() {
                 this.closest('.guestlist-modal').hidden = true;
+                document.body.classList.remove('modal-open');
             });
         });
         window.addEventListener('keydown', function(e) {
             if (e.key === "Escape") {
                 document.querySelectorAll('.guestlist-modal').forEach(m => m.hidden = true);
+                document.body.classList.remove('modal-open');
             }
         });
-        // Guest List Form Submission (No backend – display message)
+        // Guest List Form Submission (Formspree AJAX)
         document.querySelectorAll('.guestlist-form').forEach(form => {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const msg = this.parentNode.querySelector('.guestlist-message');
-                msg.textContent = "Request sent! We'll be in touch.";
+                msg.textContent = "Sending...";
+                const formData = new FormData(this);
+                try {
+                    const response = await fetch(this.action, {
+                        method: "POST",
+                        headers: { "Accept": "application/json" },
+                        body: formData
+                    });
+                    if (response.ok) {
+                        msg.textContent = "Request sent! We'll be in touch.";
+                        this.reset();
+                    } else {
+                        msg.textContent = "There was a problem. Please try again.";
+                    }
+                } catch (err) {
+                    msg.textContent = "Network error. Please try again.";
+                }
                 setTimeout(() => {
                     this.closest('.guestlist-modal').hidden = true;
                     msg.textContent = '';
-                    this.reset();
+                    document.body.classList.remove('modal-open');
                 }, 1800);
             });
         });
