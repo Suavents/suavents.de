@@ -53,13 +53,21 @@ function validateEmail(email) {
 
 const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
 
-// Neon Cursor Glow
+// Neon Cursor Glow with random color on click
 (function() {
     const cursor = document.querySelector('.neon-cursor');
     if (!cursor) return;
 
     let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
     let visible = true;
+
+    const effectColors = [
+        // Array of glow colors: [background, boxShadow]
+        ["#fff9", "0 0 24px 8px #ff0040cc, 0 0 32px 12px #ff6a00cc"],      // red-orange
+        ["#fff9", "0 0 24px 8px #ffd700cc, 0 0 32px 14px #ff6a00cc"],      // yellow-orange
+        ["#fff9", "0 0 30px 10px #fff, 0 0 40px 18px #ff0040bb"],          // white-red
+        ["#fff9", "0 0 32px 12px #ff6a00cc, 0 0 40px 18px #fff4"],         // orange-white
+    ];
 
     const updateCursor = () => {
         cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
@@ -69,7 +77,7 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
         mouseX = e.clientX;
         mouseY = e.clientY;
         visible = true;
-        cursor.style.opacity = "0.92";
+        cursor.style.opacity = "0.86";
         updateCursor();
     });
 
@@ -78,17 +86,18 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
         visible = false;
     });
 
-    // Neon flash on click
+    // Neon flash on click in random color (never purple/lila)
     document.addEventListener('mousedown', () => {
-        cursor.style.background = "radial-gradient(circle, #fff6 0%, #ff0040aa 55%, #833ab477 100%)";
-        cursor.style.boxShadow = "0 0 120px 60px #ff0040cc, 0 0 240px 120px #833ab488";
+        const i = Math.floor(Math.random() * effectColors.length);
+        cursor.style.background = effectColors[i][0];
+        cursor.style.boxShadow = effectColors[i][1];
         cursor.style.opacity = "1";
     });
     document.addEventListener('mouseup', () => {
         setTimeout(() => {
-            cursor.style.background = "radial-gradient(circle, #fff3 0%, #ff004066 55%, #833ab433 100%)";
-            cursor.style.boxShadow = "0 0 50px 18px #ff004088, 0 0 120px 60px #833ab422";
-            cursor.style.opacity = "0.92";
+            cursor.style.background = "#fff6";
+            cursor.style.boxShadow = "0 0 24px 8px #ff004088, 0 0 32px 12px #ff6a0088";
+            cursor.style.opacity = "0.86";
         }, 120);
     });
 
