@@ -292,3 +292,12 @@ footer {
         max-width: 98vw;
     }
 }
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover, a:focus {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
