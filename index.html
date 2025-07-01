@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +16,13 @@
     </header>
     <main>
         <section class="event-teaser">
-            <h2>Nächstes Event</h2>
+            <h2>Next Event</h2>
             <div class="event-card">
                 <h3>Coming Soon</h3>
-                <p>Sommer 2025</p>
+                <p>Summer 2025</p>
                 <p>Dortmund</p>
                 <p>Stay Tuned!</p>
-                <a href="#signup" class="cta">Jetzt Benachrichtigen lassen</a>
+                <a href="#signup" class="cta">Get Notified</a>
             </div>
         </section>
         <section class="instagram-widget">
@@ -31,15 +31,15 @@
                     <path fill="#ff0040" d="M65.03 0C37.888 0 ..."/>
                     <path fill="#fff" d="M66.004 18c-13.036 0 ..."/>
                 </svg>
-                Folge uns auf Instagram für Updates!
+                Follow us on Instagram for updates!
             </a>
         </section>
         <section class="signup" id="signup">
-            <h2>Immer informiert bleiben</h2>
-            <p>Melde dich für exklusive Einladungen und Updates an.</p>
+            <h2>Stay Up to Date</h2>
+            <p>Sign up for exclusive invitations and updates.</p>
             <form class="email-form" autocomplete="off" action="https://formspree.io/f/xwpbynnn" method="POST">
-                <input type="email" name="email" placeholder="Deine E-Mail-Adresse" required />
-                <button type="submit">Anmelden</button>
+                <input type="email" name="email" placeholder="Your email address" required />
+                <button type="submit">Sign Up</button>
             </form>
             <div class="form-message" aria-live="polite"></div>
         </section>
@@ -47,7 +47,7 @@
     <footer>
         <div class="footer-grid">
             <div class="contact-info">
-                <h3>Kontakt</h3>
+                <h3>Contact</h3>
                 <p><a href="mailto:info@suavents.de">info@suavents.de</a></p>
                 <p><a href="tel:+491727656368">+49 172 7656368</a></p>
                 <p><a href="https://instagram.com/suavents" target="_blank">@suavents</a></p>
@@ -72,13 +72,12 @@
         <p class="footer-note">&copy; 2025 Suave Events. All rights reserved.</p>
     </footer>
     <script>
-        // Impressum Toggle
         document.getElementById('impressumBtn').addEventListener('click', function() {
             const content = document.getElementById('impressumContent');
             const expanded = this.getAttribute('aria-expanded') === 'true';
             content.hidden = expanded;
             this.setAttribute('aria-expanded', String(!expanded));
-            this.textContent = expanded ? 'Impressum' : 'Impressum ausblenden';
+            this.textContent = expanded ? 'Impressum' : 'Hide Impressum';
         });
     </script>
 </body>
