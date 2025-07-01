@@ -232,6 +232,14 @@ footer {
 }
 
 /* Impressum Toggle Styles */
+.impressum-center {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+    margin-top: 1.5em;
+}
 .impressum-toggle {
     color: var(--accent);
     cursor: pointer;
@@ -242,8 +250,6 @@ footer {
     padding: 0;
     margin-bottom: 0.5em;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     transition: color 0.2s;
 }
