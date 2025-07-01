@@ -187,11 +187,14 @@ body {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.97);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 3100;
     animation: fadeIn 0.13s;
+}
+.guestlist-modal[open], .guestlist-modal:not([hidden]) {
+    display: flex;
 }
 @keyframes fadeIn {
     from { opacity:0; }
