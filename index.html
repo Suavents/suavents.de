@@ -52,7 +52,8 @@
                         <button class="cta guestlist-btn">Request Guest List</button>
                         <!-- Guestlist Modal -->
                         <div class="guestlist-modal" hidden>
-                            <div class="guestlist-modal-content">
+                            <div class="guestlist-modal-bg"></div>
+                            <div class="guestlist-modal-content" tabindex="-1">
                                 <button class="close-modal" aria-label="Close">&times;</button>
                                 <h3>Request Guest List</h3>
                                 <form class="guestlist-form" autocomplete="off" action="https://formspree.io/f/xovwrojg" method="POST">
@@ -68,6 +69,7 @@
                 </div>
             </div>
         </section>
+        <!-- Instagram Section jetzt NACH Events/Modals -->
         <section class="instagram-clean">
             <div class="insta-clean-content">
                 <span class="insta-desc">Private nights. Public moments.</span>
@@ -83,6 +85,34 @@
             </form>
             <div class="form-message" aria-live="polite"></div>
         </section>
+        <div class="logo-marquee-wrap">
+            <div class="logo-marquee">
+                <!-- 10 logos, repeat via CSS animation -->
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+            </div>
+            <div class="logo-marquee logo-marquee-2">
+                <!-- Repeat for seamless effect -->
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="" loading="lazy">
+            </div>
+        </div>
     </main>
     <footer>
         <div class="footer-grid">
@@ -130,16 +160,29 @@
                 e.stopPropagation();
                 const modal = this.parentNode.querySelector('.guestlist-modal');
                 modal.hidden = false;
-                modal.querySelector('input[name="name"]').focus();
                 document.body.classList.add('modal-open');
+                setTimeout(() => {
+                  // focus after animation
+                  modal.querySelector('.guestlist-modal-content').focus();
+                }, 50);
             });
         });
-        document.querySelectorAll('.close-modal').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.closest('.guestlist-modal').hidden = true;
+        // Schließen: X Button und außen Klick und ESC
+        document.querySelectorAll('.guestlist-modal').forEach(modal => {
+            // Modal-Hintergrund-Klick
+            modal.addEventListener('mousedown', function(e) {
+                if (e.target === modal || e.target.classList.contains('guestlist-modal-bg')) {
+                    this.hidden = true;
+                    document.body.classList.remove('modal-open');
+                }
+            });
+            // Modal-Inhalt: Close-Button
+            modal.querySelector('.close-modal').addEventListener('click', function() {
+                modal.hidden = true;
                 document.body.classList.remove('modal-open');
             });
         });
+        // ESC schließt Modal
         window.addEventListener('keydown', function(e) {
             if (e.key === "Escape") {
                 document.querySelectorAll('.guestlist-modal').forEach(m => m.hidden = true);
