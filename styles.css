@@ -1,38 +1,54 @@
 :root {
     --accent: #ff0040;
-    --accent-hover: #d30036;
-    --insta-gradient: linear-gradient(135deg, #833ab4 0%, #fd1d1d 60%, #ff0040 100%);
-    --bg-dark: #111;
+    --accent-hover: #ff6a00;
+    --accent-secondary: #ff6a00;
+    --bg-dark: #121212;
     --bg-light: #181818;
-    --bg-signup: #151515;
+    --bg-signup: #181818;
     --text-light: #fff;
-    --text-muted: #ccc;
-    --radius: 1rem;
-    --shadow: 0 0 20px #ff004088;
-    --neon-glow: 0 0 18px 6px #ff0040, 0 0 36px 12px #fd1d1d, 0 0 52px 16px #833ab4;
-    --neon-glow-hover: 0 0 32px 12px #ff0040, 0 0 56px 20px #fd1d1d, 0 0 92px 32px #833ab4;
+    --text-muted: #bbb;
+    --radius: 1.4rem;
+    --shadow: 0 0 32px #ff004066;
+    --neon-glow: 0 0 24px 8px #ff0040, 0 0 44px 18px #ff6a00;
+    --neon-glow-hover: 0 0 48px 18px #ff0040, 0 0 88px 36px #ff6a00;
 }
 
-/* Neon Mouse Cursor Glow */
+/* Remove circle background for neon cursor, only glow */
 .neon-cursor {
     pointer-events: none;
     position: fixed;
     z-index: 2000;
-    width: 90px;
-    height: 90px;
-    margin-left: -45px;
-    margin-top: -45px;
+    width: 74px;
+    height: 74px;
+    margin-left: -37px;
+    margin-top: -37px;
     border-radius: 50%;
-    background: radial-gradient(circle, #fff3 0%, #ff004066 55%, #833ab433 100%);
-    box-shadow: 0 0 50px 18px #ff004088, 0 0 120px 60px #833ab422;
-    opacity: 0.92;
-    transition: background 0.15s, box-shadow 0.15s, opacity 0.2s;
+    background: transparent;
+    box-shadow: 0 0 48px 18px #ff0040cc, 0 0 144px 60px #ff6a0080;
+    opacity: 0.85;
+    transition: box-shadow 0.18s, opacity 0.2s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
-    pointer-events: none;
 }
 
-/* General Styles */
+/* Remove drop shadow and border from logo, add neon glow */
+.logo {
+    width: 260px;
+    max-width: 80vw;
+    margin-bottom: 1.8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+    box-shadow: none;
+    filter: drop-shadow(0 0 36px #ff004077) brightness(1.18);
+    transition: filter 0.28s;
+}
+.logo:hover, .logo:focus {
+    filter: drop-shadow(0 0 96px #ff0040dd) brightness(1.43);
+}
+
+/* Page Style */
 html, body {
     margin: 0;
     padding: 0;
@@ -40,283 +56,193 @@ html, body {
     color: var(--text-light);
     font-family: 'Montserrat', Arial, sans-serif;
     min-height: 100vh;
+    letter-spacing: 0.01em;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Hero section */
 .hero {
     text-align: center;
-    padding: 3rem 1rem 2rem 1rem;
-    background: #000;
+    padding: 4.2rem 1rem 2rem 1rem;
+    background: none;
 }
 
-.logo {
-    width: 240px;
-    max-width: 80vw;
+h1 {
+    letter-spacing: 0.17em;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    margin-top: 0;
+    text-shadow: 0 0 24px #ff004044, 0 0 48px #ff6a0033;
+}
+
+.subtitle {
+    font-size: 1.13rem;
+    color: var(--text-muted);
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.08em;
+}
+
+/* Event Teaser */
+.event-teaser {
+    background: none;
+    padding: 2.5rem 1rem 2.5rem 1rem;
+    text-align: center;
+    border: none;
+}
+
+.event-teaser h2 {
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+}
+
+/* Event Card clean style */
+.event-card {
+    background: rgba(24,24,24,0.77);
+    border-radius: var(--radius);
+    display: inline-block;
+    padding: 2.1rem 2.8rem;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 20px var(--accent)) brightness(1.2);
-    transition: filter 0.3s;
+    box-shadow: 0 0 36px 0 #ff004015;
+    border: none;
+    min-width: 260px;
+    max-width: 98vw;
 }
-.logo:hover, .logo:focus {
-    filter: drop-shadow(0 0 60px var(--accent)) brightness(1.4);
-}
-
-/* Neon Glow Hover for All Important Elements */
-.event-card,
-.cta,
-.event-card .cta,
-.email-form input[type="email"],
-.email-form button,
-a,
-.instagram-card,
-.insta-icon-wrapper,
-.insta-cta
-{
-    transition: box-shadow 0.23s, filter 0.23s, background 0.23s, color 0.23s;
+.event-card h3 {
+    margin: 0 0 0.7rem 0;
+    color: var(--accent);
+    font-size: 1.15rem;
+    letter-spacing: 0.07em;
 }
 
-.event-card,
-.instagram-card {
-    box-shadow: var(--shadow);
-}
-.event-card:hover, .event-card:focus,
-.instagram-card:hover, .instagram-card:focus-within {
-    box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.14);
-}
-
+/* CTA Button Modern */
 .cta, .event-card .cta, .insta-cta, .email-form button {
-    box-shadow: 0 0 16px var(--accent);
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7em 2.2em;
+    background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+    color: var(--text-light);
+    font-weight: bold;
+    border-radius: 34px;
+    text-decoration: none;
+    font-size: 1.12rem;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--neon-glow);
+    transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
 }
 .cta:hover, .cta:focus,
 .event-card .cta:hover, .event-card .cta:focus,
 .insta-cta:hover, .insta-cta:focus,
 .email-form button:hover, .email-form button:focus {
-    background: var(--text-light);
-    color: var(--accent);
-    box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.18);
-}
-
-.email-form input[type="email"] {
-    box-shadow: 0 0 8px var(--accent);
-}
-.email-form input[type="email"]:hover,
-.email-form input[type="email"]:focus {
-    border-color: var(--accent-hover);
-    box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.14);
-}
-
-a, .contact-info a, .insta-handle a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s, box-shadow 0.2s, filter 0.2s;
-}
-a:hover, a:focus,
-.contact-info a:hover, .contact-info a:focus,
-.insta-handle a:hover, .insta-handle a:focus {
-    color: var(--accent-hover);
-    text-decoration: underline;
-    filter: brightness(1.18);
-    box-shadow: 0 0 12px #ff004088;
-}
-
-/* Instagram Card New Design */
-.instagram-card {
-    position: relative;
-    margin: 3em auto 2em auto;
-    max-width: 420px;
-    border-radius: calc(var(--radius) * 1.3);
-    background: rgba(24, 24, 33, 0.98);
-    overflow: visible;
-    box-shadow: var(--neon-glow);
-    padding: 2.1em 1.5em 1.7em 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 180px;
-    z-index: 2;
-    border: 2.5px solid var(--accent);
-}
-.instagram-card .insta-glow-bg {
-    position: absolute;
-    top: -30px; left: -30px; right: -30px; bottom: -30px;
-    z-index: 0;
-    border-radius: 2.5em;
-    background: var(--insta-gradient);
-    filter: blur(36px) opacity(0.38);
-    pointer-events: none;
-}
-.instagram-card .insta-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    gap: 1.7em;
-    align-items: center;
-}
-.insta-icon-wrapper {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 74px;
-    min-height: 74px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.3);
-    box-shadow: var(--neon-glow);
-    transition: box-shadow 0.2s, filter 0.2s;
-}
-.insta-icon-wrapper:hover,
-.instagram-card:focus-within .insta-icon-wrapper {
-    box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.16);
-}
-.instagram-icon-animated {
-    width: 64px;
-    height: 64px;
-    display: block;
-    filter: drop-shadow(0 0 28px #ff0040aa) drop-shadow(0 0 16px #833ab4aa);
-    animation: instaPulse 2s infinite alternate;
-}
-@keyframes instaPulse {
-    0% { filter: drop-shadow(0 0 12px #ff0040ee) drop-shadow(0 0 8px #833ab4cc);}
-    70% { filter: drop-shadow(0 0 42px #ff0040ee) drop-shadow(0 0 32px #833ab4cc);}
-    100% { filter: drop-shadow(0 0 24px #ff0040cc) drop-shadow(0 0 10px #833ab4aa);}
-}
-
-.insta-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4em;
-    align-items: flex-start;
-}
-.insta-title {
-    font-size: 1.18em;
-    font-weight: bold;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    margin-bottom: 0.12em;
-    text-shadow: 0 0 18px #ff004044, 0 0 36px #fd1d1d33;
-}
-.insta-handle {
-    font-size: 1.04em;
-    color: var(--text-light);
-    margin-bottom: 0.28em;
-}
-.insta-handle a {
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-shadow: 0 0 10px #ff004044;
-    transition: color 0.2s, filter 0.2s;
-}
-.insta-handle a:hover, .insta-handle a:focus {
-    color: var(--accent);
-    filter: brightness(1.2);
-}
-.insta-cta {
-    display: inline-block;
-    margin-top: 0.22em;
-    padding: 0.45em 1.35em;
-    background: var(--insta-gradient);
-    color: #fff;
-    font-weight: bold;
-    border-radius: 22px;
-    font-size: 1.07em;
-    letter-spacing: 0.03em;
-    box-shadow: var(--neon-glow);
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-}
-.insta-cta:hover, .insta-cta:focus {
     background: #fff;
     color: var(--accent);
     box-shadow: var(--neon-glow-hover);
     filter: brightness(1.18);
 }
 
-/* Remove old Instagram widget */
-.instagram-widget { display: none !important; }
-
-.event-teaser {
-    background: var(--bg-light);
-    padding: 2.5rem 1rem;
-    text-align: center;
-    border-top: 2px solid var(--accent);
-    border-bottom: 2px solid var(--accent);
+/* Instagram Clean Section */
+.instagram-clean {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.2em 0 3.2em 0;
+    background: none;
 }
-
-.event-teaser h2 {
-    color: var(--accent);
-    margin-bottom: 1.3rem;
-    font-size: 1.5rem;
-    letter-spacing: 0.08em;
-}
-
-.event-card {
-    background: rgba(20, 20, 20, 0.95);
-    border: 1.5px solid var(--accent);
-    border-radius: var(--radius);
-    display: inline-block;
-    padding: 2rem 2.5rem;
-    box-shadow: var(--shadow);
-    margin-bottom: 1.5rem;
-}
-
-.event-card h3 {
-    margin: 0 0 0.7rem 0;
-    color: var(--accent);
-    font-size: 1.25rem;
-    letter-spacing: 0.07em;
-}
-
-.event-card .cta {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.7em 1.7em;
-    background: var(--accent);
-    color: var(--text-light);
-    font-weight: bold;
-    border-radius: 30px;
+.insta-link {
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+    padding: 1.2em 1.9em;
+    background: none;
+    border-radius: 36px;
+    box-shadow: none;
     text-decoration: none;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    box-shadow: 0 0 16px var(--accent);
+    transition: background 0.17s;
+}
+.insta-link:hover,
+.insta-link:focus {
+    background: rgba(255, 0, 64, 0.08);
+}
+.instagram-icon-neon {
+    width: 54px;
+    height: 54px;
+    display: block;
+    filter: drop-shadow(0 0 28px #ff004099) drop-shadow(0 0 8px #ff6a0099);
+    transition: filter 0.22s;
+}
+.insta-link:hover .instagram-icon-neon,
+.insta-link:focus .instagram-icon-neon {
+    filter: drop-shadow(0 0 72px #ff0040cc) drop-shadow(0 0 18px #ff6a00bb);
+}
+.insta-handle {
+    font-size: 1.22em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+    margin-right: 1.2em;
+    text-shadow: 0 0 7px #ff004033;
+}
+.insta-cta {
+    margin: 0;
+    margin-left: 1em;
+    padding: 0.36em 1.4em;
+    font-size: 1.07em;
+    background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+    color: #fff;
+    border-radius: 22px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
+    box-shadow: var(--neon-glow);
+    text-decoration: none;
+    transition: background 0.17s, color 0.17s, box-shadow 0.18s, filter 0.18s;
 }
-.event-card .cta:hover, .event-card .cta:focus {
-    background: var(--text-light);
+.insta-link:hover .insta-cta,
+.insta-link:focus .insta-cta {
+    background: #fff;
     color: var(--accent);
     box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.18);
+    filter: brightness(1.20);
 }
 
+/* Signup Section */
 .signup {
     background: var(--bg-signup);
     padding: 2.5rem 1rem 3rem 1rem;
     text-align: center;
+    border-radius: var(--radius);
+    margin: 0 auto 3em auto;
+    max-width: 440px;
+    box-shadow: 0 0 32px #ff004011;
 }
-
 .signup h2 {
     color: var(--accent);
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.28rem;
+    margin-bottom: 0.45rem;
 }
-
 .signup p {
-    color: #ddd;
-    margin-bottom: 1.2rem;
+    color: #eee;
+    margin-bottom: 1.1rem;
 }
-
 .email-form {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
-
 .email-form input[type="email"] {
     padding: 0.7em 1.1em;
     border: 1.5px solid var(--accent);
@@ -332,25 +258,8 @@ a:hover, a:focus,
 .email-form input[type="email"]:focus {
     border-color: var(--accent-hover);
 }
-
 .email-form button {
-    padding: 0.7em 1.6em;
-    background: var(--accent);
-    border: none;
-    border-radius: 30px;
-    color: var(--text-light);
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    box-shadow: 0 0 12px var(--accent);
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, filter 0.2s;
-}
-.email-form button:hover,
-.email-form button:focus {
-    background: var(--text-light);
-    color: var(--accent);
-    box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.18);
+    margin-top: 0;
 }
 
 .form-message {
@@ -360,14 +269,16 @@ a:hover, a:focus,
     min-height: 1.5em;
 }
 
+/* Footer modern */
 footer {
-    background: var(--bg-dark);
+    background: none;
     color: var(--text-light);
     text-align: center;
-    padding: 2rem 1rem 1rem 1rem;
-    border-top: 2px solid var(--accent);
+    padding: 2rem 1rem 1.4rem 1rem;
+    border-top: 1.5px solid var(--accent);
+    margin-top: auto;
+    box-shadow: 0 0 24px #ff004008;
 }
-
 .footer-grid {
     display: flex;
     flex-wrap: wrap;
@@ -379,21 +290,19 @@ footer {
 .contact-info, .impressum-block {
     min-width: 220px;
 }
-
 .contact-info h3 {
     margin-top: 0;
     color: var(--accent);
     letter-spacing: 0.06em;
-    font-size: 1.1rem;
+    font-size: 1.07rem;
 }
-
 .footer-note {
-    font-size: 0.95em;
+    font-size: 0.97em;
     opacity: 0.65;
     margin-top: 1rem;
 }
 
-/* Impressum Toggle Styles */
+/* Impressum styles */
 .impressum-center {
     width: 100%;
     display: flex;
@@ -442,7 +351,8 @@ footer {
     color: var(--accent);
 }
 
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 700px) {
     .footer-grid {
         flex-direction: column;
         gap: 1.5em;
@@ -454,15 +364,14 @@ footer {
         padding: 1em 0.6em;
         max-width: 98vw;
     }
-    .instagram-card {
-        flex-direction: column;
-        min-height: 0;
-        padding: 1.2em 0.4em 1.1em 0.4em;
-        gap: 0.9em;
+    .instagram-clean {
+        padding: 0 0.2em;
     }
-    .instagram-card .insta-content {
-        flex-direction: column;
-        gap: 1em;
-        align-items: center;
+    .signup {
+        padding: 2.1rem 0.2rem 2.1rem 0.2rem;
+        max-width: 98vw;
+    }
+    .logo {
+        width: 90vw;
     }
 }
