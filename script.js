@@ -59,14 +59,13 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
     if (!cursor) return;
 
     let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let visible = true;
 
     const effectColors = [
         // Array of glow colors: [background, boxShadow]
-        ["#fff9", "0 0 24px 8px #ff0040cc, 0 0 32px 12px #ff6a00cc"],      // red-orange
-        ["#fff9", "0 0 24px 8px #ffd700cc, 0 0 32px 14px #ff6a00cc"],      // yellow-orange
-        ["#fff9", "0 0 30px 10px #fff, 0 0 40px 18px #ff0040bb"],          // white-red
-        ["#fff9", "0 0 32px 12px #ff6a00cc, 0 0 40px 18px #fff4"],         // orange-white
+        ["transparent", "0 0 60px 26px #ff0040dd, 0 0 110px 54px #ff6a00dd"],      // red-orange
+        ["transparent", "0 0 60px 26px #ffd700cc, 0 0 110px 54px #ff6a00cc"],      // yellow-orange
+        ["transparent", "0 0 80px 38px #fff, 0 0 120px 58px #ff0040bb"],          // white-red
+        ["transparent", "0 0 80px 38px #ff6a00cc, 0 0 120px 58px #fff4"],         // orange-white
     ];
 
     const updateCursor = () => {
@@ -76,14 +75,12 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        visible = true;
-        cursor.style.opacity = "0.86";
+        cursor.style.opacity = "0.93";
         updateCursor();
     });
 
     document.addEventListener('mouseleave', () => {
         cursor.style.opacity = "0";
-        visible = false;
     });
 
     // Neon flash on click in random color (never purple/lila)
@@ -95,9 +92,9 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
     });
     document.addEventListener('mouseup', () => {
         setTimeout(() => {
-            cursor.style.background = "#fff6";
-            cursor.style.boxShadow = "0 0 24px 8px #ff004088, 0 0 32px 12px #ff6a0088";
-            cursor.style.opacity = "0.86";
+            cursor.style.background = "transparent";
+            cursor.style.boxShadow = "0 0 50px 22px #ff0040cc, 0 0 80px 42px #ff6a00cc";
+            cursor.style.opacity = "0.93";
         }, 120);
     });
 
