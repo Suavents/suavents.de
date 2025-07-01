@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suave Events – Smooth Nights Only</title>
-    <link rel="icon" href="logo-klein.png" type="image/png">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "https://suavents.de/",
-      "logo": "https://suavents.de/logo.png"
-    }
-    </script>
-
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <meta name="description" content="Suave Events – Smooth Nights Only. Join us for unforgettable experiences.">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -21,7 +12,7 @@
 <body>
     <div class="neon-cursor"></div>
     <header class="hero">
-        <img src="logo.png" alt="Suave Events Logo" class="logo" />
+        <img src="logo-nbg.png" alt="Suave Events Logo" class="logo" />
         <h1>SMOOTH NIGHTS ONLY.</h1>
         <p class="subtitle">Full House Experiences • Chic Locations • Unforgettable Nights</p>
     </header>
@@ -30,40 +21,32 @@
             <h2>Next Event</h2>
             <div class="event-card">
                 <h3>Coming Soon</h3>
-                <p>Summer 2025</p>
+                <p>Sommer 2025</p>
                 <p>Dortmund</p>
                 <p>Stay Tuned!</p>
                 <a href="#signup" class="cta">Get Notified</a>
             </div>
         </section>
-        <section class="instagram-card">
-            <div class="insta-glow-bg"></div>
-            <div class="insta-content">
-                <div class="insta-icon-wrapper">
-                    <a href="https://instagram.com/suavents" target="_blank" class="instagram-link" aria-label="Follow us on Instagram">
-                        <svg class="instagram-icon-animated" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 132.004 132" fill="none">
-                            <defs>
-                                <radialGradient id="neonInsta" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
-                                    <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
-                                    <stop offset="50%" stop-color="#ff0040" stop-opacity="1"/>
-                                    <stop offset="80%" stop-color="#fd1d1d" stop-opacity="1"/>
-                                    <stop offset="100%" stop-color="#833ab4" stop-opacity="1"/>
-                                </radialGradient>
-                            </defs>
-                            <circle cx="66" cy="66" r="60" fill="url(#neonInsta)" />
-                            <path fill="#fff" d="M66.004 32c-18.77 0-34 15.23-34 34s15.23 34 34 34 34-15.23 34-34-15.23-34-34-34zm0 56c-12.13 0-22-9.87-22-22s9.87-22 22-22 22 9.87 22 22-9.87 22-22 22zm27-35.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="insta-meta">
-                    <span class="insta-title">Follow us on Instagram</span>
-                    <div class="insta-handle">
-                        <a href="https://instagram.com/suavents" target="_blank">@suavents</a>
-                    </div>
-                    <a href="https://instagram.com/suavents" target="_blank" class="insta-cta">Follow</a>
-                </div>
-            </div>
+
+        <!-- Cleaner Instagram Section -->
+        <section class="instagram-clean">
+            <a href="https://instagram.com/suavents" target="_blank" class="insta-link" aria-label="Follow us on Instagram">
+                <svg class="instagram-icon-neon" xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 132 132" fill="none">
+                    <defs>
+                        <radialGradient id="neonInstaClean" cx="50%" cy="50%" r="70%">
+                            <stop offset="0%" stop-color="#fff" stop-opacity="0.8"/>
+                            <stop offset="60%" stop-color="#ff0040" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#ff6a00" stop-opacity="1"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="66" cy="66" r="50" fill="url(#neonInstaClean)" />
+                    <path fill="#fff" d="M66.004 32c-18.77 0-34 15.23-34 34s15.23 34 34 34 34-15.23 34-34-15.23-34-34-34zm0 56c-12.13 0-22-9.87-22-22s9.87-22 22-22 22 9.87 22 22-9.87 22-22 22zm27-35.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z"/>
+                </svg>
+                <span class="insta-handle">@suavents</span>
+                <span class="insta-cta">Folgen</span>
+            </a>
         </section>
+
         <section class="signup" id="signup">
             <h2>Stay in the Loop</h2>
             <p>Sign up for exclusive invitations and updates.</p>
@@ -77,7 +60,7 @@
     <footer>
         <div class="footer-grid">
             <div class="contact-info">
-                <h3>Contact</h3>
+                <h3>Kontakt</h3>
                 <p><a href="mailto:info@suavents.de">info@suavents.de</a></p>
                 <p><a href="tel:+491727656368">+49 172 7656368</a></p>
             </div>
@@ -85,7 +68,7 @@
         <div class="impressum-center">
             <button class="impressum-toggle" id="impressumBtn" type="button" aria-expanded="false" aria-controls="impressumContent">Imprint</button>
             <div class="impressum-content" id="impressumContent" hidden>
-                <h3>Imprint</h3>
+                <h3>Impressum</h3>
                 <strong>Angaben gemäß § 5 TMG:</strong><br>
                 Noah Erdmann<br>
                 Wilmersdorfer Str. 40<br>
