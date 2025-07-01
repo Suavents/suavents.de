@@ -31,7 +31,6 @@
                     <path fill="#ff0040" d="M65.03 0C37.888 0 ..."/>
                     <path fill="#fff" d="M66.004 18c-13.036 0 ..."/>
                 </svg>
-                Follow us on Instagram for updates!
             </a>
             <div class="instagram-handle">
                 <span>Instagram for news &amp; insights:</span><br>
@@ -56,31 +55,31 @@
                 <p><a href="tel:+491727656368">+49 172 7656368</a></p>
             </div>
         </div>
+        <div class="impressum-center">
+            <button class="impressum-toggle" id="impressumBtn" type="button" aria-expanded="false" aria-controls="impressumContent">Imprint</button>
+            <div class="impressum-content" id="impressumContent" hidden>
+                <h3>Imprint</h3>
+                <strong>Angaben gemäß § 5 TMG:</strong><br>
+                Noah Erdmann<br>
+                Wilmersdorfer Str. 40<br>
+                10627 Berlin<br>
+                Germany<br><br>
+                <strong>Kontakt:</strong><br>
+                Telefon: <a href="tel:+491727656368">+49 172 7656368</a><br>
+                E-Mail: <a href="mailto:info@suavents.de">info@suavents.de</a><br><br>
+                Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+                Noah Erdmann, Wilmersdorfer Str. 40, 10627 Berlin
+            </div>
+        </div>
         <p class="footer-note">&copy; 2025 Suave Events. All rights reserved.</p>
     </footer>
-    <div class="impressum-center">
-        <button class="impressum-toggle" id="impressumBtn" type="button" aria-expanded="false" aria-controls="impressumContent">Impressum</button>
-        <div class="impressum-content" id="impressumContent" hidden>
-            <h3>Impressum</h3>
-            <strong>Angaben gemäß § 5 TMG:</strong><br>
-            Noah Erdmann<br>
-            Wilmersdorfer Str. 40<br>
-            10627 Berlin<br>
-            Germany<br><br>
-            <strong>Kontakt:</strong><br>
-            Telefon: <a href="tel:+491727656368">+49 172 7656368</a><br>
-            E-Mail: <a href="mailto:info@suavents.de">info@suavents.de</a><br><br>
-            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
-            Noah Erdmann, Wilmersdorfer Str. 40, 10627 Berlin
-        </div>
-    </div>
     <script>
         document.getElementById('impressumBtn').addEventListener('click', function() {
             const content = document.getElementById('impressumContent');
             const expanded = this.getAttribute('aria-expanded') === 'true';
             content.hidden = expanded;
             this.setAttribute('aria-expanded', String(!expanded));
-            this.textContent = expanded ? 'Impressum' : 'Hide Impressum';
+            this.textContent = expanded ? 'Imprint' : 'Hide Imprint';
         });
     </script>
 </body>
