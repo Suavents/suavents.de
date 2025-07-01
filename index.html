@@ -29,12 +29,14 @@
                         <span class="event-date">August 2025</span>
                     </button>
                     <div class="accordion-content" hidden>
-                        <div class="event-meta">
-                            <span>Family &amp; Friends</span>
-                            <span>Guest List Only</span>
-                            <span>Dortmund</span>
+                        <div class="event-card-inner">
+                            <div class="event-meta">
+                                <span>Family &amp; Friends</span>
+                                <span>Guest List Only</span>
+                                <span>Dortmund</span>
+                            </div>
+                            <a href="#signup" class="cta">Get Notified</a>
                         </div>
-                        <a href="#signup" class="cta">Get Notified</a>
                     </div>
                 </div>
                 <!-- Event 2 -->
@@ -44,12 +46,14 @@
                         <span class="event-date">September 2025</span>
                     </button>
                     <div class="accordion-content" hidden>
-                        <div class="event-meta">
-                            <span>Close Circle</span>
-                            <span>Request Guest List</span>
-                            <span>Dortmund</span>
+                        <div class="event-card-inner">
+                            <div class="event-meta">
+                                <span>Close Circle</span>
+                                <span>Request Guest List</span>
+                                <span>Dortmund</span>
+                            </div>
+                            <button class="cta guestlist-btn">Request Guest List</button>
                         </div>
-                        <button class="cta guestlist-btn">Request Guest List</button>
                         <!-- Guestlist Modal -->
                         <div class="guestlist-modal" hidden>
                             <div class="guestlist-modal-bg"></div>
@@ -87,30 +91,28 @@
         </section>
         <div class="logo-marquee-wrap">
             <div class="logo-marquee">
-                <!-- 10 logos, repeat via CSS animation -->
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
             </div>
             <div class="logo-marquee logo-marquee-2">
-                <!-- Repeat for seamless effect -->
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
-                <img src="logo-klein.png" alt="" loading="lazy">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
+                <img src="logo-klein.png" alt="">
             </div>
         </div>
     </main>
@@ -141,91 +143,5 @@
         <p class="footer-note">&copy; 2025 Suave Events. All rights reserved.</p>
     </footer>
     <script src="script.js"></script>
-    <script>
-        // Accordion
-        document.querySelectorAll('.accordion-header').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const expanded = this.getAttribute('aria-expanded') === 'true';
-                document.querySelectorAll('.accordion-header').forEach(b => b.setAttribute('aria-expanded', 'false'));
-                document.querySelectorAll('.accordion-content').forEach(c => c.hidden = true);
-                if (!expanded) {
-                    this.setAttribute('aria-expanded', 'true');
-                    this.parentNode.querySelector('.accordion-content').hidden = false;
-                }
-            });
-        });
-        // Guest List Modal
-        document.querySelectorAll('.guestlist-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const modal = this.parentNode.querySelector('.guestlist-modal');
-                modal.hidden = false;
-                document.body.classList.add('modal-open');
-                setTimeout(() => {
-                  // focus after animation
-                  modal.querySelector('.guestlist-modal-content').focus();
-                }, 50);
-            });
-        });
-        // Schließen: X Button und außen Klick und ESC
-        document.querySelectorAll('.guestlist-modal').forEach(modal => {
-            // Modal-Hintergrund-Klick
-            modal.addEventListener('mousedown', function(e) {
-                if (e.target === modal || e.target.classList.contains('guestlist-modal-bg')) {
-                    this.hidden = true;
-                    document.body.classList.remove('modal-open');
-                }
-            });
-            // Modal-Inhalt: Close-Button
-            modal.querySelector('.close-modal').addEventListener('click', function() {
-                modal.hidden = true;
-                document.body.classList.remove('modal-open');
-            });
-        });
-        // ESC schließt Modal
-        window.addEventListener('keydown', function(e) {
-            if (e.key === "Escape") {
-                document.querySelectorAll('.guestlist-modal').forEach(m => m.hidden = true);
-                document.body.classList.remove('modal-open');
-            }
-        });
-        // Guest List Form Submission (Formspree AJAX)
-        document.querySelectorAll('.guestlist-form').forEach(form => {
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const msg = this.parentNode.querySelector('.guestlist-message');
-                msg.textContent = "Sending...";
-                const formData = new FormData(this);
-                try {
-                    const response = await fetch(this.action, {
-                        method: "POST",
-                        headers: { "Accept": "application/json" },
-                        body: formData
-                    });
-                    if (response.ok) {
-                        msg.textContent = "Request sent! We'll be in touch.";
-                        this.reset();
-                    } else {
-                        msg.textContent = "There was a problem. Please try again.";
-                    }
-                } catch (err) {
-                    msg.textContent = "Network error. Please try again.";
-                }
-                setTimeout(() => {
-                    this.closest('.guestlist-modal').hidden = true;
-                    msg.textContent = '';
-                    document.body.classList.remove('modal-open');
-                }, 1800);
-            });
-        });
-        // Impressum Toggle
-        document.getElementById('impressumBtn').addEventListener('click', function() {
-            const content = document.getElementById('impressumContent');
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            content.hidden = expanded;
-            this.setAttribute('aria-expanded', String(!expanded));
-            this.textContent = expanded ? 'Imprint' : 'Hide Imprint';
-        });
-    </script>
 </body>
 </html>
