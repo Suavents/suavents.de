@@ -64,10 +64,10 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
 
     // Cursor Glow
     const effectColors = [
-        ["transparent", "0 0 60px 26px #ff0040dd, 0 0 110px 54px #ff6a00dd"],
-        ["transparent", "0 0 60px 26px #ffd700cc, 0 0 110px 54px #ff6a00cc"],
-        ["transparent", "0 0 80px 38px #fff, 0 0 120px 58px #ff0040bb"],
-        ["transparent", "0 0 80px 38px #ff6a00cc, 0 0 120px 58px #fff4"],
+        ["transparent", "0 0 18px 6px #ff0040bb, 0 0 28px 12px #ff6a0099"],
+        ["transparent", "0 0 22px 8px #ffd700aa, 0 0 28px 13px #ff6a0099"],
+        ["transparent", "0 0 14px 3px #fff, 0 0 28px 8px #ff0040bb"],
+        ["transparent", "0 0 24px 8px #ff6a00cc, 0 0 32px 14px #fff4"]
     ];
 
     const updateCursor = () => {
@@ -76,10 +76,10 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
 
     // Masked BG follows mouse
     function updateLogoBgMask() {
-        // 320px diameter, with fade at the edge
-        const r = 160;
-        logoBg.style.webkitMaskImage = `radial-gradient(circle ${r}px at ${mouseX}px ${mouseY}px, rgba(0,0,0,0.33) 78%, transparent 100%)`;
-        logoBg.style.maskImage = `radial-gradient(circle ${r}px at ${mouseX}px ${mouseY}px, rgba(0,0,0,0.33) 78%, transparent 100%)`;
+        // 340px diameter, with soft fade at the edge
+        const r = 170;
+        logoBg.style.webkitMaskImage = `radial-gradient(circle ${r}px at ${mouseX}px ${mouseY}px, rgba(0,0,0,0.19) 72%, transparent 100%)`;
+        logoBg.style.maskImage = `radial-gradient(circle ${r}px at ${mouseX}px ${mouseY}px, rgba(0,0,0,0.19) 72%, transparent 100%)`;
     }
 
     let lastOverInteractive = false;
@@ -117,8 +117,8 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
         logoBg.style.opacity = "0";
     });
     document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = "0.93";
-        logoBg.style.opacity = "0.11";
+        cursor.style.opacity = "0.82";
+        logoBg.style.opacity = "0.09";
     });
 
     // Neon flash on click in random color (never purple/lila)
@@ -131,8 +131,8 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwpbynnn";
     document.addEventListener('mouseup', () => {
         setTimeout(() => {
             cursor.style.background = "transparent";
-            cursor.style.boxShadow = "0 0 50px 22px #ff0040cc, 0 0 80px 42px #ff6a00cc";
-            cursor.style.opacity = "0.93";
+            cursor.style.boxShadow = "0 0 28px 11px #ff004093, 0 0 38px 17px #ff6a0090";
+            cursor.style.opacity = "0.82";
         }, 120);
     });
 
