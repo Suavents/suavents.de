@@ -9,11 +9,26 @@
     --text-muted: #bbb;
     --radius: 1.4rem;
     --shadow: 0 0 32px #ff004066;
-    --neon-glow: 0 0 24px 8px #ff0040, 0 0 44px 18px #ff6a00;
-    --neon-glow-hover: 0 0 48px 18px #ff0040, 0 0 88px 36px #ff6a00;
+    --neon-glow: 0 0 14px 3px #ff3800cc;
+    --neon-glow-hover: 0 0 28px 8px #ff3800, 0 0 44px 18px #ff6a00;
 }
 
-/* Remove circle background for neon cursor, only glow */
+/* Logo large, no glow, no border, no shadow */
+.logo {
+    width: 340px;
+    max-width: 90vw;
+    margin-bottom: 2.2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+    box-shadow: none !important;
+    filter: none !important;
+    border: none !important;
+    transition: none !important;
+}
+
+/* Neon Cursor: Only glow, no visible circle */
 .neon-cursor {
     pointer-events: none;
     position: fixed;
@@ -23,32 +38,19 @@
     margin-left: -37px;
     margin-top: -37px;
     border-radius: 50%;
-    background: transparent;
-    box-shadow: 0 0 48px 18px #ff0040cc, 0 0 144px 60px #ff6a0080;
-    opacity: 0.85;
+    background: transparent !important;
+    box-shadow: 0 0 52px 22px #fff9, 0 0 92px 42px #ff480066, 0 0 144px 80px #ff2000aa;
+    opacity: 0.52;
     transition: box-shadow 0.18s, opacity 0.2s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
 }
-
-/* Remove drop shadow and border from logo, add neon glow */
-.logo {
-    width: 260px;
-    max-width: 80vw;
-    margin-bottom: 1.8rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background: none;
-    box-shadow: none;
-    filter: drop-shadow(0 0 36px #ff004077) brightness(1.18);
-    transition: filter 0.28s;
-}
-.logo:hover, .logo:focus {
-    filter: drop-shadow(0 0 96px #ff0040dd) brightness(1.43);
+body:active .neon-cursor {
+    box-shadow: 0 0 90px 38px #fff, 0 0 160px 90px #ff4a00cc;
+    opacity: 0.65;
 }
 
-/* Page Style */
+/* General Styles */
 html, body {
     margin: 0;
     padding: 0;
@@ -106,17 +108,20 @@ h1 {
     letter-spacing: 0.09em;
 }
 
-/* Event Card clean style */
+/* Event Card with photorealistic neon border */
 .event-card {
-    background: rgba(24,24,24,0.77);
-    border-radius: var(--radius);
-    display: inline-block;
-    padding: 2.1rem 2.8rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 0 36px 0 #ff004015;
+    background: rgba(24,24,24,0.87);
+    border-radius: 1.6rem;
+    padding: 2.2rem 2.9rem;
+    box-shadow:
+        0 0 0 3px #fff,
+        0 0 20px 6px #fff,
+        0 0 36px 12px #ff5a00,
+        0 0 72px 34px #ff2200cc;
     border: none;
     min-width: 260px;
     max-width: 98vw;
+    transition: box-shadow 0.24s, filter 0.18s;
 }
 .event-card h3 {
     margin: 0 0 0.7rem 0;
@@ -124,9 +129,17 @@ h1 {
     font-size: 1.15rem;
     letter-spacing: 0.07em;
 }
+.event-card:hover, .event-card:focus {
+    box-shadow:
+        0 0 0 6px #fff,
+        0 0 40px 18px #fff,
+        0 0 70px 22px #ff8a00,
+        0 0 140px 64px #ff2200ee;
+    filter: brightness(1.13);
+}
 
-/* CTA Button Modern */
-.cta, .event-card .cta, .insta-cta, .email-form button {
+/* CTA Button Modern with reduced glow */
+.cta, .event-card .cta, .email-form button {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.7em 2.2em;
@@ -144,77 +157,49 @@ h1 {
 }
 .cta:hover, .cta:focus,
 .event-card .cta:hover, .event-card .cta:focus,
-.insta-cta:hover, .insta-cta:focus,
 .email-form button:hover, .email-form button:focus {
     background: #fff;
     color: var(--accent);
     box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.18);
+    filter: brightness(1.12);
 }
 
-/* Instagram Clean Section */
+/* Minimal Instagram Section */
 .instagram-clean {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    margin: 2.2em 0 3.2em 0;
+    margin: 2.8em 0 3.4em 0;
     background: none;
+    padding: 0;
 }
-.insta-link {
+.insta-clean-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.2em;
-    padding: 1.2em 1.9em;
-    background: none;
-    border-radius: 36px;
-    box-shadow: none;
-    text-decoration: none;
-    transition: background 0.17s;
+    gap: 0.6em;
 }
-.insta-link:hover,
-.insta-link:focus {
-    background: rgba(255, 0, 64, 0.08);
-}
-.instagram-icon-neon {
-    width: 54px;
-    height: 54px;
-    display: block;
-    filter: drop-shadow(0 0 28px #ff004099) drop-shadow(0 0 8px #ff6a0099);
-    transition: filter 0.22s;
-}
-.insta-link:hover .instagram-icon-neon,
-.insta-link:focus .instagram-icon-neon {
-    filter: drop-shadow(0 0 72px #ff0040cc) drop-shadow(0 0 18px #ff6a00bb);
-}
-.insta-handle {
-    font-size: 1.22em;
-    font-weight: 700;
-    color: #fff;
+.insta-desc {
+    font-size: 1.12em;
+    color: #e5e5e5;
+    font-weight: 500;
     letter-spacing: 0.04em;
-    margin-right: 1.2em;
-    text-shadow: 0 0 7px #ff004033;
+    margin-bottom: 0.3em;
 }
-.insta-cta {
-    margin: 0;
-    margin-left: 1em;
-    padding: 0.36em 1.4em;
-    font-size: 1.07em;
-    background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+.insta-handle-link {
+    font-size: 1.52em;
+    font-weight: 900;
     color: #fff;
-    border-radius: 22px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    box-shadow: var(--neon-glow);
+    letter-spacing: 0.03em;
     text-decoration: none;
-    transition: background 0.17s, color 0.17s, box-shadow 0.18s, filter 0.18s;
+    text-shadow: 0 0 12px #ff004044;
+    transition: color 0.17s;
 }
-.insta-link:hover .insta-cta,
-.insta-link:focus .insta-cta {
-    background: #fff;
-    color: var(--accent);
-    box-shadow: var(--neon-glow-hover);
-    filter: brightness(1.20);
+.insta-handle-link:hover,
+.insta-handle-link:focus {
+    color: #ff8a00;
+    text-decoration: underline;
 }
 
 /* Signup Section */
@@ -252,7 +237,7 @@ h1 {
     color: var(--text-light);
     outline: none;
     min-width: 220px;
-    box-shadow: 0 0 8px var(--accent);
+    box-shadow: 0 0 8px 1.5px #ff3800bb;
     transition: border-color 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 .email-form input[type="email"]:focus {
