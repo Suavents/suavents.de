@@ -14,15 +14,22 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     });
 });
 
-// Robust Guestlist Modal (immer schließbar)
+// Robust Guestlist Modal (immer schließbar, garantiert initial unsichtbar)
 (function() {
     const modal = document.querySelector('.guestlist-modal');
     const openBtns = document.querySelectorAll('.guestlist-btn');
     const closeBtn = modal.querySelector('.close-modal');
     const overlay = modal.querySelector('.guestlist-modal-bg');
 
+    // Sicherstellen, dass das Modal initial wirklich ausgeblendet ist
+    modal.hidden = true;
+    modal.classList.remove('show-modal');
+    modal.style.display = 'none';
+
     function openModal() {
         modal.hidden = false;
+        modal.classList.add('show-modal');
+        modal.style.display = 'flex';
         document.body.classList.add('modal-open');
         setTimeout(() => {
             modal.querySelector('.guestlist-modal-content').focus();
@@ -30,6 +37,8 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     }
     function closeModal() {
         modal.hidden = true;
+        modal.classList.remove('show-modal');
+        modal.style.display = 'none';
         document.body.classList.remove('modal-open');
     }
     openBtns.forEach(btn => {
