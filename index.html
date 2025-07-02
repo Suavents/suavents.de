@@ -7,20 +7,55 @@
     <link rel="icon" href="logo.png" type="image/png">
     <meta name="description" content="Suave Events – Smooth Nights Only. Join us for unforgettable experiences.">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-    <!-- HK Grotesk Local or self-hosted, see CSS comment -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Menü -->
+    <nav class="top-menu">
+        <a href="#about" class="menu-link">About Us</a>
+        <a href="#next-events" class="menu-link">Next Events</a>
+        <a href="#contact" class="menu-link">Contact</a>
+    </nav>
     <div class="neon-cursor"></div>
     <div class="logo-bg"></div>
     <header class="hero">
         <img src="logo.png" alt="Suave Events Logo" class="logo" />
+        <div class="copyright-top">&copy;2025</div>
         <h1 class="main-title">SMOOTH NIGHTS ONLY.</h1>
         <p class="subtitle">Full House Experiences • Chic Locations • Unforgettable Nights</p>
         <span class="berlin-tag">Based in Berlin</span>
+        <!-- About Us -->
+        <section class="about-us" id="about">
+            <h2 class="about-title">SUAVE</h2>
+            <p class="about-lead">
+                Suave means smooth — in rhythm, in energy, in spirit. It’s the pulse behind what we do. A curated space for those who move to deep, soulful, and forward-thinking house music.
+            </p>
+            <p class="about-text">
+                Founded in Berlin, with its heart in Dortmund, Suave bridges two worlds: the raw, immersive energy of the capital and a city still waiting for its own sound. Dortmund’s nightlife is missing something — smooth, tasteful, high-vibe house experiences. We’re here to fill that gap.
+            </p>
+            <div class="about-section">
+                <span class="about-num">(001) INTENTION</span>
+                <p>
+                    Suave is not a club night. It’s a movement. We host day and nighttime events that flow with intention — on rooftops, terraces, or in industrial spaces. Intimate, curated, designed for connection. Always with the right crowd and the right energy.
+                </p>
+            </div>
+            <div class="about-section">
+                <span class="about-num">(002) SOUND</span>
+                <p>
+                    Our core is house — deep, afro, tech, melodic. But always open to surprise. A little groove, a touch of pop, a familiar hook — Suave sets are fluid, emotional, and dance-driven. Nothing forced, always felt.
+                </p>
+            </div>
+            <div class="about-section">
+                <span class="about-num">(003) ROOTED &amp; RISING</span>
+                <p>
+                    Born from Berlin’s cultural edge, Suave brings a fresh narrative to Dortmund — one rooted in sound, aesthetics, and community. No chaos. No filler. Just music, people, and a vibe you’ll want to stay in.
+                </p>
+            </div>
+        </section>
     </header>
     <main>
-        <section class="event-teaser">
+        <section class="event-teaser" id="next-events">
+            <h2 class="next-events-headline">NEXT EVENTS.</h2>
             <div class="accordion">
                 <!-- Event 1 -->
                 <div class="accordion-item">
@@ -117,7 +152,7 @@
     </main>
     <footer>
         <div class="footer-grid">
-            <div class="contact-info">
+            <div class="contact-info" id="contact">
                 <h3>Contact</h3>
                 <p><a href="mailto:info@suavents.de">info@suavents.de</a></p>
                 <p><a href="tel:+491727656368">+49 172 7656368</a></p>
