@@ -96,33 +96,37 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     });
 })();
 
-// Neon Cursor Glow – starker Effekt (rot-orangener)
+// Neon Cursor Glow – leicht sichtbar, beim Tippen nur wenig größer, kehrt sofort zurück
 (function() {
     const cursor = document.querySelector('.neon-cursor');
     if (!cursor) return;
     let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    function setGlowNormal() {
+        cursor.style.boxShadow = "0 0 28px 12px #fa1d1c55, 0 0 38px 18px #ffab0023";
+        cursor.style.opacity = "0.68";
+    }
+    function setGlowActive() {
+        cursor.style.boxShadow = "0 0 38px 18px #fa1d1c77, 0 0 50px 22px #ffab0040";
+        cursor.style.opacity = "0.72";
+    }
     const updateCursor = () => {
         cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     };
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        cursor.style.opacity = "0.93";
+        setGlowNormal();
         updateCursor();
     });
     document.addEventListener('mouseleave', () => {
         cursor.style.opacity = "0";
     });
     document.addEventListener('mousedown', () => {
-        cursor.style.boxShadow = "0 0 210px 90px #fa1d1c, 0 0 270px 140px #ffab00, 0 0 100px 40px #fff";
-        cursor.style.opacity = "1";
+        setGlowActive();
     });
-    document.addEventListener('mouseup', () => {
-        setTimeout(() => {
-            cursor.style.boxShadow = "0 0 170px 70px #fa1d1c, 0 0 250px 100px #ffab00cc, 0 0 110px 40px #fff5";
-            cursor.style.opacity = "0.93";
-        }, 120);
-    });
+    document.addEventListener('mouseup', setGlowNormal);
+    document.addEventListener('keydown', setGlowActive);
+    document.addEventListener('keyup', setGlowNormal);
     updateCursor();
 })();
 
