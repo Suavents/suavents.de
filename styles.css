@@ -13,8 +13,9 @@
     --text-light: #fff;
     --text-muted: #bbb;
     --radius: 1.1rem;
-    --neon-glow: 0 0 3px 1px #fa1d1c80, 0 0 7px 2px #ff6a0040, 0 0 4px 1.5px #fff1;
-    --neon-glow-hover: 0 0 8px 3px #fa1d1cbb, 0 0 14px 5px #ff6a0070, 0 0 8px 2.5px #fff3;
+    --neon-border: 0 0 0 1.5px #fa1d1c, 0 0 10px 2px #fa1d1c40, 0 0 2px 1px #ff6a0040, 0 0 8px 4px #fff1;
+    --neon-border-open: 0 0 0 2.5px #fa1d1c, 0 0 18px 6px #fa1d1c88, 0 0 24px 8px #ff6a0055, 0 0 10px 5px #fff2;
+    --neon-glow-meta: 0 0 6px #fa1d1c99, 0 0 12px #ff6a0022, 0 0 3px #fff6;
 }
 
 body {
@@ -145,7 +146,7 @@ body {
 .instagram-clean,
 .signup,
 footer {
-    z-index: 2;
+    z-index: 10;
     position: relative;
 }
 
@@ -278,7 +279,7 @@ footer {
     line-height: 1.08;
     background: none;
     opacity: 1;
-    z-index: 2;
+    z-index: 10;
     position: relative;
 }
 
@@ -296,18 +297,14 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 3.3rem;
-    z-index: 2;
+    z-index: 10;
     position: relative;
 }
 
 .accordion-item {
     background: #181818ea;
     border-radius: var(--radius);
-    box-shadow:
-        0 0 0 1.5px #fa1d1c,
-        0 0 10px 2px #fa1d1c40,
-        0 0 2px 1px #ff6a0040,
-        0 0 8px 4px #fff1;
+    box-shadow: var(--neon-border);
     padding: 0;
     overflow: visible;
     margin-bottom: 0.1em;
@@ -319,11 +316,7 @@ footer {
 .accordion-item.open {
     z-index: 4;
     opacity: 1;
-    box-shadow:
-        0 0 0 2.5px #fa1d1c,
-        0 0 18px 6px #fa1d1c88,
-        0 0 24px 8px #ff6a0055,
-        0 0 10px 5px #fff2;
+    box-shadow: var(--neon-border-open);
     transform: scale(1.03);
     background: #191919f7;
 }
@@ -334,7 +327,7 @@ footer {
 .cta, .guestlist-btn, .guestlist-form button {
     font-family: 'Grotesk', Arial, sans-serif;
     letter-spacing: 0.04em;
-    z-index: 5;
+    z-index: 15;
     position: relative;
 }
 .accordion-header {
@@ -391,7 +384,7 @@ footer {
     gap: 0.6em;
     margin: 1.7em auto 2.3em auto;
     align-items: center;
-    z-index: 8;
+    z-index: 16;
     position: relative;
 }
 .event-meta .meta {
@@ -407,10 +400,7 @@ footer {
     text-transform: uppercase;
     font-size: 1.19rem;
     font-family: 'Grotesk', Arial, sans-serif;
-    text-shadow:
-        0 0 6px #fa1d1c99,
-        0 0 12px #ff6a0022,
-        0 0 3px #fff6;
+    text-shadow: var(--neon-glow-meta);
 }
 
 /* --- BUTTONS --- */
@@ -430,7 +420,7 @@ footer {
     box-shadow: 0 0 13px 6px #fa1d1c40, 0 0 22px 9px #ffab0030;
     transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
     text-align: center;
-    z-index: 7;
+    z-index: 17;
     position: relative;
 }
 .cta-notify,
@@ -545,7 +535,7 @@ footer {
     background: none;
     padding: 0;
     position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 .insta-clean-content {
     display: flex;
@@ -602,7 +592,7 @@ footer {
     max-width: 410px;
     box-shadow: none;
     position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 .signup h2 {
     color: var(--accent);
@@ -685,7 +675,7 @@ footer {
     margin-top: auto;
     box-shadow: 0 0 12px #fa1d1c08;
     position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 .footer-grid {
     display: flex;
