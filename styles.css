@@ -42,7 +42,7 @@ body {
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
 }
 .menu-link {
-    color: #fff;
+    color: var(--accent);
     font-size: 1.08em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     font-weight: 400;
@@ -60,20 +60,31 @@ body {
     background: none;
     filter: brightness(1.25);
 }
+.copyright-top-right {
+    margin-left: auto;
+    color: #fff;
+    opacity: 0.8;
+    font-size: 0.98em;
+    letter-spacing: 0.13em;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    padding-right: 1.5vw;
+}
 .logo {
     width: 340px;
     max-width: 90vw;
     margin: 0 auto 1.0rem auto;
     display: block;
+    background: none !important; /* Remove any background */
+    box-shadow: none !important;
 }
-.copyright-top {
+.copyright-under-about {
+    display: block;
     text-align: center;
+    margin: 2.5em 0 0 0;
     color: #fff;
     opacity: 0.73;
-    font-size: 1.01em;
+    font-size: 1.03em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-    margin-top: -0.1em;
-    margin-bottom: 0.65em;
     letter-spacing: 0.09em;
 }
 .hero {
@@ -123,22 +134,41 @@ body {
   border: none;
   padding: 0 1.2em;
 }
+.about-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.4em;
+    margin-bottom: 1.7em;
+}
+.about-suave {
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.04em;
+    letter-spacing: 0.39em;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.85;
+    margin-top: 0.22em;
+    min-width: 6.2em;
+    text-align: left;
+    display: inline-block;
+}
+.about-intro {
+    color: #fff;
+    font-size: 1.46em;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.36;
+    letter-spacing: 0.01em;
+    text-align: left;
+    display: block;
+    max-width: 420px;
+}
 .about-title {
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 1.25em;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 1.3em;
-  color: #fff;
-  text-align: left;
+  display: none !important;
 }
 .about-lead {
-  color: #fff;
-  font-size: 1.14em;
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  margin-bottom: 1.2em;
-  line-height: 1.54;
+  display: none !important;
 }
 .about-text {
   color: #bbb;
@@ -168,6 +198,9 @@ body {
 }
 @media (max-width: 700px) {
   .about-us { padding: 0 0.3em; }
+  .about-row { flex-direction: column; gap: 0.6em; }
+  .about-intro { font-size: 1.13em; }
+  .about-suave { font-size: 1em; min-width: unset; letter-spacing: 0.22em;}
 }
 
 /* Next Events Headline */
@@ -421,13 +454,13 @@ body.modal-open .logo-bg {
     opacity: 0 !important;
 }
 
-/* INSTAGRAM – stylish, card-like, glowy */
+/* INSTAGRAM – wieder schlicht, aber groß */
 .instagram-clean {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 3.5em 0 2.5em 0;
+    margin: 3em 0 2.2em 0;
     background: none;
     padding: 0;
     position: relative;
@@ -437,59 +470,45 @@ body.modal-open .logo-bg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.45em;
-    padding: 1.8em 2.2em;
-    background: rgba(24,24,24,0.85);
-    border-radius: 1.4em;
-    box-shadow: 0 0 24px 6px #fa1d1c22, 0 0 38px 9px #ffab0033;
-    max-width: 430px;
-    margin: 0 auto;
-    border: 1.5px solid #fa1d1c33;
-    transition: box-shadow 0.22s, border 0.18s;
-}
-.insta-clean-content:hover,
-.insta-clean-content:focus-within {
-    box-shadow: 0 0 44px 14px #fa1d1c66, 0 0 68px 20px #ffab0066, 0 0 34px 16px #fff3;
-    border-color: #fa1d1c88;
+    gap: 0.28em;
+    background: none;
+    padding: 0;
 }
 .insta-desc {
     color: #fff;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-    font-size: 1.18em;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-shadow: 0 0 9px #fa1d1c33, 0 0 18px #fff2;
-    margin-bottom: 0.3em;
-    margin-top: 0.2em;
+    font-size: 1.72em;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-shadow: 0 0 8px #fa1d1c33, 0 0 18px #fff2;
+    margin-bottom: 0.21em;
+    margin-top: 0.18em;
+    text-align: center;
 }
 .insta-handle-link {
-    font-size: 1.27em;
+    font-size: 1.32em;
     font-weight: 900;
     color: var(--accent);
     letter-spacing: 0.04em;
     text-decoration: none;
-    text-shadow: 0 0 14px #fa1d1c44, 0 0 32px #fff2;
-    border-bottom: 2px solid var(--accent-hover);
+    text-shadow: 0 0 12px #fa1d1c33;
+    border-bottom: none;
     border-radius: 0.2em;
-    background: linear-gradient(90deg,transparent 60%,#fa1d1c22 100%);
-    padding: 0.09em 0.18em 0.12em 0.18em;
+    background: none;
+    padding: 0.07em 0.14em 0.09em 0.14em;
     transition: color 0.18s, filter 0.18s, background 0.18s, border 0.18s;
 }
 .insta-handle-link:hover,
 .insta-handle-link:focus {
     color: var(--accent-hover);
     filter: brightness(1.13);
-    background: linear-gradient(90deg,#ffab0035 10%,#fff2 100%);
-    border-bottom: 2px solid #fff;
+    background: none;
+    border-bottom: none;
     text-decoration: none;
 }
 @media (max-width: 700px) {
-    .insta-clean-content {
-        padding: 1.1em 0.7em;
-        max-width: 99vw;
-    }
-    .insta-handle-link { font-size: 1.07em; }
-    .insta-desc { font-size: 1.03em; }
+    .insta-desc { font-size: 1.19em; }
+    .insta-handle-link { font-size: 1.05em; }
 }
 
 /* NEWSLETTER + MARQUEE + FOOTER */
@@ -697,8 +716,18 @@ footer {
     color: var(--accent);
     margin-bottom: 0.5em;
 }
-.impressum-content strong {
+.impressum-content strong,
+.impressum-content a {
     color: var(--accent);
+    transition: color 0.2s;
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+}
+.impressum-content a:hover,
+.impressum-content a:focus {
+    color: var(--accent-hover);
+    text-decoration: underline;
 }
 @media (max-width: 700px) {
     .top-menu {
