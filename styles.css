@@ -15,7 +15,7 @@
     --radius: 1.1rem;
     --neon-border: 0 0 0 2px #fa1d1c, 0 0 24px 6px #fa1d1cff, 0 0 14px 8px #ffab0077, 0 0 2px 1.5px #fff3;
     --neon-border-open: 0 0 0 3px #ff6a00, 0 0 38px 15px #fa1d1cff, 0 0 28px 12px #ffab00aa, 0 0 8px 6px #fff4;
-    --neon-glow-meta: 0 0 4px #fa1d1c77, 0 0 8px #ff6a0033;
+    --neon-glow-meta: 0 0 2.5px #fa1d1c55, 0 0 6px #ff6a0022;
 }
 
 body {
@@ -29,6 +29,8 @@ body {
     position: relative;
     z-index: 0;
 }
+
+/* --- LOGO & BACKGROUND PATTERN --- */
 .logo-transparent-wrap {
     position: relative;
     display: flex;
@@ -36,6 +38,8 @@ body {
     align-items: center;
     margin-bottom: 1.7em;
     z-index: 0;
+    width: 100vw;
+    height: 0; /* logo positioniert sich absolut */
 }
 .logo {
     width: 340px;
@@ -45,8 +49,11 @@ body {
     background: none !important;
     box-shadow: none !important;
     filter: none !important;
-    position: relative;
-    z-index: -1; /* Damit es unter .logo-bg liegt */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1; /* Hinter .logo-bg */
     border-radius: 0;
 }
 /* --- BACKGROUND PATTERN --- */
@@ -64,6 +71,7 @@ body {
     mask-image: none;
     -webkit-mask-image: none;
 }
+
 /* --- TOP MENU --- */
 .top-menu {
     position: fixed;
@@ -76,7 +84,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding-left: 2.8vw;
-    padding-right: 2vw;
+    padding-right: 2.8vw; /* Abstand rechts = Abstand links */
     background: #000;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     height: 3.4rem;
@@ -112,13 +120,14 @@ body {
     font-size: 0.98em;
     letter-spacing: 0.13em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-    padding-right: 3vw;
+    padding-right: 0;
     padding-left: 1vw;
     position: relative;
     top: 1px;
     z-index: 11;
 }
 
+/* --- REST WIE VORHER --- */
 .copyright-under-about {
     display: block;
     text-align: center;
@@ -131,8 +140,6 @@ body {
     z-index: 5;
     position: relative;
 }
-
-/* --- HERO & HEADINGS --- */
 .hero,
 .main-title,
 .subtitle,
@@ -145,7 +152,6 @@ footer {
     z-index: 10;
     position: relative;
 }
-
 .hero {
     text-align: center;
     padding: 5.3rem 1rem 2rem 1rem;
@@ -184,8 +190,6 @@ footer {
     padding: 0.3em 1.3em;
     box-shadow: 0 0 6px #ff6a0030;
 }
-
-/* --- ABOUT US / INTRO --- */
 .about-us {
   max-width: 900px;
   margin: 4.3em auto 2.9em auto;
@@ -261,8 +265,6 @@ footer {
   font-family: 'Grotesk', Arial, sans-serif;
   line-height: 1.58;
 }
-
-/* --- EVENTS / ACCORDION --- */
 .next-events-headline {
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
@@ -278,7 +280,6 @@ footer {
     z-index: 10;
     position: relative;
 }
-
 .event-teaser {
     background: none;
     padding: 2.2rem 1rem 1.8rem 1rem;
@@ -286,7 +287,6 @@ footer {
     border: none;
     margin-bottom: 1.7em;
 }
-
 .accordion {
     max-width: 410px;
     margin: 0 auto;
@@ -296,7 +296,6 @@ footer {
     z-index: 10;
     position: relative;
 }
-
 .accordion-item {
     background: #181818ea;
     border-radius: var(--radius);
@@ -401,8 +400,6 @@ footer {
     font-family: 'Grotesk', Arial, sans-serif;
     text-shadow: var(--neon-glow-meta);
 }
-
-/* --- BUTTONS --- */
 .cta, .guestlist-btn, .guestlist-form button {
     display: inline-block;
     margin-top: 1.25rem;
@@ -434,8 +431,6 @@ footer {
     box-shadow: 0 0 27px 8px #fa1d1c33, 0 0 38px 17px #ff6a0033, 0 0 29px 9px #fff2;
     filter: brightness(1.12);
 }
-
-/* --- GUESTLIST MODAL --- */
 .guestlist-modal {
     position: fixed;
     inset: 0;
@@ -465,7 +460,6 @@ footer {
     position: relative;
     background: #181818e3;
     border-radius: var(--radius);
-    /* REDUZIERTER GLOW */
     box-shadow: 0 0 10px 2px #fa1d1c33, 0 0 22px 7px #ff6a0030, 0 0 18px 6px #fff2;
     padding: 2.1em 2em 2em 2em;
     min-width: 290px;
@@ -523,8 +517,6 @@ footer {
     text-align: center;
     z-index: 3;
 }
-
-/* --- INSTAGRAM BLOCK --- */
 .instagram-clean {
     display: flex;
     flex-direction: column;
@@ -576,12 +568,6 @@ footer {
     border-bottom: none;
     text-decoration: none;
 }
-@media (max-width: 700px) {
-    .insta-desc { font-size: 0.92em; }
-    .insta-handle-link { font-size: 1.09em; }
-}
-
-/* --- NEWSLETTER / SIGNUP --- */
 .signup {
     background: none !important;
     padding: 2.2rem 1rem 2.5rem 1rem;
@@ -663,8 +649,6 @@ input:-webkit-autofill:hover {
     color: var(--text-light) !important;
     caret-color: var(--accent) !important;
 }
-
-/* --- FOOTER --- */
 footer {
     background: #000;
     color: var(--text-light);
@@ -769,8 +753,6 @@ footer {
     color: var(--accent-hover);
     text-decoration: underline;
 }
-
-/* --- NEON CURSOR --- */
 .neon-cursor {
     pointer-events: none;
     position: fixed;
@@ -787,13 +769,12 @@ footer {
     mix-blend-mode: lighten;
     will-change: transform, opacity;
 }
-
-/* --- RESPONSIVE --- */
 @media (max-width: 700px) {
     .top-menu {
         font-size: 0.98em;
         gap: 1.2em;
-        padding-left: 1.2vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
     }
     .footer-grid {
         flex-direction: column;
