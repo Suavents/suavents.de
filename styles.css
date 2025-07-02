@@ -13,8 +13,8 @@
     --text-light: #fff;
     --text-muted: #bbb;
     --radius: 1.1rem;
-    --neon-glow: 0 0 22px 6px #fa1d1cdd, 0 0 54px 19px #ff6a00cc, 0 0 36px 11px #ffab00cc;
-    --neon-glow-hover: 0 0 48px 18px #fa1d1c, 0 0 110px 40px #ff6a00, 0 0 120px 60px #fff2;
+    --neon-glow: 0 0 13px 3px #fa1d1c99, 0 0 34px 8px #ff6a0099, 0 0 14px 4px #ffab0055;
+    --neon-glow-hover: 0 0 22px 7px #fa1d1c, 0 0 42px 14px #ff6a00, 0 0 44px 19px #ffab00bb, 0 0 60px 20px #fff2;
 }
 
 body {
@@ -26,15 +26,60 @@ body {
     flex-direction: column;
     letter-spacing: 0.01em;
 }
+.top-menu {
+    position: fixed;
+    top: 0.85rem;
+    left: 0;
+    width: 100vw;
+    z-index: 99;
+    display: flex;
+    gap: 2.3em;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2.8vw;
+    padding-right: 2vw;
+    background: none;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+}
+.menu-link {
+    color: #fff;
+    font-size: 1.08em;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0.16em 0;
+    margin: 0;
+    border-radius: 0.25em;
+    transition: color 0.18s, background 0.18s, filter 0.18s;
+}
+.menu-link:hover, .menu-link:focus {
+    color: var(--accent-hover);
+    background: none;
+    filter: brightness(1.25);
+}
 .logo {
     width: 340px;
     max-width: 90vw;
-    margin: 0 auto 2.2rem auto;
+    margin: 0 auto 1.0rem auto;
     display: block;
+}
+.copyright-top {
+    text-align: center;
+    color: #fff;
+    opacity: 0.73;
+    font-size: 1.01em;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    margin-top: -0.1em;
+    margin-bottom: 0.65em;
+    letter-spacing: 0.09em;
 }
 .hero {
     text-align: center;
-    padding: 4.2rem 1rem 2rem 1rem;
+    padding: 5.3rem 1rem 2rem 1rem;
+    position: relative;
 }
 .main-title {
     font-family: 'Montserrat', Arial, sans-serif;
@@ -44,7 +89,7 @@ body {
     color: var(--accent);
     margin-bottom: 0.8rem;
     margin-top: 0;
-    text-shadow: 0 0 24px #fa1d1c44, 0 0 48px #ff6a0033;
+    text-shadow: 0 0 24px #fa1d1c33, 0 0 48px #ff6a0033;
     line-height: 1.08;
 }
 .subtitle {
@@ -69,9 +114,76 @@ body {
     padding: 0.3em 1.3em;
     box-shadow: 0 0 6px #ff6a0030;
 }
+/* About Us Santa Ana Style */
+.about-us {
+  max-width: 570px;
+  margin: 4.3em auto 2.9em auto;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0 1.2em;
+}
+.about-title {
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.25em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.3em;
+  color: #fff;
+  text-align: left;
+}
+.about-lead {
+  color: #fff;
+  font-size: 1.14em;
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  margin-bottom: 1.2em;
+  line-height: 1.54;
+}
+.about-text {
+  color: #bbb;
+  font-size: 1.09em;
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  margin-bottom: 2.1em;
+  line-height: 1.62;
+}
+.about-section {
+  margin-bottom: 2.2em;
+}
+.about-num {
+  color: var(--accent);
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  font-size: 1.02em;
+  margin-bottom: 0.48em;
+  display: inline-block;
+}
+.about-section p {
+  color: #bbb;
+  font-size: 1.09em;
+  margin: 0.3em 0 0 0;
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  line-height: 1.58;
+}
+@media (max-width: 700px) {
+  .about-us { padding: 0 0.3em; }
+}
+
+/* Next Events Headline */
+.next-events-headline {
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 0.17em;
+    margin: 0 0 1.9em 0;
+    color: var(--accent);
+    text-transform: uppercase;
+    text-shadow: 0 0 8px #fa1d1c33;
+}
 .event-teaser {
     background: none;
-    padding: 2.8rem 1rem 1.8rem 1rem;
+    padding: 2.2rem 1rem 1.8rem 1rem;
     text-align: center;
     border: none;
     margin-bottom: 1.7em;
@@ -187,7 +299,7 @@ body {
     font-size: 1.08rem;
     border: none;
     cursor: pointer;
-    box-shadow: 0 0 23px 8px #fa1d1caa, 0 0 38px 13px #ffab00aa;
+    box-shadow: 0 0 13px 6px #fa1d1c88, 0 0 22px 9px #ffab0099;
     transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
     text-align: center;
 }
@@ -200,7 +312,7 @@ body {
 .guestlist-btn:hover, .guestlist-form button:hover, .cta-notify:hover, .cta-notify:focus {
     background: #fff;
     color: var(--accent) !important;
-    box-shadow: 0 0 68px 22px #fa1d1c, 0 0 148px 51px #ff6a00, 0 0 39px 23px #fff2;
+    box-shadow: 0 0 27px 8px #fa1d1c, 0 0 38px 17px #ff6a00, 0 0 29px 9px #fff2;
     filter: brightness(1.12);
 }
 .modal-cta {
@@ -308,12 +420,14 @@ body.hide-bg .logo-bg,
 body.modal-open .logo-bg {
     opacity: 0 !important;
 }
+
+/* INSTAGRAM – stylish, card-like, glowy */
 .instagram-clean {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2.6em 0 2.1em 0;
+    margin: 3.5em 0 2.5em 0;
     background: none;
     padding: 0;
     position: relative;
@@ -323,38 +437,62 @@ body.modal-open .logo-bg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.3em;
+    gap: 0.45em;
+    padding: 1.8em 2.2em;
+    background: rgba(24,24,24,0.85);
+    border-radius: 1.4em;
+    box-shadow: 0 0 24px 6px #fa1d1c22, 0 0 38px 9px #ffab0033;
+    max-width: 430px;
+    margin: 0 auto;
+    border: 1.5px solid #fa1d1c33;
+    transition: box-shadow 0.22s, border 0.18s;
+}
+.insta-clean-content:hover,
+.insta-clean-content:focus-within {
+    box-shadow: 0 0 44px 14px #fa1d1c66, 0 0 68px 20px #ffab0066, 0 0 34px 16px #fff3;
+    border-color: #fa1d1c88;
+}
+.insta-desc {
+    color: #fff;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    font-size: 1.18em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 9px #fa1d1c33, 0 0 18px #fff2;
+    margin-bottom: 0.3em;
+    margin-top: 0.2em;
 }
 .insta-handle-link {
-    font-size: 1.35em;
+    font-size: 1.27em;
     font-weight: 900;
     color: var(--accent);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
     text-decoration: none;
-    text-shadow: 0 0 8px #fa1d1c44;
-    transition: color 0.17s, filter 0.17s;
-    border-bottom: none;
+    text-shadow: 0 0 14px #fa1d1c44, 0 0 32px #fff2;
+    border-bottom: 2px solid var(--accent-hover);
+    border-radius: 0.2em;
+    background: linear-gradient(90deg,transparent 60%,#fa1d1c22 100%);
+    padding: 0.09em 0.18em 0.12em 0.18em;
+    transition: color 0.18s, filter 0.18s, background 0.18s, border 0.18s;
 }
 .insta-handle-link:hover,
 .insta-handle-link:focus {
     color: var(--accent-hover);
-    filter: brightness(1.2);
-    text-decoration: none;
-    border-bottom: none;
-}
-a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s, filter 0.2s;
-}
-a:visited {
-    color: var(--accent);
-}
-a:hover, a:focus {
-    color: var(--accent-hover);
-    filter: brightness(1.18);
+    filter: brightness(1.13);
+    background: linear-gradient(90deg,#ffab0035 10%,#fff2 100%);
+    border-bottom: 2px solid #fff;
     text-decoration: none;
 }
+@media (max-width: 700px) {
+    .insta-clean-content {
+        padding: 1.1em 0.7em;
+        max-width: 99vw;
+    }
+    .insta-handle-link { font-size: 1.07em; }
+    .insta-desc { font-size: 1.03em; }
+}
+
+/* NEWSLETTER + MARQUEE + FOOTER */
 .signup {
     background: var(--bg-dark);
     padding: 2.2rem 1rem 2.5rem 1rem;
@@ -409,7 +547,7 @@ a:hover, a:focus {
     font-size: 1.04em;
     border: none;
     border-radius: 34px;
-    box-shadow: 0 0 19px 7px #fa1d1c88, 0 0 34px 13px #ffab0099;
+    box-shadow: 0 0 10px 3px #fa1d1c55, 0 0 24px 7px #ffab0077;
     transition: box-shadow 0.2s, filter 0.2s, background 0.19s, color 0.19s;
     cursor: pointer;
     letter-spacing: 0.04em;
@@ -417,7 +555,7 @@ a:hover, a:focus {
 .email-form button:hover, .email-form button:focus {
     background: #fff;
     color: var(--accent) !important;
-    box-shadow: 0 0 38px 15px #fa1d1ccc, 0 0 64px 22px #ff6a00cc;
+    box-shadow: 0 0 18px 6px #fa1d1ccc, 0 0 34px 12px #ff6a00cc;
     filter: brightness(1.13);
 }
 .form-message {
@@ -563,6 +701,11 @@ footer {
     color: var(--accent);
 }
 @media (max-width: 700px) {
+    .top-menu {
+        font-size: 0.98em;
+        gap: 1.2em;
+        padding-left: 1.2vw;
+    }
     .footer-grid {
         flex-direction: column;
         gap: 1.5em;
@@ -604,65 +747,11 @@ footer {
     margin-top: 0;
     border-radius: 50%;
     background: transparent !important;
-    box-shadow: 0 0 170px 70px #fa1d1c, 0 0 250px 100px #ffab00cc, 0 0 110px 40px #fff5;
-    opacity: 0.93;
+    box-shadow: 0 0 60px 24px #fa1d1c77, 0 0 100px 38px #ffab0066;
+    opacity: 0.85;
     transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
-  .about-us {
-  max-width: 570px;
-  margin: 4.3em auto 2.9em auto;
-  text-align: left;
-  background: none;
-  border: none;
-  padding: 0 1.2em;
-}
-.about-title {
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 1.25em;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 1.3em;
-  color: #fff;
-  text-align: left;
-}
-.about-lead {
-  color: #fff;
-  font-size: 1.14em;
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  margin-bottom: 1.2em;
-  line-height: 1.54;
-}
-.about-text {
-  color: #bbb;
-  font-size: 1.09em;
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  margin-bottom: 2.1em;
-  line-height: 1.62;
-}
-.about-section {
-  margin-bottom: 2.2em;
-}
-.about-num {
-  color: var(--accent);
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  font-size: 1.02em;
-  margin-bottom: 0.48em;
-  display: inline-block;
-}
-.about-section p {
-  color: #bbb;
-  font-size: 1.09em;
-  margin: 0.3em 0 0 0;
-  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-  line-height: 1.58;
-}
-@media (max-width: 700px) {
-  .about-us { padding: 0 0.3em; }
-}
 }
 @media (max-width: 900px) {
     .neon-cursor { display: none !important; }
