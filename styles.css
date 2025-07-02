@@ -167,11 +167,13 @@ body {
     font-size: 0.98em;
     letter-spacing: 0.13em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-    padding-right: 0;
-    padding-left: 1vw;
+    /* padding-right: 0; entfernt */
+    /* padding-left: 1vw; entfernt */
     position: relative;
     top: 1px;
     z-index: 11;
+    /* Neu: Abstand spiegeln wie links mit about */
+    margin-right: 2.8vw;
 }
 
 /* --- ABOUT US / INTRO --- */
@@ -790,6 +792,9 @@ footer {
         padding-left: 4vw;
         padding-right: 4vw;
     }
+    .copyright-top-right {
+        margin-right: 4vw;
+    }
     .footer-grid {
         flex-direction: column;
         gap: 1.5em;
@@ -825,5 +830,8 @@ footer {
     }
     .hero-content {
         margin-top: 4vw;
+    }
+    .copyright-top-right {
+        margin-right: 4vw;
     }
 }
