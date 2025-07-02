@@ -172,30 +172,25 @@ body {
     text-align: left;
     display: block;
     max-width: 460px;
-    margin-left: -0.4em; /* WENIGER Abstand zu SUAVE */
+    margin-left: -0.4em;
     padding-left: 0;
     text-indent: 0;
 }
-.about-intro span {
+.about-intro-first {
     display: block;
-    text-indent: 0;
-    margin-left: 0;
+    padding-left: 0.5em;
 }
-.about-intro .break {
+.break {
     display: block;
-    text-indent: 0;
+    text-indent: -0.5em;
     margin-left: 0;
 }
 @media (min-width: 480px) {
-    .about-intro {
-        /* Multiline: erste Zeile eingerückt, Rest linksbündig wie SUAVE */
-        text-indent: 2em;
-        padding-left: 0;
-        margin-left: -1.6em;
+    .about-intro-first {
+        padding-left: 0.7em;
     }
-    .about-intro .break {
-        text-indent: -2em;
-        margin-left: 0;
+    .break {
+        text-indent: -0.7em;
     }
 }
 @media (max-width: 700px) {
@@ -627,9 +622,9 @@ input:-webkit-autofill:hover {
     color: var(--text-light) !important;
     caret-color: var(--accent) !important;
 }
-/* MARQUEE entfernt */
-.logo-marquee-wrap, .logo-marquee, .logo-marquee-2 { display: none !important; }
-
+.logo-marquee-wrap,
+.logo-marquee,
+.logo-marquee-2 { display: none !important; }
 footer {
     background: none;
     color: var(--text-light);
@@ -722,9 +717,7 @@ footer {
     margin-bottom: 0.5em;
 }
 .impressum-content strong,
-.impressum-content a,
-.impressum-content a:visited,
-.impressum-content a:active {
+.impressum-content a {
     color: var(--accent);
     transition: color 0.2s;
     text-decoration: none;
