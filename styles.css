@@ -13,8 +13,8 @@
     --text-light: #fff;
     --text-muted: #bbb;
     --radius: 1.1rem;
-    --neon-glow: 0 0 8px 1px #fa1d1c66, 0 0 14px 3px #ff6a0040, 0 0 7px 2px #ffab0030;
-    --neon-glow-hover: 0 0 15px 5px #fa1d1c66, 0 0 22px 8px #ff6a0040, 0 0 16px 7px #ffab0030;
+    --neon-glow: 0 0 8px 2px #fa1d1c99, 0 0 20px 6px #ff6a0044, 0 0 16px 7px #ffab0040;
+    --neon-glow-hover: 0 0 24px 8px #fa1d1cbb, 0 0 38px 14px #ff6a00aa, 0 0 34px 12px #ffab0080, 0 0 36px 12px #fff3;
 }
 
 body {
@@ -27,6 +27,22 @@ body {
     letter-spacing: 0.01em;
 }
 
+.logo-bg {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.19;
+    background-image: url("logo-klein.png");
+    background-repeat: repeat;
+    background-size: 140px auto;
+    background-position: 50% 50%;
+    transition: opacity 0.3s;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+/* --- TOP MENU --- */
 .top-menu {
     position: fixed;
     top: 0;
@@ -39,7 +55,7 @@ body {
     align-items: center;
     padding-left: 2.8vw;
     padding-right: 2vw;
-    background: rgba(8,8,8,0.93);
+    background: #000;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     height: 3.4rem;
     min-height: 44px;
@@ -78,27 +94,13 @@ body {
     top: 1px;
 }
 
+/* --- LOGO --- */
 .logo-transparent-wrap {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.7em;
-}
-.logo-bg-small {
-    background-image: url('logo-klein.png');
-    background-size: 140px auto;
-    background-repeat: repeat;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 340px;
-    height: 180px;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    opacity: 0.22;
-    pointer-events: none;
-    border-radius: 38px;
 }
 .logo {
     width: 340px;
@@ -122,6 +124,8 @@ body {
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     letter-spacing: 0.09em;
 }
+
+/* --- HERO & HEADINGS --- */
 .hero {
     text-align: center;
     padding: 5.3rem 1rem 2rem 1rem;
@@ -160,6 +164,8 @@ body {
     padding: 0.3em 1.3em;
     box-shadow: 0 0 6px #ff6a0030;
 }
+
+/* --- ABOUT US / INTRO --- */
 .about-us {
   max-width: 900px;
   margin: 4.3em auto 2.9em auto;
@@ -188,10 +194,14 @@ body {
 }
 .about-intro-first,
 .break {
-    display: block;
+    display: inline;
     padding-left: 0;
     margin-left: 0;
     text-indent: 0;
+}
+.about-intro .break:before {
+    content: " ";
+    white-space: pre;
 }
 @media (max-width: 900px) {
     .about-us { max-width: 97vw; }
@@ -231,33 +241,20 @@ body {
   font-family: 'Grotesk', Arial, sans-serif;
   line-height: 1.58;
 }
-/* Next Events Headline */
+
+/* --- EVENTS / ACCORDION --- */
 .next-events-headline {
-    font-family: 'Grotesk', Arial, sans-serif;
-    font-weight: 700;
-    font-size: 1.13rem;
-    letter-spacing: 0.17em;
-    margin: 0 0 1.9em 0;
-    color: #fff;
-    text-transform: uppercase;
-    text-shadow: none;
-    background: none;
-    opacity: 1;
-    font-size: 1.13rem;
-    font-size: 1.13rem;
-    font-size: 1.13rem;
-    /* overwritten below */
-}
-.next-events-headline {
-    font-size: 2.2rem;
-    color: #fff;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
+    font-size: 2.2rem;
     letter-spacing: 0.17em;
-    margin-bottom: 0.8rem;
-    margin-top: 0;
+    margin: 0 0 2.5em 0;
+    color: var(--accent);
+    text-transform: uppercase;
     text-shadow: 0 0 24px #fa1d1c33, 0 0 48px #ff6a0033;
     line-height: 1.08;
+    background: none;
+    opacity: 1;
 }
 .event-teaser {
     background: none;
@@ -271,24 +268,33 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2.3rem;
+    gap: 3.3rem;
 }
 .accordion-item {
     background: #161616e6;
     border-radius: var(--radius);
-    box-shadow: 0 0 0 5px #242222, var(--neon-glow);
-    /* darker border */
-    transition: box-shadow 0.32s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s;
+    /* photorealistic neon border red */
+    box-shadow:
+        0 0 0 4px #191919,
+        0 0 3px 2px #fa1d1c,
+        0 0 24px 7px #fa1d1c88,
+        0 0 36px 12px #ff6a0050,
+        0 0 14px 4px #fff2;
     padding: 0;
     overflow: visible;
     margin-bottom: 0.1em;
     position: relative;
+    transition: box-shadow 0.38s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s;
 }
 .accordion-item.open {
-    box-shadow: 0 0 0 8px #232323, var(--neon-glow-hover);
-    /* slightly smaller */
-    transform: scale(1.045);
-    background: #191919f4;
+    box-shadow:
+        0 0 0 5px #181818,
+        0 0 15px 6px #fa1d1c,
+        0 0 40px 12px #fa1d1c99,
+        0 0 85px 22px #ff6a0099,
+        0 0 24px 8px #fff6;
+    transform: scale(1.03);
+    background: #191919f7;
     z-index: 2;
 }
 .accordion-header,
@@ -484,26 +490,8 @@ body {
     min-height: 1.2em;
     text-align: center;
 }
-.logo-bg {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.19;
-    background-image: url("logo-klein.png");
-    background-repeat: repeat;
-    background-size: 140px auto;
-    background-position: 50% 50%;
-    transition: opacity 0.3s;
-    mask-image: none;
-    -webkit-mask-image: none;
-}
-body.hide-bg .logo-bg,
-body.modal-open .logo-bg {
-    opacity: 0 !important;
-}
 
-/* INSTAGRAM – wieder schlicht, aber groß */
+/* --- INSTAGRAM BLOCK --- */
 .instagram-clean {
     display: flex;
     flex-direction: column;
@@ -560,7 +548,7 @@ body.modal-open .logo-bg {
     .insta-handle-link { font-size: 1.09em; }
 }
 
-/* NEWSLETTER + MARQUEE + FOOTER */
+/* --- NEWSLETTER / SIGNUP --- */
 .signup {
     background: none !important;
     padding: 2.2rem 1rem 2.5rem 1rem;
@@ -642,9 +630,8 @@ input:-webkit-autofill:hover {
     color: var(--text-light) !important;
     caret-color: var(--accent) !important;
 }
-.logo-marquee-wrap,
-.logo-marquee,
-.logo-marquee-2 { display: none !important; }
+
+/* --- FOOTER --- */
 footer {
     background: none;
     color: var(--text-light);
@@ -749,6 +736,26 @@ footer {
     color: var(--accent-hover);
     text-decoration: underline;
 }
+
+/* --- NEON CURSOR --- */
+.neon-cursor {
+    pointer-events: none;
+    position: fixed;
+    z-index: 2000;
+    width: 0px;
+    height: 0px;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 50%;
+    background: transparent !important;
+    box-shadow: 0 0 28px 12px #fa1d1c55, 0 0 38px 18px #ffab0023;
+    opacity: 0.68;
+    transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
+    mix-blend-mode: lighten;
+    will-change: transform, opacity;
+}
+
+/* --- RESPONSIVE --- */
 @media (max-width: 700px) {
     .top-menu {
         font-size: 0.98em;
@@ -777,27 +784,4 @@ footer {
     .logo {
         width: 97vw;
     }
-    .logo-marquee img, .logo-marquee-2 img {
-        height: 13px;
-    }
-}
-.neon-cursor {
-    pointer-events: none;
-    position: fixed;
-    z-index: 2000;
-    width: 0px;
-    height: 0px;
-    margin-left: 0;
-    margin-top: 0;
-    border-radius: 50%;
-    background: transparent !important;
-    box-shadow: 0 0 18px 8px #fa1d1c44, 0 0 25px 12px #ffab0022;
-    opacity: 0.45;
-    transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
-    mix-blend-mode: lighten;
-    will-change: transform, opacity;
-}
-@media (max-width: 900px) {
-    .neon-cursor { display: none !important; }
-    .logo-bg { display: none !important; }
 }
