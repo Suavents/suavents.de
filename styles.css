@@ -35,11 +35,11 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 1.7em;
-    z-index: 0;
+    align-items: flex-start;
     width: 100vw;
-    height: 0; /* logo positioniert sich absolut */
+    height: 330px; /* Höhe des Logos, ggf. anpassen */
+    min-height: 160px;
+    z-index: 0;
 }
 .logo {
     width: 340px;
@@ -56,6 +56,7 @@ body {
     z-index: -1; /* Hinter .logo-bg */
     border-radius: 0;
 }
+
 /* --- BACKGROUND PATTERN --- */
 .logo-bg {
     pointer-events: none;
@@ -70,6 +71,52 @@ body {
     transition: opacity 0.3s;
     mask-image: none;
     -webkit-mask-image: none;
+}
+
+/* --- HERO & HEADINGS --- */
+.hero {
+    text-align: center;
+    padding: 0 1rem 2rem 1rem;
+    position: relative;
+}
+.hero-content {
+    margin-top: 38px; /* Abstand unterhalb des Logos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: 0.17em;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    margin-top: 0;
+    text-shadow: 0 0 24px #fa1d1c33, 0 0 48px #ff6a0033;
+    line-height: 1.08;
+}
+.subtitle {
+    font-size: 1.13rem;
+    color: var(--text-muted);
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.08em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
+}
+.berlin-tag {
+    display: inline-block;
+    font-size: 1.08em;
+    color: var(--accent-hover);
+    margin-top: 0.3rem;
+    margin-bottom: 2.1rem;
+    letter-spacing: 0.09em;
+    font-weight: 400;
+    background: rgba(255,255,255,0.04);
+    border-radius: 13px;
+    padding: 0.3em 1.3em;
+    box-shadow: 0 0 6px #ff6a0030;
 }
 
 /* --- TOP MENU --- */
@@ -127,7 +174,7 @@ body {
     z-index: 11;
 }
 
-/* --- REST WIE VORHER --- */
+/* --- ABOUT US / INTRO --- */
 .copyright-under-about {
     display: block;
     text-align: center;
@@ -151,44 +198,6 @@ body {
 footer {
     z-index: 10;
     position: relative;
-}
-.hero {
-    text-align: center;
-    padding: 5.3rem 1rem 2rem 1rem;
-    position: relative;
-}
-.main-title {
-    font-family: 'Montserrat', Arial, sans-serif;
-    letter-spacing: 0.17em;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 0.8rem;
-    margin-top: 0;
-    text-shadow: 0 0 24px #fa1d1c33, 0 0 48px #ff6a0033;
-    line-height: 1.08;
-}
-.subtitle {
-    font-size: 1.13rem;
-    color: var(--text-muted);
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.08em;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 400;
-}
-.berlin-tag {
-    display: inline-block;
-    font-size: 1.08em;
-    color: var(--accent-hover);
-    margin-top: 0.3rem;
-    margin-bottom: 2.1rem;
-    letter-spacing: 0.09em;
-    font-weight: 400;
-    background: rgba(255,255,255,0.04);
-    border-radius: 13px;
-    padding: 0.3em 1.3em;
-    box-shadow: 0 0 6px #ff6a0030;
 }
 .about-us {
   max-width: 900px;
@@ -265,6 +274,8 @@ footer {
   font-family: 'Grotesk', Arial, sans-serif;
   line-height: 1.58;
 }
+
+/* --- EVENTS / ACCORDION --- */
 .next-events-headline {
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
@@ -280,6 +291,7 @@ footer {
     z-index: 10;
     position: relative;
 }
+
 .event-teaser {
     background: none;
     padding: 2.2rem 1rem 1.8rem 1rem;
@@ -287,6 +299,7 @@ footer {
     border: none;
     margin-bottom: 1.7em;
 }
+
 .accordion {
     max-width: 410px;
     margin: 0 auto;
@@ -296,6 +309,7 @@ footer {
     z-index: 10;
     position: relative;
 }
+
 .accordion-item {
     background: #181818ea;
     border-radius: var(--radius);
@@ -784,10 +798,17 @@ footer {
         padding: 1em 0.6em;
         max-width: 98vw;
     }
+    .logo-transparent-wrap {
+        height: 28vw;
+        min-height: 90px;
+    }
     .logo {
         width: 90vw;
     }
     .accordion { max-width: 98vw; }
+    .hero-content {
+        margin-top: 6vw;
+    }
 }
 @media (max-width: 420px) {
     .email-form {
@@ -797,5 +818,12 @@ footer {
     }
     .logo {
         width: 97vw;
+    }
+    .logo-transparent-wrap {
+        height: 19vw;
+        min-height: 60px;
+    }
+    .hero-content {
+        margin-top: 4vw;
     }
 }
