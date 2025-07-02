@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suave Events – Smooth Nights Only</title>
-    <link rel="icon" href="logo-small.png" type="image/png">
+    <!-- Favicon: logo-klein.png -->
+    <link rel="icon" href="logo-klein.png" type="image/png">
     <meta name="description" content="Suave Events – Smooth Nights Only. Join us for unforgettable experiences.">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -18,11 +19,12 @@
         <span class="copyright-top-right">&copy;2025</span>
     </nav>
     <div class="neon-cursor"></div>
+    <!-- Reihenfolge: Logo (z-index -1) vor Logo-BG (z-index 1) -->
+    <div class="logo-transparent-wrap">
+        <img src="logo.png" alt="Suave Events Logo" class="logo" />
+    </div>
     <div class="logo-bg"></div>
     <header class="hero">
-        <div class="logo-transparent-wrap">
-            <img src="logo.png" alt="Suave Events Logo" class="logo" />
-        </div>
         <h1 class="main-title">SMOOTH NIGHTS ONLY.</h1>
         <p class="subtitle">Full House Experiences • Chic Locations • Unforgettable Nights</p>
         <span class="berlin-tag">Based in Berlin</span>
