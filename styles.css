@@ -63,7 +63,7 @@ body {
     transition: opacity 0.3s;
     mask-image: none;
     -webkit-mask-image: none;
-
+}
 /* --- TOP MENU --- */
 .top-menu {
     position: fixed;
