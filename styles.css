@@ -13,9 +13,9 @@
     --text-light: #fff;
     --text-muted: #bbb;
     --radius: 1.1rem;
-    --neon-border: 0 0 0 1.5px #fa1d1c, 0 0 10px 2px #fa1d1c40, 0 0 2px 1px #ff6a0040, 0 0 8px 4px #fff1;
-    --neon-border-open: 0 0 0 2.5px #fa1d1c, 0 0 18px 6px #fa1d1c88, 0 0 24px 8px #ff6a0055, 0 0 10px 5px #fff2;
-    --neon-glow-meta: 0 0 6px #fa1d1c99, 0 0 12px #ff6a0022, 0 0 3px #fff6;
+    --neon-border: 0 0 0 2px #fa1d1c, 0 0 24px 6px #fa1d1cff, 0 0 14px 8px #ffab0077, 0 0 2px 1.5px #fff3;
+    --neon-border-open: 0 0 0 3px #ff6a00, 0 0 38px 15px #fa1d1cff, 0 0 28px 12px #ffab00aa, 0 0 8px 6px #fff4;
+    --neon-glow-meta: 0 0 4px #fa1d1c77, 0 0 8px #ff6a0033;
 }
 
 body {
@@ -26,8 +26,8 @@ body {
     display: flex;
     flex-direction: column;
     letter-spacing: 0.01em;
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
 /* --- BACKGROUND PATTERN --- */
@@ -35,7 +35,7 @@ body {
     pointer-events: none;
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     opacity: 0.19;
     background-image: url("logo-klein.png");
     background-repeat: repeat;
@@ -44,6 +44,29 @@ body {
     transition: opacity 0.3s;
     mask-image: none;
     -webkit-mask-image: none;
+}
+
+/* --- LOGO --- */
+.logo-transparent-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.7em;
+    z-index: 1;
+}
+.logo {
+    width: 340px;
+    max-width: 90vw;
+    margin: 0 auto;
+    display: block;
+    background: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    /* PNG muss Transparenz haben! */
 }
 
 /* --- TOP MENU --- */
@@ -101,27 +124,6 @@ body {
     z-index: 11;
 }
 
-/* --- LOGO --- */
-.logo-transparent-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.7em;
-    z-index: 0;
-}
-.logo {
-    width: 340px;
-    max-width: 90vw;
-    margin: 0 auto;
-    display: block;
-    background: none !important;
-    box-shadow: none !important;
-    filter: none !important;
-    position: relative;
-    z-index: 0;
-    border-radius: 0;
-}
 .copyright-under-about {
     display: block;
     text-align: center;
@@ -304,18 +306,21 @@ footer {
     background: #181818ea;
     border-radius: var(--radius);
     box-shadow: var(--neon-border);
+    border: 2px solid #fa1d1c;
     padding: 0;
     overflow: visible;
     margin-bottom: 0.1em;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     opacity: 0.92;
-    transition: box-shadow 0.38s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s, opacity 0.15s;
+    transition: box-shadow 0.38s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s, opacity 0.15s, border 0.25s;
+    outline: none;
 }
 .accordion-item.open {
     z-index: 4;
     opacity: 1;
     box-shadow: var(--neon-border-open);
+    border: 3px solid #ff6a00;
     transform: scale(1.03);
     background: #191919f7;
 }
@@ -666,7 +671,7 @@ input:-webkit-autofill:hover {
 
 /* --- FOOTER --- */
 footer {
-    background: none;
+    background: #000;
     color: var(--text-light);
     text-align: center;
     padding: 2rem 1rem 1.4rem 1rem;
