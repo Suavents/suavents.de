@@ -21,7 +21,6 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     const closeBtn = modal.querySelector('.close-modal');
     const overlay = modal.querySelector('.guestlist-modal-bg');
 
-    // Sicherstellen, dass das Modal initial wirklich ausgeblendet ist
     modal.hidden = true;
     modal.classList.remove('show-modal');
     modal.style.display = 'none';
@@ -97,7 +96,7 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     });
 })();
 
-// Neon Cursor Glow – starker Effekt
+// Neon Cursor Glow – starker Effekt (rot-orangener)
 (function() {
     const cursor = document.querySelector('.neon-cursor');
     if (!cursor) return;
@@ -115,12 +114,12 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
         cursor.style.opacity = "0";
     });
     document.addEventListener('mousedown', () => {
-        cursor.style.boxShadow = "0 0 200px 80px #ff0040, 0 0 250px 120px #ff6a00, 0 0 100px 32px #fff";
+        cursor.style.boxShadow = "0 0 210px 90px #fa1d1c, 0 0 270px 140px #ffab00, 0 0 100px 40px #fff";
         cursor.style.opacity = "1";
     });
     document.addEventListener('mouseup', () => {
         setTimeout(() => {
-            cursor.style.boxShadow = "0 0 150px 55px #ff0040, 0 0 250px 90px #ff6a00cc, 0 0 80px 24px #fff5";
+            cursor.style.boxShadow = "0 0 170px 70px #fa1d1c, 0 0 250px 100px #ffab00cc, 0 0 110px 40px #fff5";
             cursor.style.opacity = "0.93";
         }, 120);
     });
