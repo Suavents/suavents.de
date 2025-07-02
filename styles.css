@@ -1,12 +1,20 @@
+@font-face {
+  font-family: 'Grotesk';
+  src: url('Grotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-    --accent: #ff0040;
+    --accent: #fa1d1c;
     --accent-hover: #ff6a00;
     --bg-dark: #000;
     --text-light: #fff;
     --text-muted: #bbb;
     --radius: 1.1rem;
-    --neon-glow: 0 0 44px 13px #ff0040ee, 0 0 80px 24px #fff8, 0 0 64px 21px #ff6a00bb;
-    --neon-glow-hover: 0 0 80px 24px #ff0040ee, 0 0 146px 53px #fff, 0 0 110px 36px #ff6a00cc;
+    --neon-glow: 0 0 22px 6px #fa1d1cdd, 0 0 54px 19px #ff6a00cc, 0 0 36px 11px #ffab00cc;
+    --neon-glow-hover: 0 0 48px 18px #fa1d1c, 0 0 110px 40px #ff6a00, 0 0 120px 60px #fff2;
 }
 
 body {
@@ -36,7 +44,7 @@ body {
     color: var(--accent);
     margin-bottom: 0.8rem;
     margin-top: 0;
-    text-shadow: 0 0 24px #ff004044, 0 0 48px #ff6a0033;
+    text-shadow: 0 0 24px #fa1d1c44, 0 0 48px #ff6a0033;
     line-height: 1.08;
 }
 .subtitle {
@@ -73,12 +81,12 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2.7rem;
+    gap: 2.3rem;
 }
 .accordion-item {
-    background: #141418;
+    background: #161616e6;
     border-radius: var(--radius);
-    box-shadow: 0 0 0 4px #fff, var(--neon-glow);
+    box-shadow: 0 0 0 5px #fff, var(--neon-glow);
     transition: box-shadow 0.32s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s;
     padding: 0;
     overflow: visible;
@@ -86,10 +94,18 @@ body {
     position: relative;
 }
 .accordion-item.open {
-    box-shadow: 0 0 0 8px #fff, var(--neon-glow-hover);
-    transform: scale(1.055);
-    background: #191921;
+    box-shadow: 0 0 0 10px #fff, var(--neon-glow-hover);
+    transform: scale(1.07);
+    background: #191921f7;
     z-index: 2;
+}
+.accordion-header,
+.event-headline,
+.event-date,
+.event-meta,
+.cta, .guestlist-btn, .guestlist-form button {
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    letter-spacing: 0.04em;
 }
 .accordion-header {
     width: 100%;
@@ -97,13 +113,12 @@ body {
     border: none;
     outline: none;
     color: var(--accent);
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.23rem;
+    font-size: 1.19rem;
     font-weight: 700;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2em 2.6em 2em 2.6em;
+    padding: 2.2em 2.5em 2.1em 2.5em;
     cursor: pointer;
     letter-spacing: 0.13em;
     transition: background 0.18s, color 0.14s;
@@ -117,23 +132,22 @@ body {
     gap: 0.2em;
 }
 .event-headline {
-    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
-    font-size: 1.23em;
+    font-size: 1.28em;
     color: var(--accent);
     letter-spacing: 0.08em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.18em;
 }
 .event-date {
-    font-size: 1.03em;
+    font-size: 1.08em;
     color: var(--accent-hover);
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     font-weight: 600;
 }
 .accordion-content {
     background: none;
     border: none;
-    padding: 0 0 2.7em 0;
+    padding: 0 0 2.4em 0;
     text-align: center;
     animation: acc-fade-in 0.18s;
 }
@@ -144,44 +158,49 @@ body {
 .event-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.15em;
-    margin-bottom: 1.8em;
+    gap: 0.5em;
+    margin: 1.7em auto 2.3em auto;
     align-items: center;
 }
 .event-meta .meta {
     color: var(--text-muted);
-    font-size: 1.15rem;
-    letter-spacing: 0.06em;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.11rem;
+    letter-spacing: 0.07em;
 }
 .event-meta .meta.strong {
     color: var(--accent);
     font-weight: bold;
-    letter-spacing: 0.11em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
+    font-size: 1.13rem;
 }
 .cta, .guestlist-btn, .guestlist-form button {
     display: inline-block;
-    margin-top: 1.1rem;
-    padding: 0.7em 2.2em;
+    margin-top: 1.25rem;
+    margin-bottom: 0.7rem;
+    padding: 0.73em 2.3em;
     background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-    color: #fff;
-    font-weight: bold;
+    color: #fff !important;
+    font-weight: 700;
     border-radius: 34px;
     text-decoration: none;
-    font-size: 1.13rem;
-    letter-spacing: 0.05em;
+    font-size: 1.08rem;
     border: none;
     cursor: pointer;
-    box-shadow: 0 0 20px 7px #ff0040ee, 0 0 40px 14px #ff6a00bb;
+    box-shadow: 0 0 23px 8px #fa1d1caa, 0 0 38px 13px #ffab00aa;
     transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
     text-align: center;
 }
+.cta-notify,
+.cta.cta-notify {
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    color: #fff !important;
+}
 .cta:hover, .cta:focus,
-.guestlist-btn:hover, .guestlist-form button:hover {
+.guestlist-btn:hover, .guestlist-form button:hover, .cta-notify:hover, .cta-notify:focus {
     background: #fff;
-    color: var(--accent);
-    box-shadow: 0 0 48px 21px #ff0040cc, 0 0 108px 49px #ff6a00cc, 0 0 29px 18px #fff;
+    color: var(--accent) !important;
+    box-shadow: 0 0 68px 22px #fa1d1c, 0 0 148px 51px #ff6a00, 0 0 39px 23px #fff2;
     filter: brightness(1.12);
 }
 .modal-cta {
@@ -192,7 +211,7 @@ body {
 .guestlist-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.97);
+    background: rgba(0,0,0,0.93);
     display: none;
     align-items: center;
     justify-content: center;
@@ -216,9 +235,9 @@ body {
 }
 .guestlist-modal-content {
     position: relative;
-    background: #181818;
+    background: #181818f0;
     border-radius: var(--radius);
-    box-shadow: 0 0 58px 26px #ff0040cc, 0 0 120px 43px #ff6a00cc, 0 0 72px 28px #fff7;
+    box-shadow: 0 0 58px 26px #fa1d1cbb, 0 0 120px 43px #ff6a00cc, 0 0 72px 28px #fff7;
     padding: 2.1em 2em 2em 2em;
     min-width: 290px;
     max-width: 95vw;
@@ -254,7 +273,7 @@ body {
     background: #232323 !important;
     color: var(--text-light);
     outline: none;
-    box-shadow: 0 0 8px 1.5px #ff3800bb;
+    box-shadow: 0 0 8px 1.5px #fa1d1cbb;
     transition: border-color 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 .guestlist-form input:focus {
@@ -270,6 +289,24 @@ body {
     font-size: 1.05em;
     min-height: 1.2em;
     text-align: center;
+}
+.logo-bg {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.19;
+    background-image: url("logo-klein.png");
+    background-repeat: repeat;
+    background-size: 140px auto;
+    background-position: 50% 50%;
+    transition: opacity 0.3s;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+body.hide-bg .logo-bg,
+body.modal-open .logo-bg {
+    opacity: 0 !important;
 }
 .instagram-clean {
     display: flex;
@@ -294,7 +331,7 @@ body {
     color: var(--accent);
     letter-spacing: 0.03em;
     text-decoration: none;
-    text-shadow: 0 0 8px #ff004044;
+    text-shadow: 0 0 8px #fa1d1c44;
     transition: color 0.17s, filter 0.17s;
     border-bottom: none;
 }
@@ -351,11 +388,11 @@ a:hover, a:focus {
     border: 1.5px solid var(--accent);
     border-radius: 30px;
     font-size: 1em;
-    background: #222 !important;
+    background: #232323 !important;
     color: var(--text-light);
     outline: none;
     min-width: 198px;
-    box-shadow: 0 0 8px 1.5px #ff3800bb;
+    box-shadow: 0 0 8px 1.5px #fa1d1cbb;
     transition: border-color 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 .email-form input[type="email"]:focus {
@@ -365,6 +402,23 @@ a:hover, a:focus {
     margin-top: 0;
     margin-bottom: 0;
     align-self: stretch;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    color: #fff !important;
+    font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.04em;
+    border: none;
+    border-radius: 34px;
+    box-shadow: 0 0 19px 7px #fa1d1c88, 0 0 34px 13px #ffab0099;
+    transition: box-shadow 0.2s, filter 0.2s, background 0.19s, color 0.19s;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+}
+.email-form button:hover, .email-form button:focus {
+    background: #fff;
+    color: var(--accent) !important;
+    box-shadow: 0 0 38px 15px #fa1d1ccc, 0 0 64px 22px #ff6a00cc;
+    filter: brightness(1.13);
 }
 .form-message {
     margin-top: 0.7em;
@@ -397,7 +451,7 @@ input:-webkit-autofill:hover {
 .logo-marquee,
 .logo-marquee-2 {
     display: flex;
-    gap: 110px;
+    gap: 72px;
     position: absolute;
     left: 0;
     top: 0;
@@ -408,11 +462,11 @@ input:-webkit-autofill:hover {
 .logo-marquee-2 img {
     height: 38px;
     width: auto;
-    opacity: 0.84;
+    opacity: 0.86;
     filter: drop-shadow(0 0 6px #222);
     user-select: none;
     pointer-events: none;
-    margin-right: 0;
+    margin: 0;
 }
 .logo-marquee {
     animation: marquee 33s linear infinite;
@@ -435,7 +489,7 @@ footer {
     padding: 2rem 1rem 1.4rem 1rem;
     border-top: 1.5px solid var(--accent);
     margin-top: auto;
-    box-shadow: 0 0 12px #ff004008;
+    box-shadow: 0 0 12px #fa1d1c08;
     position: relative;
     z-index: 1;
 }
@@ -550,7 +604,7 @@ footer {
     margin-top: 0;
     border-radius: 50%;
     background: transparent !important;
-    box-shadow: 0 0 150px 55px #ff0040, 0 0 250px 90px #ff6a00cc, 0 0 80px 24px #fff5;
+    box-shadow: 0 0 170px 70px #fa1d1c, 0 0 250px 100px #ffab00cc, 0 0 110px 40px #fff5;
     opacity: 0.93;
     transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
     mix-blend-mode: lighten;
