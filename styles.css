@@ -609,6 +609,60 @@ footer {
     transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
+  .about-us {
+  max-width: 570px;
+  margin: 4.3em auto 2.9em auto;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0 1.2em;
+}
+.about-title {
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.25em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.3em;
+  color: #fff;
+  text-align: left;
+}
+.about-lead {
+  color: #fff;
+  font-size: 1.14em;
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  margin-bottom: 1.2em;
+  line-height: 1.54;
+}
+.about-text {
+  color: #bbb;
+  font-size: 1.09em;
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  margin-bottom: 2.1em;
+  line-height: 1.62;
+}
+.about-section {
+  margin-bottom: 2.2em;
+}
+.about-num {
+  color: var(--accent);
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  font-size: 1.02em;
+  margin-bottom: 0.48em;
+  display: inline-block;
+}
+.about-section p {
+  color: #bbb;
+  font-size: 1.09em;
+  margin: 0.3em 0 0 0;
+  font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
+  line-height: 1.58;
+}
+@media (max-width: 700px) {
+  .about-us { padding: 0 0.3em; }
+}
 }
 @media (max-width: 900px) {
     .neon-cursor { display: none !important; }
