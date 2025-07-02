@@ -27,26 +27,9 @@ body {
     flex-direction: column;
     letter-spacing: 0.01em;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
-
-/* --- BACKGROUND PATTERN --- */
-.logo-bg {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 2;
-    opacity: 0.19;
-    background-image: url("logo-klein.png");
-    background-repeat: repeat;
-    background-size: 140px auto;
-    background-position: 50% 50%;
-    transition: opacity 0.3s;
-    mask-image: none;
-    -webkit-mask-image: none;
 }
-
-/* --- LOGO --- */
 .logo-transparent-wrap {
     position: relative;
     display: flex;
@@ -66,8 +49,21 @@ body {
     position: relative;
     z-index: 1;
     border-radius: 0;
-    /* PNG muss Transparenz haben! */
 }
+/* --- BACKGROUND PATTERN --- */
+.logo-bg {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.19;
+    background-image: url("logo-klein.png");
+    background-repeat: repeat;
+    background-size: 140px auto;
+    background-position: 50% 50%;
+    transition: opacity 0.3s;
+    mask-image: none;
+    -webkit-mask-image: none;
 
 /* --- TOP MENU --- */
 .top-menu {
