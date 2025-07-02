@@ -27,16 +27,22 @@ body {
     letter-spacing: 0.01em;
 }
 
+/* --- BACKGROUND LAYERING: logo.png behind pattern --- */
 .logo-bg {
     pointer-events: none;
     position: fixed;
     inset: 0;
     z-index: 0;
-    opacity: 0.19;
-    background-image: url("logo-klein.png");
-    background-repeat: repeat;
-    background-size: 140px auto;
-    background-position: 50% 50%;
+    opacity: 1;
+    background:
+      url("logo.png") center center no-repeat,
+      url("logo-klein.png") repeat;
+    background-size:
+      540px auto,
+      140px auto;
+    background-position:
+      50% 50%,
+      50% 50%;
     transition: opacity 0.3s;
     mask-image: none;
     -webkit-mask-image: none;
@@ -113,6 +119,7 @@ body {
     position: relative;
     z-index: 2;
     border-radius: 0;
+    /* Remove background color, allow bg to shine through with png transparency */
 }
 .copyright-under-about {
     display: block;
@@ -255,6 +262,8 @@ body {
     line-height: 1.08;
     background: none;
     opacity: 1;
+    z-index: 2;
+    position: relative;
 }
 .event-teaser {
     background: none;
@@ -289,10 +298,10 @@ body {
 .accordion-item.open {
     box-shadow:
         0 0 0 5px #181818,
-        0 0 15px 6px #fa1d1c,
-        0 0 40px 12px #fa1d1c99,
-        0 0 85px 22px #ff6a0099,
-        0 0 24px 8px #fff6;
+        0 0 8px 3px #fa1d1c,
+        0 0 29px 7px #fa1d1c66,
+        0 0 32px 10px #ff6a0040,
+        0 0 15px 6px #fff1;
     transform: scale(1.03);
     background: #191919f7;
     z-index: 2;
@@ -435,9 +444,9 @@ body {
 }
 .guestlist-modal-content {
     position: relative;
-    background: #181818f0;
+    background: #181818e3;
     border-radius: var(--radius);
-    box-shadow: 0 0 58px 26px #fa1d1cbb, 0 0 120px 43px #ff6a00cc, 0 0 72px 28px #fff7;
+    box-shadow: 0 0 23px 10px #fa1d1c55, 0 0 40px 18px #ff6a0033, 0 0 32px 14px #fff2;
     padding: 2.1em 2em 2em 2em;
     min-width: 290px;
     max-width: 95vw;
@@ -748,8 +757,8 @@ footer {
     margin-top: 0;
     border-radius: 50%;
     background: transparent !important;
-    box-shadow: 0 0 28px 12px #fa1d1c55, 0 0 38px 18px #ffab0023;
-    opacity: 0.68;
+    box-shadow: 0 0 44px 20px #fa1d1c77, 0 0 62px 26px #ffab0044;
+    opacity: 0.81;
     transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
