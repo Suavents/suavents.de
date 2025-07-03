@@ -130,11 +130,21 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     updateCursor();
 })();
 
-// Impressum Toggle bleibt wie gehabt
+// Impressum Toggle mit Auto-Scroll beim Öffnen
 document.getElementById('impressumBtn').addEventListener('click', function() {
     const content = document.getElementById('impressumContent');
     const expanded = this.getAttribute('aria-expanded') === 'true';
-    content.hidden = expanded;
-    this.setAttribute('aria-expanded', String(!expanded));
-    this.textContent = expanded ? 'Imprint' : 'Hide Imprint';
+    if (expanded) {
+        content.hidden = true;
+        this.setAttribute('aria-expanded', 'false');
+        this.textContent = 'Imprint';
+    } else {
+        content.hidden = false;
+        this.setAttribute('aria-expanded', 'true');
+        this.textContent = 'Hide Imprint';
+        // Nach kurzem Delay hinscrollen
+        setTimeout(function() {
+            content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+    }
 });
