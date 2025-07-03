@@ -91,15 +91,23 @@ body, html {
 @media (max-width: 700px) {
     .logo-absolute-wrap,
     .logo-spacer {
-        height: 28vw;
+        width: 100vw;
         aspect-ratio: 340 / 360;
+        height: auto;
+        min-height: 0;
+        max-height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
     .logo {
         width: 90vw;
-        margin-top: 15px;
         aspect-ratio: 340 / 360;
         height: auto;
+        max-height: 180px;
+        min-height: 0;
         display: block;
+        margin-top: 10; 
     }
     .logo-bg {
         background-size: 90px auto;
