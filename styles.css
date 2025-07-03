@@ -38,7 +38,6 @@ body, html {
     background: none;
 }
 
-/* --- PATTERN (IMMER IM HINTERGRUND, fixed, gleiche Ebene wie Logo) --- */
 .logo-bg {
     pointer-events: none;
     position: fixed;
