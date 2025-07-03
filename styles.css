@@ -38,7 +38,7 @@ body, html {
     background: none;
 }
 
-/* --- PATTERN (IMMER IM HINTERGRUND, fixed) --- */
+/* --- PATTERN (IMMER IM HINTERGRUND, fixed, gleiche Ebene wie Logo) --- */
 .logo-bg {
     pointer-events: none;
     position: fixed;
@@ -54,7 +54,7 @@ body, html {
     -webkit-mask-image: none;
 }
 
-/* --- LOGO ALS WASSERZEICHEN --- */
+/* --- LOGO ALS WASSERZEICHEN (gleiche Ebene wie Pattern) --- */
 .logo-absolute-wrap {
     position: absolute;
     top: 0;
@@ -62,7 +62,7 @@ body, html {
     width: 100vw;
     height: 360px;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -498,6 +498,93 @@ body, html {
         font-size: 0.97em;
         padding: 0.6em 1.5em;
     }
+}
+
+/* --- SIGNUP & EMAIL-FORM --- */
+.signup {
+    background: none !important;
+    padding: 2.2rem 1rem 2.5rem 1rem;
+    text-align: center;
+    border-radius: var(--radius);
+    margin: 0 auto 2.2em auto;
+    max-width: 410px;
+    box-shadow: none;
+    position: relative;
+}
+.signup h2 {
+    color: var(--accent);
+    font-size: 1.19rem;
+    margin-bottom: 0.42rem;
+}
+.signup p {
+    color: #eee;
+    margin-bottom: 1.1rem;
+}
+.email-form {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.email-form input[type="email"] {
+    flex: 1 1 130px;
+    min-width: 120px;
+    max-width: 210px;
+    padding: 0.7em 1.1em;
+    border: 1.5px solid var(--accent);
+    border-radius: 30px;
+    font-size: 1em;
+    background: #232323 !important;
+    color: var(--text-light);
+    outline: none;
+    box-shadow: 0 0 8px 1.5px #fa1d1cbb;
+    transition: border-color 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+.email-form button {
+    margin-top: 0;
+    margin-bottom: 0;
+    align-self: stretch;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    color: #fff !important;
+    font-family: 'Grotesk', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.04em;
+    border: none;
+    border-radius: 34px;
+    box-shadow: 0 0 10px 3px #fa1d1c55, 0 0 24px 7px #ffab0077;
+    transition: box-shadow 0.2s, filter 0.2s, background 0.19s, color 0.19s;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    padding: 0.7em 1.7em;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+/* Signup stacked NUR bei Geräten kleiner als iPhone mini (<320px) */
+@media (max-width: 319px) {
+    .email-form {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    .email-form input[type="email"] {
+        min-width: 100px;
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+    .email-form button {
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 0.7em 1em;
+        white-space: normal;
+    }
+}
+.form-message {
+    margin-top: 0.7em;
+    font-size: 1em;
+    color: var(--accent);
+    min-height: 1.5em;
 }
 
 /* --- GUESTLIST MODAL --- */
