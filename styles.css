@@ -30,15 +30,23 @@ body, html {
     letter-spacing: 0.01em;
 }
 
+.page-bg-wrap {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    background: none;
+}
+
 /* --- LOGO ALS WASSERZEICHEN --- */
 .logo-absolute-wrap {
-    position: absolute; /* NICHT fixed! */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 360px;
     pointer-events: none;
-    z-index: 0; /* unter pattern, über body */
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -57,17 +65,20 @@ body, html {
     z-index: 0;
 }
 
-/* --- PATTERN-DIV (bleibt fixed) --- */
+/* --- PATTERN-DIV (über Logo, unter Content) --- */
 .logo-bg {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 0;
     opacity: 0.15;
     background-image: url("logo-klein.png");
     background-repeat: repeat;
     background-size: 140px auto;
     background-position: 50% 50%;
+    pointer-events: none;
     transition: opacity 0.3s;
     mask-image: none;
     -webkit-mask-image: none;
@@ -82,6 +93,7 @@ body, html {
     background: transparent;
     display: block;
 }
+
 /* --- RESPONSIVE --- */
 @media (max-width: 700px) {
     .logo-absolute-wrap,
@@ -96,10 +108,9 @@ body, html {
     }
     .logo-bg {
         background-size: 90px auto;
-        bottom: 75px !important;
-        height: calc(100vh - 75px);
     }
 }
+
 .hero {
     text-align: center;
     padding: 0 1rem 2rem 1rem;
