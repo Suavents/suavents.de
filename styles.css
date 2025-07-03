@@ -18,6 +18,23 @@
     --neon-glow-meta: 0 0 2.5px #fa1d1c55, 0 0 6px #ff6a0022;
 }
 
+/* --- Blocker über dem Logo auf Mobile --- */
+.logo-blocker-mobile {
+    display: none;
+}
+@media (max-width: 700px) {
+    .logo-blocker-mobile {
+        display: block;
+        position: relative;
+        width: 100vw;
+        height: 28vw;
+        min-height: 80px;
+        max-height: 180px;
+        background: transparent;
+        z-index: 2;
+    }
+}
+
 body {
     background: var(--bg-dark);
     color: var(--text-light);
@@ -38,7 +55,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     width: 100vw;
-    height: 360px; /* etwas weiter unten! */
+    height: 360px;
     min-height: 170px;
     z-index: 0;
     pointer-events: none;
@@ -52,7 +69,7 @@ body {
     box-shadow: none !important;
     filter: none !important;
     position: absolute;
-    top: 35px; /* weiter unten! */
+    top: 35px;
     left: 0;
     right: 0;
     z-index: -1;
@@ -75,6 +92,13 @@ body {
     mask-image: none;
     -webkit-mask-image: none;
 }
+@media (max-width: 700px) {
+    .logo-bg {
+        background-size: 90px auto;
+        bottom: 75px !important;
+        height: calc(100vh - 75px);
+    }
+}
 
 /* --- HERO & HEADINGS --- */
 .hero {
@@ -83,7 +107,7 @@ body {
     position: relative;
 }
 .hero-content {
-    margin-top: 55px; /* mehr Abstand unter dem Logo */
+    margin-top: 55px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,7 +123,6 @@ body {
     }
 }
 @media (max-width: 700px) {
-    /* Blocker über das Logo, damit Text darunter */
     .hero-content-blocker {
         display: block;
         position: absolute;
@@ -222,7 +245,7 @@ body {
     position: relative;
     top: 1px;
     z-index: 11;
-    margin-right: 7vw; /* weiter nach links */
+    margin-right: 7vw;
 }
 @media (max-width: 700px) {
     .top-menu {
@@ -370,14 +393,21 @@ footer {
     margin-bottom: 1.7em;
 }
 
-.accordion {
+.accordion,
+.impressum-content {
     max-width: 410px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 3.3rem;
-    z-index: 10;
-    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 700px) {
+    .accordion,
+    .impressum-content {
+        max-width: 97vw;
+    }
+    .accordion-item {
+        max-width: 97vw;
+    }
 }
 
 .accordion-item {
@@ -520,6 +550,12 @@ footer {
     color: var(--accent) !important;
     box-shadow: 0 0 27px 8px #fa1d1c33, 0 0 38px 17px #ff6a0033, 0 0 29px 9px #fff2;
     filter: brightness(1.12);
+}
+@media (max-width: 700px) {
+    .signup .cta {
+        font-size: 0.97em;
+        padding: 0.6em 1.5em;
+    }
 }
 
 /* --- GUESTLIST MODAL --- */
@@ -729,6 +765,12 @@ footer {
     box-shadow: 0 0 18px 6px #fa1d1ccc, 0 0 34px 12px #ff6a00cc;
     filter: brightness(1.13);
 }
+@media (max-width: 700px) {
+    .signup .cta {
+        font-size: 0.97em;
+        padding: 0.6em 1.5em;
+    }
+}
 .form-message {
     margin-top: 0.7em;
     font-size: 1em;
@@ -854,6 +896,8 @@ footer {
     color: var(--accent-hover);
     text-decoration: underline;
 }
+
+/* --- NEON CURSOR --- */
 .neon-cursor {
     pointer-events: none;
     position: fixed;
@@ -870,16 +914,18 @@ footer {
     mix-blend-mode: lighten;
     will-change: transform, opacity;
 }
+/* --- MAUS-NEON-GLOW nur auf Desktop anzeigen --- */
+@media (pointer: coarse), (hover: none) {
+    .neon-cursor {
+        display: none !important;
+    }
+}
 @media (max-width: 800px) {
     .impressum-content {
         max-width: 95vw;
     }
 }
 @media (max-width: 700px) {
-    .impressum-content {
-        padding: 1em 0.9em;
-        max-width: 97vw;
-    }
     .footer-grid {
         flex-direction: column;
         gap: 1.5em;
@@ -910,19 +956,8 @@ footer {
 
 /* --- HINTERGRUND HINTER FOOTER ENTFERNEN (mobil) --- */
 @media (max-width: 700px) {
-    .logo-bg {
-        bottom: 75px !important;
-        height: calc(100vh - 75px);
-    }
     body, html {
         background: #000 !important;
         overscroll-behavior: none;
-    }
-}
-
-/* --- MAUS-NEON-GLOW nur auf Desktop anzeigen --- */
-@media (pointer: coarse), (hover: none) {
-    .neon-cursor {
-        display: none !important;
     }
 }
