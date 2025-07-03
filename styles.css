@@ -13,8 +13,8 @@
     --text-light: #fff;
     --text-muted: #bbb;
     --radius: 1.1rem;
-    --neon-border: 0 0 0 2px #fa1d1c, 0 0 24px 6px #fa1d1cff, 0 0 14px 8px #ffab0077, 0 0 2px 1.5px #fff3;
-    --neon-border-open: 0 0 0 3px #ff6a00, 0 0 38px 15px #fa1d1cff, 0 0 28px 12px #ffab00aa, 0 0 8px 6px #fff4;
+    --neon-border: 0 0 0 2px #fa1d1c, 0 0 28px 8px #fa1d1cff, 0 0 18px 8px #ffab00a8, 0 0 2px 2px #fff4;
+    --neon-border-open: 0 0 0 3px #ff6a00, 0 0 38px 15px #fa1d1cff, 0 0 38px 18px #ffab00bb, 0 0 8px 6px #fff5;
     --neon-glow-meta: 0 0 2.5px #fa1d1c55, 0 0 6px #ff6a0022;
 }
 
@@ -28,6 +28,7 @@ body {
     letter-spacing: 0.01em;
     position: relative;
     z-index: 0;
+    margin: 0;
 }
 
 /* --- LOGO & BACKGROUND PATTERN --- */
@@ -37,9 +38,10 @@ body {
     justify-content: center;
     align-items: flex-start;
     width: 100vw;
-    height: 330px; /* Höhe des Logos, ggf. anpassen */
-    min-height: 160px;
+    height: 360px; /* etwas weiter unten! */
+    min-height: 170px;
     z-index: 0;
+    pointer-events: none;
 }
 .logo {
     width: 340px;
@@ -50,11 +52,12 @@ body {
     box-shadow: none !important;
     filter: none !important;
     position: absolute;
-    top: 0;
+    top: 35px; /* weiter unten! */
     left: 0;
     right: 0;
-    z-index: -1; /* Hinter .logo-bg */
+    z-index: -1;
     border-radius: 0;
+    pointer-events: none;
 }
 
 /* --- BACKGROUND PATTERN --- */
@@ -62,7 +65,7 @@ body {
     pointer-events: none;
     position: fixed;
     inset: 0;
-    z-index: 1; /* Höher als logo, aber unter allen anderen Inhalten */
+    z-index: 1;
     opacity: 0.19;
     background-image: url("logo-klein.png");
     background-repeat: repeat;
@@ -80,11 +83,60 @@ body {
     position: relative;
 }
 .hero-content {
-    margin-top: 38px; /* Abstand unterhalb des Logos */
+    margin-top: 55px; /* mehr Abstand unter dem Logo */
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 2;
+    position: relative;
 }
+.hero-content-blocker {
+    display: none;
+}
+@media (max-width: 900px) {
+    .hero-content {
+        margin-top: 10vw;
+    }
+}
+@media (max-width: 700px) {
+    /* Blocker über das Logo, damit Text darunter */
+    .hero-content-blocker {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0; right: 0;
+        height: 100%;
+        width: 100vw;
+        background: transparent;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 3;
+    }
+    .logo-transparent-wrap {
+        height: 28vw;
+        min-height: 90px;
+    }
+    .logo {
+        width: 90vw;
+        top: 15px;
+    }
+}
+@media (max-width: 420px) {
+    .hero-content {
+        margin-top: 4vw;
+    }
+    .logo {
+        width: 97vw;
+    }
+    .logo-transparent-wrap {
+        height: 19vw;
+        min-height: 60px;
+    }
+}
+
 .main-title {
     font-family: 'Montserrat', Arial, sans-serif;
     letter-spacing: 0.17em;
@@ -131,7 +183,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding-left: 2.8vw;
-    padding-right: 2.8vw; /* Abstand rechts = Abstand links */
+    padding-right: 2.8vw;
     background: #000;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     height: 3.4rem;
@@ -141,10 +193,10 @@ body {
 }
 .menu-link {
     color: var(--accent);
-    font-size: 1.08em;
+    font-size: 0.98em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     font-weight: 400;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.10em;
     text-decoration: none;
     background: none;
     border: none;
@@ -164,16 +216,32 @@ body {
     margin-left: auto;
     color: #fff;
     opacity: 0.8;
-    font-size: 0.98em;
+    font-size: 0.95em;
     letter-spacing: 0.13em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
-    /* padding-right: 0; entfernt */
-    /* padding-left: 1vw; entfernt */
     position: relative;
     top: 1px;
     z-index: 11;
-    /* Neu: Abstand spiegeln wie links mit about */
-    margin-right: 2.8vw;
+    margin-right: 7vw; /* weiter nach links */
+}
+@media (max-width: 700px) {
+    .top-menu {
+        font-size: 0.91em;
+        gap: 1em;
+        padding-left: 4vw;
+        padding-right: 4vw;
+        height: 2.6rem;
+        min-height: 34px;
+    }
+    .menu-link {
+        font-size: 0.91em;
+        letter-spacing: 0.10em;
+        padding: 0.13em 0;
+    }
+    .copyright-top-right {
+        margin-right: 12vw;
+        font-size: 0.86em;
+    }
 }
 
 /* --- ABOUT US / INTRO --- */
@@ -325,6 +393,9 @@ footer {
     opacity: 0.92;
     transition: box-shadow 0.38s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s, opacity 0.15s, border 0.25s;
     outline: none;
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .accordion-item.open {
     z-index: 4;
@@ -400,6 +471,7 @@ footer {
     align-items: center;
     z-index: 16;
     position: relative;
+    max-width: 410px;
 }
 .event-meta .meta {
     color: var(--text-muted);
@@ -416,6 +488,8 @@ footer {
     font-family: 'Grotesk', Arial, sans-serif;
     text-shadow: var(--neon-glow-meta);
 }
+
+/* --- BUTTONS --- */
 .cta, .guestlist-btn, .guestlist-form button {
     display: inline-block;
     margin-top: 1.25rem;
@@ -447,6 +521,8 @@ footer {
     box-shadow: 0 0 27px 8px #fa1d1c33, 0 0 38px 17px #ff6a0033, 0 0 29px 9px #fff2;
     filter: brightness(1.12);
 }
+
+/* --- GUESTLIST MODAL --- */
 .guestlist-modal {
     position: fixed;
     inset: 0;
@@ -533,6 +609,8 @@ footer {
     text-align: center;
     z-index: 3;
 }
+
+/* --- INSTAGRAM BLOCK --- */
 .instagram-clean {
     display: flex;
     flex-direction: column;
@@ -555,7 +633,7 @@ footer {
 .insta-desc {
     color: #fff;
     font-family: 'Grotesk', Arial, sans-serif;
-    font-size: 1.13em;
+    font-size: 1.33em;
     font-weight: 600;
     letter-spacing: 0.09em;
     text-shadow: 0 0 8px #fa1d1c33, 0 0 18px #fff2;
@@ -584,6 +662,8 @@ footer {
     border-bottom: none;
     text-decoration: none;
 }
+
+/* --- NEWSLETTER / SIGNUP --- */
 .signup {
     background: none !important;
     padding: 2.2rem 1rem 2.5rem 1rem;
@@ -665,16 +745,21 @@ input:-webkit-autofill:hover {
     color: var(--text-light) !important;
     caret-color: var(--accent) !important;
 }
+
+/* --- FOOTER --- */
 footer {
     background: #000;
     color: var(--text-light);
     text-align: center;
-    padding: 2rem 1rem 1.4rem 1rem;
+    padding: 2rem 0 1.4rem 0;
     border-top: 1.5px solid var(--accent);
     margin-top: auto;
     box-shadow: 0 0 12px #fa1d1c08;
     position: relative;
     z-index: 10;
+    width: 100vw;
+    min-width: 100vw;
+    overflow-x: hidden;
 }
 .footer-grid {
     display: flex;
@@ -741,12 +826,12 @@ footer {
     background: rgba(30,30,30,0.96);
     border-radius: var(--radius);
     margin: 0.5em auto 0 auto;
-    padding: 1em 1.5em;
+    padding: 1em 2.1em;
     box-shadow: 0 0 10px #0002;
     text-align: left;
     font-size: 0.97em;
     color: var(--text-muted);
-    max-width: 320px;
+    max-width: 410px;
     line-height: 1.65;
 }
 .impressum-content[hidden] {
@@ -779,59 +864,65 @@ footer {
     margin-top: 0;
     border-radius: 50%;
     background: transparent !important;
-    box-shadow: 0 0 60px 28px #fa1d1c99, 0 0 80px 35px #ffab0099;
-    opacity: 0.88;
+    box-shadow: 0 0 72px 34px #fa1d1c99, 0 0 96px 42px #ffab0099;
+    opacity: 0.92;
     transition: box-shadow 0.18s, opacity 0.2s, background 0.12s;
     mix-blend-mode: lighten;
     will-change: transform, opacity;
 }
-@media (max-width: 700px) {
-    .top-menu {
-        font-size: 0.98em;
-        gap: 1.2em;
-        padding-left: 4vw;
-        padding-right: 4vw;
+@media (max-width: 800px) {
+    .impressum-content {
+        max-width: 95vw;
     }
-    .copyright-top-right {
-        margin-right: 4vw;
+}
+@media (max-width: 700px) {
+    .impressum-content {
+        padding: 1em 0.9em;
+        max-width: 97vw;
     }
     .footer-grid {
         flex-direction: column;
         gap: 1.5em;
     }
-    .impressum-content {
-        padding: 1em 0.6em;
-        max-width: 98vw;
+    .footer-note {
+        font-size: 0.89em;
     }
-    .logo-transparent-wrap {
-        height: 28vw;
-        min-height: 90px;
-    }
-    .logo {
-        width: 90vw;
-    }
-    .accordion { max-width: 98vw; }
-    .hero-content {
-        margin-top: 6vw;
+    footer {
+        padding-left: 0;
+        padding-right: 0;
+        min-width: 100vw;
+        width: 100vw;
+        box-sizing: border-box;
     }
 }
 @media (max-width: 420px) {
-    .email-form {
-        flex-direction: column;
-        gap: 0.4em;
-        align-items: stretch;
+    .impressum-content {
+        padding: 1em 0.3em;
+        max-width: 98vw;
     }
-    .logo {
-        width: 97vw;
+    .footer-grid {
+        gap: 0.7em;
     }
-    .logo-transparent-wrap {
-        height: 19vw;
-        min-height: 60px;
+    .footer-note {
+        font-size: 0.81em;
     }
-    .hero-content {
-        margin-top: 4vw;
+}
+
+/* --- HINTERGRUND HINTER FOOTER ENTFERNEN (mobil) --- */
+@media (max-width: 700px) {
+    .logo-bg {
+        bottom: 75px !important;
+        height: calc(100vh - 75px);
     }
-    .copyright-top-right {
-        margin-right: 4vw;
+    body, html {
+        background: #000 !important;
+        overscroll-behavior: none;
+    }
+}
+
+/* --- MAUS-NEON-GLOW nur auf Desktop anzeigen --- */
+@media (pointer: coarse), (hover: none) {
+    .neon-cursor {
+        display: none !important;
     }
 }
