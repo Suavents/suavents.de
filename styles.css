@@ -17,21 +17,21 @@
     --neon-border-open: 0 0 0 3px #ff6a00, 0 0 38px 15px #fa1d1cff, 0 0 38px 18px #ffab00bb, 0 0 8px 6px #fff5;
     --neon-glow-meta: 0 0 2.5px #fa1d1c55, 0 0 6px #ff6a0022;
 }
-
-/* --- Blocker über dem Logo auf Mobile --- */
-.logo-blocker-mobile {
-    display: none;
+.logo-blocker {
+    width: 100vw;
+    height: 360px;        /* oder exakt wie .logo-transparent-wrap */
+    min-height: 170px;
+    max-width: 100vw;
+    background: transparent;
+    pointer-events: none;
+    z-index: 2;
+    display: block;
 }
 @media (max-width: 700px) {
-    .logo-blocker-mobile {
-        display: block;
-        position: relative;
-        width: 100vw;
+    .logo-blocker {
         height: 28vw;
         min-height: 80px;
         max-height: 180px;
-        background: transparent;
-        z-index: 2;
     }
 }
 
