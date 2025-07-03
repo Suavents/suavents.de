@@ -30,23 +30,7 @@ body, html {
     letter-spacing: 0.01em;
 }
 
-/* --- LOGO-BG Wasserzeichen --- */
-.logo-bg {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    opacity: 0.15;
-    background-image: url("logo-klein.png");
-    background-repeat: repeat;
-    background-size: 140px auto;
-    background-position: 50% 50%;
-    transition: opacity 0.3s;
-    mask-image: none;
-    -webkit-mask-image: none;
-}
-
-/* --- Logo als Wasserzeichen ganz unten auf Z-Achse --- */
+/* --- LOGO-WASSERZEICHEN GANZ UNTEN --- */
 .logo-absolute-wrap {
     position: absolute;
     top: 0;
@@ -54,7 +38,7 @@ body, html {
     width: 100vw;
     height: 360px;
     pointer-events: none;
-    z-index: -1;
+    z-index: -2; /* GANZ UNTEN! */
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -70,10 +54,26 @@ body, html {
     filter: none !important;
     border-radius: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: -2;
 }
 
-/* --- Transparenter Platzhalter für das Logo --- */
+/* --- PATTERN-DIV (darüber, aber unter Content) --- */
+.logo-bg {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.15;
+    background-image: url("logo-klein.png");
+    background-repeat: repeat;
+    background-size: 140px auto;
+    background-position: 50% 50%;
+    transition: opacity 0.3s;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+/* --- TRANSPARENTER PLATZHALTER FÜR DAS LOGO --- */
 .logo-spacer {
     width: 100vw;
     height: 360px;
@@ -83,6 +83,7 @@ body, html {
     display: block;
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 700px) {
     .logo-absolute-wrap,
     .logo-spacer {
@@ -101,7 +102,6 @@ body, html {
     }
 }
 
-/* --- HERO & HEADINGS --- */
 .hero {
     text-align: center;
     padding: 0 1rem 2rem 1rem;
@@ -114,6 +114,7 @@ body, html {
     align-items: center;
     position: relative;
 }
+
 .main-title {
     font-family: 'Montserrat', Arial, sans-serif;
     letter-spacing: 0.17em;
@@ -231,7 +232,6 @@ body, html {
     font-size: 1.03em;
     font-family: 'Grotesk', 'Montserrat', Arial, sans-serif;
     letter-spacing: 0.09em;
-    z-index: 5;
     position: relative;
 }
 .about-us {
