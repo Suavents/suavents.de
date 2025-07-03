@@ -18,6 +18,18 @@
     --neon-glow-meta: 0 0 2.5px #fa1d1c55, 0 0 6px #ff6a0022;
 }
 
+body, html {
+    background: var(--bg-dark) !important;
+    color: var(--text-light);
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: 0.01em;
+}
+
 /* --- LOGO-BG Wasserzeichen --- */
 .logo-bg {
     pointer-events: none;
@@ -42,7 +54,7 @@
     width: 100vw;
     height: 360px;
     pointer-events: none;
-    z-index: 1;
+    z-index: -1;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -100,7 +112,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 2;
     position: relative;
 }
 .main-title {
@@ -223,18 +234,6 @@
     z-index: 5;
     position: relative;
 }
-.hero,
-.main-title,
-.subtitle,
-.berlin-tag,
-.about-us,
-.event-teaser,
-.instagram-clean,
-.signup,
-footer {
-    z-index: 10;
-    position: relative;
-}
 .about-us {
   max-width: 900px;
   margin: 4.3em auto 2.9em auto;
@@ -324,7 +323,6 @@ footer {
     line-height: 1.08;
     background: none;
     opacity: 1;
-    z-index: 10;
     position: relative;
 }
 
@@ -336,16 +334,14 @@ footer {
     margin-bottom: 1.7em;
 }
 
-.accordion,
-.impressum-content {
+.accordion {
     max-width: 410px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 @media (max-width: 700px) {
-    .accordion,
-    .impressum-content {
+    .accordion {
         max-width: 97vw;
     }
     .accordion-item {
@@ -360,9 +356,8 @@ footer {
     border: 2px solid #fa1d1c;
     padding: 0;
     overflow: visible;
-    margin-bottom: 2.2em; /* Lücke zwischen den Event-Boxen */
+    margin-bottom: 2.2em;
     position: relative;
-    z-index: 3;
     opacity: 0.92;
     transition: box-shadow 0.38s cubic-bezier(.65,.05,.36,1), filter 0.18s, background 0.22s, transform 0.22s, opacity 0.15s, border 0.25s;
     outline: none;
@@ -374,7 +369,6 @@ footer {
     margin-bottom: 0;
 }
 .accordion-item.open {
-    z-index: 4;
     opacity: 1;
     box-shadow: var(--neon-border-open);
     border: 3px solid #ff6a00;
@@ -388,7 +382,6 @@ footer {
 .cta, .guestlist-btn, .guestlist-form button {
     font-family: 'Grotesk', Arial, sans-serif;
     letter-spacing: 0.04em;
-    z-index: 15;
     position: relative;
 }
 .accordion-header {
@@ -445,7 +438,6 @@ footer {
     gap: 0.6em;
     margin: 1.7em auto 2.3em auto;
     align-items: center;
-    z-index: 16;
     position: relative;
     max-width: 410px;
 }
@@ -482,7 +474,6 @@ footer {
     box-shadow: 0 0 13px 6px #fa1d1c40, 0 0 22px 9px #ffab0030;
     transition: background 0.22s, color 0.22s, box-shadow 0.22s, filter 0.18s;
     text-align: center;
-    z-index: 17;
     position: relative;
 }
 .cta-notify,
@@ -602,7 +593,6 @@ footer {
     background: none;
     padding: 0;
     position: relative;
-    z-index: 10;
 }
 .insta-clean-content {
     display: flex;
@@ -655,7 +645,6 @@ footer {
     max-width: 410px;
     box-shadow: none;
     position: relative;
-    z-index: 10;
 }
 .signup h2 {
     color: var(--accent);
@@ -744,7 +733,6 @@ footer {
     margin-top: auto;
     box-shadow: 0 0 12px #fa1d1c08;
     position: relative;
-    z-index: 10;
     width: 100vw;
     min-width: 100vw;
     overflow-x: hidden;
