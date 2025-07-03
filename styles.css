@@ -89,22 +89,23 @@ body, html {
     background: transparent;
     display: block;
 }
-
-/* --- RESPONSIVE LOGO & SPACER --- */
 @media (max-width: 700px) {
     .logo-absolute-wrap,
     .logo-spacer {
         height: 28vw;
-        min-height: 100px;
-        /* max-height entfernt, damit Platzhalter immer gleich wie Logo */
+        aspect-ratio: 340 / 360;
     }
     .logo {
         width: 90vw;
         margin-top: 15px;
+        aspect-ratio: 340 / 360;
+        height: auto;
+        display: block;
     }
     .logo-bg {
         background-size: 90px auto;
     }
+    .about-intro { font-size: 1.3em; }
 }
 
 /* --- HERO & HEADINGS --- */
