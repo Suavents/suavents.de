@@ -38,6 +38,22 @@ body, html {
     background: none;
 }
 
+/* --- PATTERN (IMMER IM HINTERGRUND, fixed) --- */
+.logo-bg {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    opacity: 0.15;
+    background-image: url("logo-klein.png");
+    background-repeat: repeat;
+    background-size: 140px auto;
+    background-position: 50% 50%;
+    transition: opacity 0.3s;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
 /* --- LOGO ALS WASSERZEICHEN --- */
 .logo-absolute-wrap {
     position: absolute;
@@ -46,7 +62,7 @@ body, html {
     width: 100vw;
     height: 360px;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -62,29 +78,9 @@ body, html {
     filter: none !important;
     border-radius: 0;
     pointer-events: none;
-    z-index: 0;
 }
 
-/* --- PATTERN-DIV (über Logo, unter Content) --- */
-.logo-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.15;
-    background-image: url("logo-klein.png");
-    background-repeat: repeat;
-    background-size: 140px auto;
-    background-position: 50% 50%;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    mask-image: none;
-    -webkit-mask-image: none;
-}
-
-/* --- TRANSPARENTER PLATZHALTER FÜR DAS LOGO --- */
+/* --- TRANSPARENTER PLATZHALTER --- */
 .logo-spacer {
     width: 100vw;
     height: 360px;
@@ -94,7 +90,7 @@ body, html {
     display: block;
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE LOGO & SPACER --- */
 @media (max-width: 700px) {
     .logo-absolute-wrap,
     .logo-spacer {
@@ -111,6 +107,7 @@ body, html {
     }
 }
 
+/* --- HERO & HEADINGS --- */
 .hero {
     text-align: center;
     padding: 0 1rem 2rem 1rem;
@@ -123,7 +120,6 @@ body, html {
     align-items: center;
     position: relative;
 }
-
 .main-title {
     font-family: 'Montserrat', Arial, sans-serif;
     letter-spacing: 0.17em;
@@ -497,7 +493,7 @@ body, html {
     box-shadow: 0 0 27px 8px #fa1d1c33, 0 0 38px 17px #ff6a0033, 0 0 29px 9px #fff2;
     filter: brightness(1.12);
 }
-@media (max-width: 700px) {
+@media (max-width: 350px) {
     .signup .cta {
         font-size: 0.97em;
         padding: 0.6em 1.5em;
@@ -642,94 +638,6 @@ body, html {
     background: none;
     border-bottom: none;
     text-decoration: none;
-}
-
-/* --- NEWSLETTER / SIGNUP --- */
-.signup {
-    background: none !important;
-    padding: 2.2rem 1rem 2.5rem 1rem;
-    text-align: center;
-    border-radius: var(--radius);
-    margin: 0 auto 2.2em auto;
-    max-width: 410px;
-    box-shadow: none;
-    position: relative;
-}
-.signup h2 {
-    color: var(--accent);
-    font-size: 1.19rem;
-    margin-bottom: 0.42rem;
-}
-.signup p {
-    color: #eee;
-    margin-bottom: 1.1rem;
-}
-.email-form {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: nowrap;
-    margin-bottom: 1rem;
-    align-items: center;
-}
-.email-form input[type="email"] {
-    padding: 0.7em 1.1em;
-    border: 1.5px solid var(--accent);
-    border-radius: 30px;
-    font-size: 1em;
-    background: #232323 !important;
-    color: var(--text-light);
-    outline: none;
-    min-width: 198px;
-    box-shadow: 0 0 8px 1.5px #fa1d1cbb;
-    transition: border-color 0.2s, box-shadow 0.2s, filter 0.2s;
-}
-.email-form input[type="email"]:focus {
-    border-color: var(--accent-hover);
-}
-.email-form button {
-    margin-top: 0;
-    margin-bottom: 0;
-    align-self: stretch;
-    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-    color: #fff !important;
-    font-family: 'Grotesk', Arial, sans-serif;
-    font-weight: 700;
-    font-size: 1.04em;
-    border: none;
-    border-radius: 34px;
-    box-shadow: 0 0 10px 3px #fa1d1c55, 0 0 24px 7px #ffab0077;
-    transition: box-shadow 0.2s, filter 0.2s, background 0.19s, color 0.19s;
-    cursor: pointer;
-    letter-spacing: 0.04em;
-}
-.email-form button:hover, .email-form button:focus {
-    background: #fff;
-    color: var(--accent) !important;
-    box-shadow: 0 0 18px 6px #fa1d1ccc, 0 0 34px 12px #ff6a00cc;
-    filter: brightness(1.13);
-}
-@media (max-width: 700px) {
-    .signup .cta {
-        font-size: 0.97em;
-        padding: 0.6em 1.5em;
-    }
-}
-.form-message {
-    margin-top: 0.7em;
-    font-size: 1em;
-    color: var(--accent);
-    min-height: 1.5em;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active,
-input:-webkit-autofill:hover {
-    -webkit-box-shadow: 0 0 0 30px #232323 inset !important;
-    box-shadow: 0 0 0 30px #232323 inset !important;
-    -webkit-text-fill-color: var(--text-light) !important;
-    color: var(--text-light) !important;
-    caret-color: var(--accent) !important;
 }
 
 /* --- FOOTER --- */
