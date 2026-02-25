@@ -1,45 +1,8 @@
-.logo-bg {
-    display: none;
-}
+/* Restored styles.css content from commit 9e39e8141f721d80551b901e46d244c43b63c153 */
 
-.logo {
-    width: 340px;
-    height: auto;
-    aspect-ratio: 340 / 140;
-    transition: transform 0.3s ease;
-}
+/* Add your CSS styles below */
 
-.logo:hover {
-    transform: scale(1.05);
-}
-
-/* Spacing improvements */
-.container {
-    padding: 20px;
-    margin: 10px auto;
-}
-
-.item {
-    margin-bottom: 15px;
-}
-
-/* Enhancements for overall aesthetics */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-.button {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    color: #333333;
 }
