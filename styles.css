@@ -1,8 +1,14 @@
-/* Restored styles.css content from commit 9e39e8141f721d80551b901e46d244c43b63c153 */
-
-/* Add your CSS styles below */
+/* Complete content from commit 9e39e8141f721d80551b901e46d244c43b63c153 */
 
 body {
-    background-color: #ffffff;
-    color: #333333;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
 }
